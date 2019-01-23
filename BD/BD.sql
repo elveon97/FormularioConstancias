@@ -41,15 +41,54 @@ INSERT INTO tipo_evento (nombre) VALUES('Taller');
 INSERT INTO tipo_evento (nombre) VALUES('Diplomado');
 INSERT INTO tipo_evento (nombre) VALUES('Otro');
 
+--  CREACIÓN TABLA INSTANCIA
+CREATE TABLE IF NOT EXISTS `instancia` (
+  `instancia_id` int(8) AUTO_INCREMENT PRIMARY KEY,
+  `nombre` varchar(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO instancia (nombre) VALUES ('Rectoría');
+INSERT INTO instancia (nombre) VALUES ('Secretaría Administrativa');
+INSERT INTO instancia (nombre) VALUES ('Secretaría Académica');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Tecnologías para el Aprendizaje (CTA)');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Servicios Académicos');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Extensión');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Carreras');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Planeación');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Investigación y Posgrado');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Servicios Generales');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Finanzas');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Control Escolar');
+INSERT INTO instancia (nombre) VALUES ('Coordinación de Personal');
+INSERT INTO instancia (nombre) VALUES ('División de Ciencias Exactas, Naturales y Tecnológicas');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias Exactas y Metodologías');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias de la Naturaleza');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias Computacionales e Innovación Tecnológica');
+INSERT INTO instancia (nombre) VALUES ('División de Ciencias Sociales y Humanidades');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Artes y Humanidades');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias Económicas y Administrativas');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias Sociales');
+INSERT INTO instancia (nombre) VALUES ('División de Ciencias de la Salud');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Promoción, Preservación y Desarrollo de la Salud');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias Básicas para la Salud');
+INSERT INTO instancia (nombre) VALUES ('Departamento de Ciencias Clínicas');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigación en Comportamiento Alimentario y Nutrición');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigaciones en Abejas');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigación en Biología Molecular de las Enfermedades Crónicas');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigación en Emprendurismo, Incubación, Consultoría, Asesoría e Innovación');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigación Lago de Zapotlán y Cuencas');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigación en Riesgos y Calidad de Vida');
+INSERT INTO instancia (nombre) VALUES ('Centro de Investigación en Territorio y Ruralidad');
+
 --  CREACIÓN TABLA EVENTO
 CREATE TABLE IF NOT EXISTS `evento` (
   `evento_id` int(8) AUTO_INCREMENT PRIMARY KEY,
   `tipo_evento` int(8) NOT NULL,
+  `instancia` int(8) NOT NULL,
   `nombre` varchar(40) NOT NULL,
   `duracion` int(5),
   `fecha_inicio` date,
-  `fecha_fin` date,
-  `instancia` varchar(40)
+  `fecha_fin` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  CREACIÓN TABLA CONSTANCIA
@@ -115,15 +154,16 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE crear_evento(
   IN _tipo_evento varchar(40),
+     _instancia varchar(100),
      _nombre varchar(40),
      _duracion int(5),
      _fecha_inicio date,
-     _fecha_fin date,
-     _instancia varchar(40)
+     _fecha_fin date
 )
 BEGIN
   DECLARE cantidad_columnas int;
   DECLARE _tipo_evento_id int;
+  DECLARE _instancia_id int;
 
   SELECT COUNT(*) INTO cantidad_columnas FROM evento
     WHERE UPPER(TRIM(_nombre)) = UPPER(TRIM(nombre));
@@ -132,6 +172,9 @@ BEGIN
       SELECT tipo_evento_id INTO _tipo_evento_id FROM tipo_evento
         WHERE _tipo_evento = nombre;
 
+      SELECT instancia_id INTO _instancia_id FROM instancia
+        WHERE UPPER(TRIM(_instancia)) = UPPER(TRIM(nombre));
+
       INSERT INTO evento (tipo_evento, nombre, duracion, fecha_inicio, fecha_fin,
         instancia) VALUES (_tipo_evento_id, _nombre, _duracion, _fecha_inicio,
         _fecha_fin, _instancia);
@@ -139,7 +182,7 @@ BEGIN
 END //
 DELIMITER ;
 
---  PROCEDIMIENTO CREAR EVENTO
+--  PROCEDIMIENTO CREAR CONSTANCIA
 --  Este procedimiento se utiliza para crear la constancia en la forma en que se
 --  realiza en el formulario web. Para el correcto funcionamiento de este
 --  procedimiento, primero debemos llamar a los procedimientos que crean al cursante
@@ -254,11 +297,11 @@ DELIMITER //
 CREATE PROCEDURE actualizar_evento(
   IN _evento_id int(8),
      _tipo_evento int(8),
+     _instancia int(8),
      _nombre varchar(40),
      _duracion int(5),
      _fecha_inicio date,
-     _fecha_fin date,
-     _instancia varchar(40)
+     _fecha_fin date
 )
 BEGIN
   UPDATE evento SET tipo_evento = _tipo_evento_id, nombre = _nombre,
@@ -325,15 +368,15 @@ DELIMITER //
 CREATE PROCEDURE leer_evento(
   IN _evento_id int(8),
   OUT _tipo_evento int(8),
+      _instancia int(8),
       _nombre varchar(40),
       _duracion int(5),
       _fecha_inicio date,
-      _fecha_fin date,
-      _instancia varchar(40)
+      _fecha_fin date
 )
 BEGIN
-  SELECT tipo_evento, nombre, duracion, fecha_inicio, fecha_fin, instancia
-    INTO _tipo_evento, _nombre, _duracion, _fecha_inicio, _fecha_fin, _instancia
+  SELECT tipo_evento, instancia, nombre, duracion, fecha_inicio, fecha_fin
+    INTO _tipo_evento, _instancia, _nombre, _duracion, _fecha_inicio, _fecha_fin
     FROM evento WHERE evento_id = _evento_id;
 END //
 DELIMITER ;
