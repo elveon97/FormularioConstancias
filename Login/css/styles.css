@@ -1,0 +1,69 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+}
+
+body{
+    background-color: beige;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2{
+    text-align: center;
+    font-style: oblique;
+    font-size: 3em;
+    color: darksalmon;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+form{
+    background-color: white;
+    width: 60%;
+    max-width: 400px;
+    min-width: 250;
+    
+    padding: 2em;
+    box-shadow: 0px 0px 10px rgba(0,0,0,1);
+}
+#login{
+    margin-left: 3em;
+}
+
+label{
+    display: block;
+    padding: .5em;
+    color: coral
+}
+
+input{
+    padding: 10px 35px;
+    background-color: lightgray;
+    border: 1px solid transparent;
+    transition: all .4s;
+}
+
+input:focus{
+    background-color: white;
+    border: 1px solid teal;
+}
+
+button{
+    display: block;
+    margin-top: 25px;
+    margin-left: 0px;
+    padding: .5em 1.5em;
+    background-color: darkorange;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: background-color .4s;
+}
+
+button:hover{
+    background-color: teal;
+    color: white;
+}
