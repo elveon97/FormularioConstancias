@@ -3,18 +3,18 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="formulario_styles.css">
+        <link rel="stylesheet" href="../Login/css/styles.css">
+        
         <title>Sistema de Constancias</title>
     </head>
+    
     <body>
-
         <div class="m-center">
             <div class="logo-container w-100">
                 <img src="./logo.jpg" alt="CUSur">
             </div>
             <div class="main-container w-100">
-                
                 <div id="formContainer">
-                    
                     <form id="mainForm">
                         <!-- Form que tendra los campos de la constancia -->
                         <form id="datosConstancia">
@@ -55,9 +55,8 @@
                             <!-- Comentarios-->
                             <label for="comentarios">Comentarios</label>
                             <textarea id="comentarios" placeholder="Comentarios"></textarea>
-
+                            
                         </form>
-
 
                         <!-- form que contendrá los campos del cursante de la capacitación -->
                         <form id="datosCursante">
@@ -70,22 +69,13 @@
                             <label for="nombreCursante">Nombre Cursante</label>
                             <input id="nombreCursante" type="text" placeholder="Ingresa el nombre del cursante">
 
-
-                        </form>
-                    
-                    </form>
-                    
-                </div>
-                
-                
-                
+                            <!-- Button Submit para enviar los datos de los formulario -->
+                            <button type="submit">Subir Constancia</button>
+                        </form>  
+                    </form>  
+                </div>    
             </div>
-
-            
-
-
-
         </div>
-
     </body>
+    
 </html>
