@@ -1,3 +1,5 @@
+-- CAMBIOS REALIZADOS
+
 USE constancias;
 
 CALL crear_cursante('15290932', 'Darío Alexis Vázquez Magaña');
