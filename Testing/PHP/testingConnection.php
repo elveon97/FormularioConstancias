@@ -20,10 +20,12 @@
 
 	//Mostrar los datos de la consulta
 	while($columna = mysqli_fetch_array($resultado)){
-		echo "Usuario: ".$columna[0]."<br>"; 
-		echo "Contraseña: ".$columna[1]."<br>"; 
-		echo "Email: ".$columna[2]."<br>"; 
-		echo "Tipo Usuario: ".$columna[3]."<br>"; 
+		echo "ID Usuario: ".$columna[0]."<br>"; 
+		echo "Usuario: ".$columna[1]."<br>"; 
+		echo "Contraseña: ".$columna[2]."<br>"; 
+		echo "Email: ".$columna[3]."<br>"; 
+		echo "Tipo Usuario: ".$columna[4]."<br>"; 
+		echo "<br>"."<br>";
 	}
 
 	/*	
