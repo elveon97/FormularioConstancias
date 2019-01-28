@@ -395,8 +395,8 @@ CREATE PROCEDURE formulario(
   IN _codigo varchar(20),
      _nombre_cursante varchar(60),
      _nombre_evento varchar(40),
-     _tipo_evento_nombre varchar(40),
-     _instancia_nombre varchar(100),
+     _tipo_evento_id int(8),
+     _instancia_id int(8),
      _duracion int(5),
      _fecha_inicio date,
      _fecha_fin date,
@@ -405,16 +405,8 @@ CREATE PROCEDURE formulario(
   OUT _salida int
 )
 BEGIN
-  DECLARE _tipo_evento_id int;
-  DECLARE _instancia_id int;
   DECLARE _salida_cursante int;
   DECLARE _salida_evento int;
-
-  SELECT tipo_evento_id INTO _tipo_evento_id FROM tipo_evento
-    WHERE UPPER(TRIM(nombre)) = UPPER(TRIM(_tipo_evento_nombre));
-
-  SELECT instancia_id INTO _instancia_id FROM instancia
-    WHERE UPPER(TRIM(nombre)) = UPPER(TRIM(_instancia_nombre));
 
   CALL crear_cursante(_codigo, _nombre_cursante, _salida_cursante);
   CALL crear_evento(_tipo_evento_id, _instancia_id, _nombre_evento, _duracion,
