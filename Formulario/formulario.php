@@ -30,6 +30,7 @@
                         <?php
                         require("connection.php");
                           $conn = getConnection();
+                          $conn -> query("SET NAMES utf8");
 
                           $result = $conn->query("SELECT * FROM tipo_evento");
 
@@ -49,6 +50,7 @@
                     <select class="inputInline" name="instancia" name="instancia">
                         <?php
                           $conn = getConnection();
+                          $conn -> query("SET NAMES utf8");
 
                           $result = $conn->query("SELECT * FROM instancia");
 
@@ -114,6 +116,8 @@
                     $nombre_cursante = validate_input($_POST["nombre_cursante"]) ;
 
                     $con = getConnection();
+
+                    $con -> query("SET NAMES utf8");
 
                     $con -> query("CALL formulario("
                         . "'" . $codigo . "', "
