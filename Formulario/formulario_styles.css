@@ -7,7 +7,7 @@
 }
 
 .labelInline{
-    min-width: 40%;
+    min-width: 45%;
     max-width: 50%;
     padding: .5em;
     color: cadetblue;
@@ -17,12 +17,12 @@
 }
 
 .inputInline{
-    padding: 10px 35px;
+    padding: 10px 15px;
     background-color: lightgray;
     border: 1px solid transparent;
     transition: all .4s;
     min-width: 300px;
-    max-width: 500px;
+    max-width: 300px;
     margin-top: .5em;
 }
 

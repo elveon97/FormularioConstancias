@@ -14,6 +14,8 @@
 CREATE DATABASE IF NOT EXISTS `constancias` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `constancias`;
 
+SET NAMES utf8;
+
 --  CREACIÓN DE TABLA USUARIO
 CREATE TABLE IF NOT EXISTS `usuario` (
   `usuario_id` int(8) AUTO_INCREMENT PRIMARY KEY,
