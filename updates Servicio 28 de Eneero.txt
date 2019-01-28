@@ -1,0 +1,4 @@
+Usuarios	-> Agregar, Modificar, Eliminar
+Constancias	-> Agregar, Modificar, Eliminar
+Reportes	-> Por fecha, por curso o evento, o por cursante
+
