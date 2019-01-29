@@ -4,6 +4,49 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="formulario_styles.css">
         <link rel="stylesheet" href="../Login/css/styles.css">
+        <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+          function autoCompletado(control, busqueda) {
+            var parametros = {
+              "control" : control,
+              "busqueda" : busqueda
+            };
+
+            $.ajax({
+              data: parametros,
+              url: "autocompletado.php",
+              type: "post",
+              beforeSend: function() {
+                console.log("realizando búsqueda...");
+              },
+              success: function(response) {
+                if (response == "") return;
+                resultado = response.split(";");
+                console.log(response);
+
+                if (control == 0) { // Autocompletar Evento
+                  $('select[name=tipo_capacitacion] option').eq(resultado[1]-1).prop('selected', true);
+                  $('select[name=instancia] option').eq(resultado[2]-1).prop('selected', true);
+                  $('input[name=duracion]').val(resultado[4]);
+                  $('input[name=fecha_inicio]').val(resultado[5]);
+                  $('input[name=fecha_fin]').val(resultado[6]);
+                } else { // Autocompletar Cursante
+                  $('input[name=nombre_cursante]').val(resultado[1]);
+                }
+              }
+            });
+          }
+
+          $(document).ready(function() {
+            $("#nombreCapacitacion").on("input",function(e){
+              autoCompletado(0, $("#nombreCapacitacion").val());
+            });
+            $("#codigoCursante").on("input",function(e){
+              autoCompletado(1, $("#codigoCursante").val());
+            });
+          });
+        </script>
+
 
         <title>Sistema de Constancias</title>
     </head>
@@ -16,7 +59,7 @@
             </div>
 
             <!-- Contenedor del formulario -->
-            <div class="main-container w-100 colorFondo">
+            <div class="main-container w-100">
                 <!-- Form que tendra los campos de la constancia -->
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <!-- Nombre de la Capacitacion-->
@@ -32,7 +75,7 @@
                           $conn = getConnection();
                           $conn -> query("SET NAMES utf8");
 
-                          $result = $conn->query("SELECT * FROM tipo_evento");
+                          $result = $conn->query("SELECT * FROM tipo_evento ORDER BY tipo_evento_id ASC");
 
                           while($row=mysqli_fetch_array($result)) {
                             echo '<option value="'.htmlspecialchars($row[0]).
@@ -52,7 +95,7 @@
                           $conn = getConnection();
                           $conn -> query("SET NAMES utf8");
 
-                          $result = $conn->query("SELECT * FROM instancia");
+                          $result = $conn->query("SELECT * FROM instancia ORDER BY instancia_id ASC");
 
                           while($row=mysqli_fetch_array($result)) {
                             echo '<option value="'.htmlspecialchars($row[0]).
