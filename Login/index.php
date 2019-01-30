@@ -10,13 +10,12 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
-
         
         <title>Iniciar Sesión</title>
 
-    </head>
-
-    
+    </head>         
+                        
+                
     <body>
         
         <div class="m-center">
@@ -39,10 +38,11 @@
                 
                 <!-- Codigo php para validar el login al sistema -->
                 <?php
+                    //Código para realizar las consultas a la BD
                     require("../Formulario/connection.php");
                     $conn = getConnection();
                     $conn -> query("SET NAMES utf8");
-                    
+                     
                     if ($_POST) {
                         //Recibir las variables enviadas por el metodo POST
                         $usser = validate_input($_POST["usser"]);
@@ -54,25 +54,32 @@
     
                         $resultadoConsultaUsuario = "";
                         $resultadoConsultaPassword = "";                        
-                                                
+                        
+                        //Guardar en la variable $row el resultado de la consulta sql ---> Se almacena como tipo array, cada columna obtenida es una posicion del array!
                         $row=mysqli_fetch_array($result);                        
                         $resultadoConsultaUsuario = $row[0];                        
                         $resultadoConsultaPassword = $row[1];                        
                         
                         if($resultadoConsultaUsuario == $usser && $resultadoConsultaPassword == $password){
                             //Realizar la consulta para obtener el tipo de usuario del usuario introducido
-                            $result = $conn->query("SELECT tipo_usuario FROM usuario where username = $usser");
+                            $result = $conn->query("SELECT tipo_usuario FROM usuario where username = '".$usser."'");
                             $tipoUsuario = "";
                             
                             while($row=mysqli_fetch_array($result)) {
                                 //Asignar el tipo de usuario a la variable correspondiente para realizar el direccionamiento
                                 $tipoUsuario = $row[0];
-                                echo '<p>'.$row[0]."</p>";
-                                echo $tipoUsuario;
                             }
 
                             mysqli_free_result($result);
                             
+                            //En este punto, ya se valido que las credenciales de acceso proporcionadas existen en la base de datos, es aquí donde se debe de iniciar la variable de sesion!
+                            //Metodo para iniciar la sesión
+                            session_start();
+                            //Iniciar la variable de sesion con el usuario que se proporciono
+                            $_SESSION['usuario'] = $usser;
+                            
+                            
+                            //Realizar el direccionamiento dependiendo el tipo de usuario
                             if($tipoUsuario == 0){
                                 //Redireccionar al Panel del Administrador
                                 header("Location: ../Administrador/adminIndex.php");

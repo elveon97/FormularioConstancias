@@ -1,9 +1,28 @@
+<?php
+    //Codigo para validar que esta pagina pueda ser visualizada solamente si existe una sesión previamente iniciada!
+
+    session_start();
+    $varSesion = $_SESSION['usuario'];
+
+    //Habilitar la siguiente linea cuando se de por concluido el desarrollo de esta pagina, esto con el fin de que no se muestren errores de php
+    //error_reporting(0);
+    
+    if($varSesion == null || $varSesion = ''){
+        echo 'Para acceder a esta sección debes iniciar sesión';
+        die();
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="formulario_styles.css">
         <link rel="stylesheet" href="../Login/css/styles.css">
+<<<<<<< HEAD
         <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
           function autoCompletado(control, busqueda) {
@@ -48,6 +67,10 @@
         </script>
 
 
+=======
+        
+        
+>>>>>>> Modulo Gestion de Usuarios
         <title>Sistema de Constancias</title>
     </head>
 
@@ -62,6 +85,8 @@
             <div class="main-container w-100">
                 <!-- Form que tendra los campos de la constancia -->
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <h1>Logueado como: <?php echo $_SESSION['usuario'] ?></h1>
+                    
                     <!-- Nombre de la Capacitacion-->
                     <label class="labelInline" for="nombreCapacitacion">Nombre Capacitación</label>
                     <input class="inputInline" id="nombreCapacitacion" type="text" placeholder="Ingresa el nombre de la capacitacion" name="nombre_capacitacion" required>
@@ -185,7 +210,10 @@
                     return $data;
                   }
                 ?>
-
+                
+                <!-- Cerrar la Sesión -->
+                <a href="../Login/CerrarSesion.php">Cerrar Sesión</a>
+                
             </div>
         </div>
 
