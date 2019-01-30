@@ -1,0 +1,11 @@
+Usuarios	-> Agregar, Modificar, Eliminar                    -> Done Madafaka!
+
+Constancias	-> Agregar, Modificar, Eliminar
+Reportes	-> Por fecha, por curso o evento, o por cursante
+
+
+
+
+***	A tomar en cuenta	***
+	-Validar que solamente se le pueda asignar una sola vez a un usuario una misma constancia, es decir:
+		Que no se permita registrar mas de una vez la misma constancia al mismo usuario!
