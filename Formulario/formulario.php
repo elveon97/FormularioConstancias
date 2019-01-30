@@ -22,6 +22,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="formulario_styles.css">
         <link rel="stylesheet" href="../Login/css/styles.css">
+<<<<<<< HEAD
         <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
           function autoCompletado(control, busqueda) {
@@ -66,6 +67,10 @@
         </script>
 
 
+=======
+        
+        
+>>>>>>> Modulo Gestion de Usuarios
         <title>Sistema de Constancias</title>
     </head>
 

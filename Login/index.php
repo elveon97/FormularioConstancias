@@ -10,7 +10,6 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
-
         
         <title>Iniciar Sesión</title>
 
