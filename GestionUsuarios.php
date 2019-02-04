@@ -82,13 +82,13 @@
 						<input type="text" hidden="" id="idusuario" name="idusuario">
 						<!-- Nombre del Usuario-->
 						<label>Nombre Usuario</label>
-						<input id="usuarioEditar" class="form-control input-sm" type="text" name="usuarioEditar" required>
+						<input id="usuarioEditar" class="form-control input-sm mb-3" type="text" name="usuarioEditar" required>
 						<!-- Contraseña-->
 						<label>Contraseña</label>
-						<input id="passwordEditar" class="form-control input-sm" type="password" name="passwordEditar" required>
+						<input id="passwordEditar" class="form-control input-sm mb-3" type="password" name="passwordEditar" required>
 						<!-- email del Usuario-->
 						<label>Email Usuario</label>
-						<input id="emailEditar" class="form-control input-sm" type="email" name="emailEditar" required>
+						<input id="emailEditar" class="form-control input-sm mb-3" type="email" name="emailEditar" required>
 						<!-- Tipo Usuario-->
 						<label>Tipo Usuario</label>
 						<select id="tipoUEditar" name="tipoUsuarioEditar" class="form-control mb-2">
@@ -108,7 +108,6 @@
 
 </body>
 </html>
-
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -134,7 +133,7 @@
 		$('#btnActualizar').click(function(){
 			datos=$('#frmnuevoU').serialize();
 			console.log(datos);
-			
+
 			$.ajax({
 				type:"POST",
 				data:datos,
@@ -179,7 +178,7 @@
 	}
 
 		function eliminarDatos(idusuario){
-		alertify.confirm('¿Seguro que deseas eliminar el usuario?', function(){
+		alertify.confirm('Eliminar Usuario', '¿Seguro que deseas eliminar el usuario?', function(){
 
 			$.ajax({
 				type:"POST",
