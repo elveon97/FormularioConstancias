@@ -2,15 +2,16 @@
 <html>
 <head>
 	<title></title>
-	<?php require_once "php/gestionUsuariosScripts.php";  ?>
+	<?php require_once "php/gestionScripts.php";  ?>
 </head>
 <body>
-	<div class="container">
+	<div class="container pt-1">
+		<img src="img/logo.jpg" alt="CUSur" class="mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="card text-left">
+				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestion de Usuarios
+						Gestión de Usuarios
 					</div>
 					<div class="card-body">
 						<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
@@ -41,16 +42,19 @@
 					<form id="frmnuevo">
 						<!-- Nombre del Usuario-->
 						<label for="nombreUsuario">Nombre Usuario</label>
-						<input id="nombreUsuario" class="form-control input-sm" type="text" placeholder="Ingresa el nombre del Usuario" name="usuario" required>
+						<input id="nombreUsuario" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Usuario" name="usuario" required>
 						<!-- Contraseña-->
 						<label for="contrasenaUsuario">Contraseña</label>
-						<input id="contrasenaUsuario" class="form-control input-sm" type="password" placeholder="Ingresa la contraseña del Usuario" name="password" required>
+						<input id="contrasenaUsuario" class="form-control input-sm mb-3" type="password" placeholder="Ingresa la contraseña del Usuario" name="password" required>
 						<!-- email del Usuario-->
 						<label for="emailUsuario">Email Usuario</label>
-						<input id="emailUsuario" class="form-control input-sm" type="email" placeholder="Ingresa el email del Usuario" name="email" required>
+						<input id="emailUsuario" class="form-control input-sm mb-3" type="email" placeholder="Ingresa el email del Usuario" name="email" required>
 						<!-- Tipo Usuario-->
 						<label for="tipoUsuario">Tipo Usuario</label>
-						<input id="tipoUsuario" class="form-control input-sm" type="text" placeholder="Ingresa el Tipo de Usuario" name="tipoUsuario" required>
+						<select name="tipoUsuario" class="form-control mb-2">
+							<option value="1">Usuario Normal</option>
+							<option value="0">Administrador</option>
+						</select>
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -87,7 +91,10 @@
 						<input id="emailEditar" class="form-control input-sm" type="email" name="emailEditar" required>
 						<!-- Tipo Usuario-->
 						<label>Tipo Usuario</label>
-						<input id="tipoUsuarioEditar" class="form-control input-sm" type="text" name="tipoUsuarioEditar" required>
+						<select id="tipoUEditar" name="tipoUsuarioEditar" class="form-control mb-2">
+							<option value="1">Usuario Normal</option>
+							<option value="0">Administrador</option>
+						</select>
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -126,7 +133,8 @@
 
 		$('#btnActualizar').click(function(){
 			datos=$('#frmnuevoU').serialize();
-
+			console.log(datos);
+			
 			$.ajax({
 				type:"POST",
 				data:datos,
@@ -161,7 +169,11 @@
 				$('#usuarioEditar').val(datos['username']);
 				$('#passwordEditar').val(datos['password']);
 				$('#emailEditar').val(datos['email']);
-				$('#tipoUsuarioEditar').val(datos['tipo_usuario']);
+				if (datos['tipo_usuario'] == 0) {
+					$('#tipoUEditar option[value=0]').prop('selected', true);
+				} else {
+					$('#tipoUEditar option[value=1]').prop('selected', true);
+				}
 			}
 		});
 	}

@@ -8,7 +8,7 @@
 		$_POST['usuarioEditar'],
 		$_POST['passwordEditar'],
 		$_POST['emailEditar'],
-		$_POST['tipoUsuarioEditar']
+		$_POST['tipoUsuarioEditar'],
 				);
 
 	echo $obj->actualizar($datos);

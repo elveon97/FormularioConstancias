@@ -12,7 +12,7 @@ $result=mysqli_query($conexion,$sql);
 
 <div>
 	<table class="table table-hover table-condensed table-bordered" id="iddatatable">
-		<thead style="background-color: #dc3545;color: white; font-weight: bold;">
+		<thead style="background-color: #4A4A4A;color: white; font-weight: bold;">
 			<tr>
 				<td>Usuario</td>
 				<td>Contraseña</td>
@@ -45,12 +45,12 @@ $result=mysqli_query($conexion,$sql);
                     else echo "<td>Usuario Normal</td>";
 					?>
 					<td style="text-align: center;">
-						<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
+						<span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-pencil-square-o"></span>
 						</span>
 					</td>
 					<td style="text-align: center;">
-						<span class="btn btn-danger btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] ?>')">
+						<span class="btn btn-dark btn-sm" onclick="eliminarDatos('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-trash"></span>
 						</span>
 					</td>
