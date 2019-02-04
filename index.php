@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-
+ 
     <head>
         <meta name="author" content="PracticantesServicioSocial">
         <meta charset="utf-8">
@@ -12,7 +12,9 @@
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
 
         <title>Iniciar Sesión</title>
-
+        
+        
+                 
     </head>
 
 
@@ -35,7 +37,24 @@
                     <!-- Submit Button -->
                     <button class ="botonesFormulario" type="submit">Entrar</button>
                 </form>
+                
+                <span id = "msg"> Por favor introduce los datos solicitados </span>
+                
+                <!--    Este script modifica el texto del span con id = "msg".
+                        Por lo tanto debe de ir despues de que el span haya sido declarado y antes de la condición donde será invocado! -->
+                <script type = "text/javascript">
 
+                    function mensajesLogueo(opcion){
+                        if(opcion == 1){
+                            document.getElementById("msg").innerHTML = "La contraseña introducida es incorrecta <br>";
+                        }else if(opcion == 2){
+                            document.getElementById("msg").innerHTML = "El usuario introducido no se encontro en la base de datos <br>";
+                        }
+                    }
+                    
+                </script>
+                
+                
                 <!-- Codigo php para validar el login al sistema -->
                 <?php
                     //Código para realizar las consultas a la BD
@@ -88,17 +107,15 @@
                                 header("Location: formulario.php");
                             }
                         }else if($resultadoConsultaUsuario == $usser && $resultadoConsultaPassword != $password){
-                            echo 'La contraseña introducida es incorrecta';
-                            echo "<br>";
+                            echo '<script> mensajesLogueo(1) </script>';
                         }else{
-                            echo 'El usuario introducido no se encontro en la base de datos';
-                            echo "<br>";
+                            echo '<script> mensajesLogueo(2) </script>';
                         }
 
                         mysqli_free_result($result);
                         mysqli_close($conn);
                     }else{
-                        echo 'Por favor introduce los datos solicitados';
+   
                     }
 
 
@@ -108,10 +125,20 @@
                         $data = htmlspecialchars($data);
                         return $data;
                     }
+                
                 ?>
+                
             </div>
+            
         </div>
-
+        
+          
+        
+        
+        
     </body>
+    
+   
 
 </html>
+
