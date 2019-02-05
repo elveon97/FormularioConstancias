@@ -1,7 +1,7 @@
 
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 $obj= new conectar();
 $conexion=$obj->conexion();
 
