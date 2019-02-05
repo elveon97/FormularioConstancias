@@ -49,7 +49,7 @@
                   $('input[name=fecha_inicio]').val(resultado[5]);
                   $('input[name=fecha_fin]').val(resultado[6]);
                 } else { // Autocompletar Cursante
-                  $('input[name=nombre_cursante]').val(resultado[2]);
+                  $('input[name=nombre_cursante]').val(resultado[1]);
                 }
               }
             });
@@ -179,7 +179,7 @@
                     $con = getConnection();
 
                     $con -> query("SET NAMES utf8");
-                    
+
                     $con -> query("CALL formulario("
                         . "'" . $codigo . "', "
                         . "'" . $nombre_cursante ."', "

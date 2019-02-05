@@ -40,7 +40,11 @@
         <div class="m-center">
             <!-- Imagen -->
             <div class="logo-container w-100">
-                <img src="img/logo.jpg" alt="CUSur">
+              <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
+              <a href="GestionUsuarios.php" class="btn btn-outline-danger">
+                <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
+                Cerrar Sesión
+              </a>
             </div>
 
             <div class="container">
@@ -77,7 +81,7 @@
                       <div class="card-title">
                           <span class="fa fa-file text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
                       </div>
-                      <a href="#" class="btn btn-primary">
+                      <a href="gestionConstancias.php" class="btn btn-primary">
                         <span class="fa fa-cogs" style="margin-right: 5px;"></span>
                         Gestionar
                       </a>
@@ -157,6 +161,25 @@
                   </div>
                 </div>
 
+              </div>
+
+              <div class="row mt-4">
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Reportes</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-book text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="interfazReportes.php" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
