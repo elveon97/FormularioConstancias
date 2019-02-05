@@ -71,7 +71,11 @@
         <div class="m-center">
             <!-- Imagen -->
             <div class="logo-container w-100">
-                <img src="img/logo.jpg" alt="CUSur">
+                <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
+                <a href="php/CerrarSesion.php">
+                  <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
+                  Cerrar Sesión
+                </a>
             </div>
 
             <!-- Contenedor del formulario -->
@@ -180,6 +184,8 @@
 
                     $con -> query("SET NAMES utf8");
 
+                    $date = getDate();                    
+
                     $con -> query("CALL formulario("
                         . "'" . $codigo . "', "
                         . "'" . $nombre_cursante ."', "
@@ -189,7 +195,7 @@
                         . $duracion . ", "
                         . "'" . $fecha_inicio . "', "
                         . "'" . $fecha_fin . "', "
-                        . "'2019-04-10', "
+                        . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
                         . "'" . $comentarios . "', @out)"
                       );
 
@@ -203,9 +209,6 @@
                     return $data;
                   }
                 ?>
-
-                <!-- Cerrar la Sesión -->
-                <a href="php/CerrarSesion.php">Cerrar Sesión</a>
 
             </div>
         </div>

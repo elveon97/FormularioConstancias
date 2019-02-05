@@ -41,7 +41,7 @@
             <!-- Imagen -->
             <div class="logo-container w-100">
               <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
-              <a href="GestionUsuarios.php" class="btn btn-outline-danger">
+              <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
                 <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
                 Cerrar Sesión
               </a>
