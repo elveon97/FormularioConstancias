@@ -4,25 +4,17 @@
 
     require_once "../../PHP/conexion.php";
     require_once('../crud_reportes.php');
-        
+
         //Objeto para llamar el metodo y que se ejecute la consulta y devuelva los datos guardados en SQL
         $obj= new consultasReportes();
 
-        $datos=array(
-                $_POST['fechaInicial'],
-                $_POST['fechaFinal'],
-                    );
-        echo $datos;
-
-        /*
         //Los datos de la consulta estan en el objeto llamada $obj
         //echo json_encode($obj->reporteFechas($datos));
         //$obj es un objetio tipo mysqli_result
-        echo $obj->reporteFechas($datos);
-        
-        $row=mysqli_fetch_array($obj);
-        
+        $result = $obj->reporteFechas($_POST['fechaInicial'], $_POST['fechaFinal']);
+
         //Configurar la página para que sea horizontal...
+
         $pdf = new PDF('L','mm','letter');
 
         $pdf -> AliasNbPages();
@@ -69,51 +61,48 @@
         //Agregar a la constancia los datos de SQL
 
         $pdf -> SetFont('Times','',10);
-        $current_y = $pdf->GetY(); 
-        
-        $row =  mysqli_fetch_array($obj);
+        $current_y = $pdf->GetY();
 
-        while($row){
+        while($row =  mysqli_fetch_array($result)){
             //Posicionar mas esteticamente la tabla
             $pdf -> SetX(10);
             //Variables para colocar correctamente las celdas
-             
-            
-            $current_x = $pdf->GetX(); 
+
+
+            $current_x = $pdf->GetX();
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> Cell(12,8,$row[0],1,0,'C');
             //Despues de colocar el primer header, actualizar la variable X con el ancho de la celda anterior y setear la posicion XY para la siguiente celda
             $current_x+=12;
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> Cell(45,8,utf8_decode($row[1]),1,0,'C');
-            
+
             //Repetir la actualizacion de variables de posicion con cada celda
             $current_x+=45;
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> Cell(30,8,utf8_decode($row[2]),1,0,'C');
-            
+
             $current_x+=30;
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> Cell(40,8,utf8_decode($row[3]),1,0,'C');
-            
+
             $current_x+=40;
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> MultiCell(60,8,utf8_decode($row[4]),1,'C',0);
-            
+
             $current_x+=60;
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> Cell(35,8,$row[5],1,0,'C');
-            
+
             $current_x+=35;
             $pdf -> SetXY($current_x,$current_y);
             $pdf -> Cell(35,8,$row[6],1,1,'C');
-            
+
             $current_y += 20;
         }
 
         //Para hacer descargable el pdf, agregar en como parametro de la función Output('D');
-        $pdf -> Output('D');
-
+        $pdf -> Output('F', 'C:\Users\dario\Desktop\ejemplo.pdf');
 
     function validate_input($data) {
         $data = trim($data);
@@ -121,8 +110,5 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-    
-    
 
-    */
 ?>
