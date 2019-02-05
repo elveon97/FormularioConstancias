@@ -1,20 +1,21 @@
 <?php
 
     include 'plantillaReporteFechas.php';
-    require_once('../../PHP/reportes.php');
 
-
-    $fechainicial = "";
-    $fechafinal = "";
-    //Capturar por POST los intervalos de fecha en los que se generará el reporte
-    //if ($_POST) {
-    //    $fechainicial = validate_input($_POST["fechainicial"]);
-    //    $fechafinal = validate_input($_POST["fechafinal"]);
-  
-        //Invocar el metodo encargado de realizar la consulta en la base de datos
-        //$result = reporteFechas($fechainicial,$fechafinal);
+    require_once "../../PHP/conexion.php";
+    require_once('../crud_reportes.php');
         
-$result = reporteFechas("2019-03-10","2019-05-10");
+        //Objeto para llamar el metodo y que se ejecute la consulta y devuelva los datos guardados en SQL
+        $obj= new consultasReportes();
+
+        $datos=array(
+                $_POST['fechaInicial'],
+                $_POST['fechaFinal'],
+                    );
+        
+        //Los datos de la consulta estan en el objeto llamada $obj
+        echo json_encode($obj->reporteFechas($datos));
+        
 
         //Configurar la página para que sea horizontal...
         $pdf = new PDF('L','mm','letter');
@@ -64,7 +65,7 @@ $result = reporteFechas("2019-03-10","2019-05-10");
 
         $pdf -> SetFont('Times','',10);
         $current_y = $pdf->GetY(); 
-        while($row=mysqli_fetch_array($result)){
+        while($row =  mysqli_fetch_array($obj){
             //Posicionar mas esteticamente la tabla
             $pdf -> SetX(10);
             //Variables para colocar correctamente las celdas
@@ -104,7 +105,7 @@ $result = reporteFechas("2019-03-10","2019-05-10");
 
         //Para hacer descargable el pdf, agregar en como parametro de la función Output('D');
         $pdf -> Output();
-    //}
+
 
     function validate_input($data) {
         $data = trim($data);

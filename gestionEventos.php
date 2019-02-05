@@ -202,7 +202,6 @@
 	$(document).ready(function(){
 		$('#btnAgregarnuevo').click(function(){
 			datos=$('#frmnuevo').serialize();
-      console.log(datos);
 
 			$.ajax({
 				type:"POST",
