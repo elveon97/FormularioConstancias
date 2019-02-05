@@ -9,8 +9,8 @@
             $this -> Image('../../img/headerConstancia.png',0,0,300);
             $this -> Ln(30);
             $this -> SetFont('Arial','B',16);
-            $this -> Cell(0,15,'Reporte de los Usuarios en el Sistema',0,0,'C');
-            $this -> Ln(20);  
+            $this -> Cell(0,15,'Reporte de las Constancias por Periodo',0,0,'C');
+            $this -> Ln(20);     
         }    
         
         function Footer(){

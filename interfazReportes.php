@@ -116,7 +116,9 @@
         					</button>
         				</div>
         				<div class="modal-body w-100">
-        					<form id="frmnuevo" class="w-100">
+                            
+                            <!-- FORM DEL REPORTE POR FECHAS -->
+        					<form id="formReporteFechas" class="w-100">
         						<!-- Fecha Inicial -->
         						<label for="fechaInicial">Fecha Inicial</label>
         						<input id="fechaInicial" class="form-control input-sm mb-3" type="date" name="fechaInicial" required>
@@ -124,10 +126,14 @@
         						<label for="fechaFinal">Fecha Final</label>
         						<input id="fechaFinal" class="form-control input-sm mb-3" type="date" name="fechaFinal" required>
         					</form>
+                            
         				</div>
         				<div class="modal-footer">
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        					<button type="button" id="btnGenerarFechas" class="btn btn-primary">Generar Reporte</button>
+                            
+                            <!-- Boton para generar el reporte de las fechas -->
+        					<button type="button" id="btnGenerarReporteFechas"  class="btn btn-primary">Generar Reporte</button>
+                            
         				</div>
         			</div>
         		</div>
@@ -178,7 +184,11 @@
         				</div>
         				<div class="modal-footer">
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        					<button type="button" id="btnGenerarFechas" class="btn btn-primary">Generar Reporte</button>
+                            
+                            
+        					<button type="button" id="btnGenerarFechas"  class="btn btn-primary">Generar Reporte</button>
+                            
+                            
         				</div>
         			</div>
         		</div>
@@ -191,3 +201,26 @@
     </body>
 
 </html>
+
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+		$('#btnGenerarReporteFechas').click(function(){
+			datos=$('#formReporteFechas').serialize();
+            console.log(datos);
+            
+			$.ajax({
+				type:"POST",
+				data:datos,
+				url:"reportesPDF/ReporteFechas/ReporteFechas.php",
+				success:function(r){	
+                        datos=jQuery.parseJSON(r);
+						console.log(datos);
+				}
+			});
+		});
+    });    
+
+    
+
+</script>
