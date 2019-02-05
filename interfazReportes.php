@@ -213,9 +213,9 @@
 				type:"POST",
 				data:datos,
 				url:"reportesPDF/ReporteFechas/ReporteFechas.php",
-				success:function(r){			
-						alertify.success(r);
-                        alert(r);
+				success:function(r){	
+                        datos=jQuery.parseJSON(r);
+						console.log(datos);
 				}
 			});
 		});

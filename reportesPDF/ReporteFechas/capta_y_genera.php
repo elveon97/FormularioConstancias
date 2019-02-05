@@ -8,6 +8,6 @@
             $_POST['fechaFinal'],
                 );
 
-	echo $obj->reporteFechas($datos);
+	echo json_encode($obj->reporteFechas($datos));
 
  ?>
