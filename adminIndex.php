@@ -24,11 +24,11 @@
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="styles/common_styles.css">
-
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
 
+        <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
 
         <title>Panel del Administrador</title>
 
@@ -38,20 +38,132 @@
     <body>
 
         <div class="m-center">
+            <!-- Imagen -->
             <div class="logo-container w-100">
                 <img src="img/logo.jpg" alt="CUSur">
             </div>
-            <div class="colorFondo">
 
-                <h1>Panel del Administrador</h1>
+            <div class="container">
 
-                <h1>Bienvenido: <?php echo $_SESSION['usuario'] ?></h1>
+              <div class="row mt-2">
+                <h3>¡Bienvenido <?php echo $_SESSION['usuario'] ?>!</h3>
+              </div>
 
-                <!-- Cerrar la Sesión -->
-                <a href="php/CerrarSesion.php">Cerrar Sesión</a>
+              <div class="row mt-2">
+
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Usuarios</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-users text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="#" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Constancias</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-file text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="#" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Cursantes</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-graduation-cap text-secondary w-100 mb-2" style="font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="#" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row mt-4">
+
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Eventos</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-calendar text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="#" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Instancias</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-sitemap text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="#" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Tipo de Eventos</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-wrench text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="#" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
 
             </div>
+
         </div>
+
+
 
     </body>
 
