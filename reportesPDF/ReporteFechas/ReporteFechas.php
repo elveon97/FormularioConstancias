@@ -12,11 +12,16 @@
                 $_POST['fechaInicial'],
                 $_POST['fechaFinal'],
                     );
-        
-        //Los datos de la consulta estan en el objeto llamada $obj
-        echo json_encode($obj->reporteFechas($datos));
-        
+        echo $datos;
 
+        /*
+        //Los datos de la consulta estan en el objeto llamada $obj
+        //echo json_encode($obj->reporteFechas($datos));
+        //$obj es un objetio tipo mysqli_result
+        echo $obj->reporteFechas($datos);
+        
+        $row=mysqli_fetch_array($obj);
+        
         //Configurar la página para que sea horizontal...
         $pdf = new PDF('L','mm','letter');
 
@@ -65,7 +70,10 @@
 
         $pdf -> SetFont('Times','',10);
         $current_y = $pdf->GetY(); 
-        while($row =  mysqli_fetch_array($obj){
+        
+        $row =  mysqli_fetch_array($obj);
+
+        while($row){
             //Posicionar mas esteticamente la tabla
             $pdf -> SetX(10);
             //Variables para colocar correctamente las celdas
@@ -104,7 +112,7 @@
         }
 
         //Para hacer descargable el pdf, agregar en como parametro de la función Output('D');
-        $pdf -> Output();
+        $pdf -> Output('D');
 
 
     function validate_input($data) {
@@ -113,9 +121,8 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-
     
     
 
-
+    */
 ?>
