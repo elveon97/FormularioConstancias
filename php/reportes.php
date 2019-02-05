@@ -1,7 +1,7 @@
 <?php
-  require_once "procesosUsuarios/conexion.php";
+  require_once "conexion.php";
 
-  public function reporteFechas($fechainicial, $fechafinal) {
+  function reporteFechas($fechainicial, $fechafinal) {
     $obj = new conectar();
     $conexion = $obj -> conexion();
 
@@ -10,7 +10,7 @@
     return mysqli_query($conexion,$sql);
   }
 
-  public function reporteCursante($codigo) {
+  function reporteCursante($codigo) {
     $obj = new conectar();
     $conexion = $obj -> conexion();
 
@@ -19,7 +19,7 @@
     return mysqli_query($conexion,$sql);
   }
 
-  public function reporteCurso($nombreCurso) {
+  function reporteCurso($nombreCurso) {
     $obj = new conectar();
     $conexion = $obj -> conexion();
 

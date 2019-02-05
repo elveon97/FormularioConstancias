@@ -114,11 +114,8 @@
 
                         mysqli_free_result($result);
                         mysqli_close($conn);
-                    }else{
-   
                     }
-
-
+                
                     function validate_input($data) {
                         $data = trim($data);
                         $data = stripslashes($data);
