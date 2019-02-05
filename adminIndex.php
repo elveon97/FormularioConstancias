@@ -60,7 +60,7 @@
                       <div class="card-title">
                           <span class="fa fa-users text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
                       </div>
-                      <a href="#" class="btn btn-primary">
+                      <a href="GestionUsuarios.php" class="btn btn-primary">
                         <span class="fa fa-cogs" style="margin-right: 5px;"></span>
                         Gestionar
                       </a>
@@ -94,7 +94,7 @@
                       <div class="card-title">
                           <span class="fa fa-graduation-cap text-secondary w-100 mb-2" style="font-size: 6em; text-align: center;"></span>
                       </div>
-                      <a href="#" class="btn btn-primary">
+                      <a href="gestionCursantes.php" class="btn btn-primary">
                         <span class="fa fa-cogs" style="margin-right: 5px;"></span>
                         Gestionar
                       </a>
@@ -109,13 +109,13 @@
                 <div class="col-sm">
                   <div class="card">
                     <div class="card-header w-100 bg-dark text-white">
-                      <h4>Eventos</h4>
+                      <h4>Cursos</h4>
                     </div>
                     <div class="card-body">
                       <div class="card-title">
                           <span class="fa fa-calendar text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
                       </div>
-                      <a href="#" class="btn btn-primary">
+                      <a href="gestionEventos.php" class="btn btn-primary">
                         <span class="fa fa-cogs" style="margin-right: 5px;"></span>
                         Gestionar
                       </a>
@@ -132,7 +132,7 @@
                       <div class="card-title">
                           <span class="fa fa-sitemap text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
                       </div>
-                      <a href="#" class="btn btn-primary">
+                      <a href="gestionInstancias.php" class="btn btn-primary">
                         <span class="fa fa-cogs" style="margin-right: 5px;"></span>
                         Gestionar
                       </a>
@@ -149,7 +149,7 @@
                       <div class="card-title">
                           <span class="fa fa-wrench text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
                       </div>
-                      <a href="#" class="btn btn-primary">
+                      <a href="gestionTipoEvento.php" class="btn btn-primary">
                         <span class="fa fa-cogs" style="margin-right: 5px;"></span>
                         Gestionar
                       </a>
