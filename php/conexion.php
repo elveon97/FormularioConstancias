@@ -1,6 +1,6 @@
 
 
-<?php 
+<?php
 
 	class conectar{
 		public function conexion(){
@@ -8,7 +8,7 @@
 										'root',
 										'',
 										'constancias');
-			
+
 			//Para que acepte caracteres especiales
 			$conexion -> set_charset('utf8');
 			return $conexion;

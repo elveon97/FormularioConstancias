@@ -159,9 +159,9 @@
                     <!-- El valor definido en value será el que se envie cuando el formulario sea enviado! -->
                     <select class="inputInline" name="tipo_capacitacion">
                         <?php
-                        require("php/connection.php");
-                          $conn = getConnection();
-                          $conn -> query("SET NAMES utf8");
+                        require("php/conexion.php");
+                          $obj = new conectar();
+                          $conn = $obj -> conexion();
 
                           $result = $conn->query("SELECT * FROM tipo_evento ORDER BY tipo_evento_id ASC");
 
@@ -183,8 +183,8 @@
                     <!-- El valor definido en value será el que se envie cuando el formulario sea enviado! -->
                     <select class="inputInline" name="instancia" name="instancia">
                         <?php
-                          $conn = getConnection();
-                          $conn -> query("SET NAMES utf8");
+                          $obj = new conectar();
+                          $conn = $obj -> conexion();
 
                           $result = $conn->query("SELECT * FROM instancia ORDER BY instancia_id ASC");
 
@@ -270,13 +270,12 @@
                     $codigo = validate_input($_POST["codigo"]) ;
                     $nombre_cursante = validate_input($_POST["nombre_cursante"]) ;
 
-                    $con = getConnection();
-
-                    $con -> query("SET NAMES utf8");
+                    $obj = new conectar();
+                    $conn = $obj -> conexion();
 
                     $date = getDate();
 
-                    $con -> query("CALL formulario("
+                    $conn -> query("CALL formulario("
                         . "'" . $codigo . "', "
                         . "'" . $nombre_cursante ."', "
                         . "'" . $nombre_capacitacion . "', "
@@ -289,7 +288,7 @@
                         . "'" . $comentarios . "', @out)"
                       );
 
-                    mysqli_close($con);
+                    mysqli_close($conn);
                     echo "<script> alertify.success('Constancia Agregada')</script>";
                   }
 

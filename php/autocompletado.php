@@ -1,5 +1,5 @@
 <?php
-  require("connection.php");
+  require("conexion.php");
 
   $control = $_POST["control"];
   $busqueda = $_POST["busqueda"];
@@ -12,8 +12,8 @@
     $query = "SELECT * FROM cursante WHERE UPPER(TRIM(codigo)) = UPPER(TRIM('".$busqueda."'))";
   }
 
-  $conn = getConnection();
-  $conn -> query("SET NAMES utf8");
+  $obj = new conectar();
+  $conn = $obj -> conexion();
 
   $response = $conn->query($query);
   $row = mysqli_fetch_array($response);

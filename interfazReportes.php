@@ -34,7 +34,6 @@
 
     </head>
 
-
     <body>
 
         <div class="container">
@@ -203,23 +202,10 @@
 </html>
 
 <script type="text/javascript">
-
     $(document).ready(function(){
-		$('#btnGenerarReporteFechas').click(function(){
-			datos=$('#formReporteFechas').serialize();
-            console.log(datos);
-
-			$.ajax({
-				type:"POST",
-				data:datos,
-				url:"reportesPDF/ReporteFechas/ReporteFechas.php",
-				success:function(r){
-            console.log(r);
-				}
-			});
-		});
+		  $('#btnGenerarReporteFechas').click(function(){
+  			datos=$('#formReporteFechas').serialize();
+        location.href="interfazReporteFechas.php?"+datos;
+		  });
     });
-
-
-
 </script>

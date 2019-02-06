@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Gestión de tipos de evento</title>
 	<?php require_once "php/gestionScripts.php";  ?>
 </head>
 <body>

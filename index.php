@@ -17,7 +17,6 @@
 
     </head>
 
-
     <body>
 
         <div class="m-center">
@@ -58,9 +57,9 @@
                 <!-- Codigo php para validar el login al sistema -->
                 <?php
                     //Código para realizar las consultas a la BD
-                    require("php/connection.php");
-                    $conn = getConnection();
-                    $conn -> query("SET NAMES utf8");
+                    require("php/conexion.php");
+                    $obj = new conectar();
+                    $conn = $obj -> conexion();
 
                     if ($_POST) {
                         //Recibir las variables enviadas por el metodo POST

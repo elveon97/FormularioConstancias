@@ -417,3 +417,5 @@ BEGIN
     _comentario, _salida);
 END //
 DELIMITER ;
+
+CALL crear_usuario('admin', '123', 'email@gmail.com', 0, @out);
