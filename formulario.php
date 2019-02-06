@@ -28,6 +28,64 @@
         <script src="librerias/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="librerias/jquery.min.js"></script>
         <script src="librerias/alertify/alertify.js"></script>
+
+        <style>
+          .tooltip {
+            position: relative;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 50%;
+            border: 3px solid #007BFF;
+            color: #007BFF;
+            font-weight: bold;
+          }
+
+          .tooltip:hover {
+            color: tomato;
+          }
+
+          /* Tooltip text */
+          .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 180px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            padding: 5px 3px;
+            border-radius: 6px;
+            font-size: 1rem;
+
+            /* Position the tooltip text */
+            position: absolute;
+            z-index: 1;
+            bottom: 130%;
+            left: -60%;
+            margin-left: -60px;
+
+            /* Fade in tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+          }
+
+          /* Tooltip arrow */
+          .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+          }
+
+          /* Show the tooltip text when you mouse over the tooltip container */
+          .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+          }
+        </style>
+
         <script type="text/javascript">
           function autoCompletado(control, busqueda) {
             var parametros = {
@@ -87,14 +145,17 @@
             <div class="main-container w-100">
                 <!-- Form que tendra los campos de la constancia -->
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                    <h1>Logueado como: <?php echo $_SESSION['usuario'] ?></h1>
+                    <h2 style="margin-bottom: 1rem;">Logueado como: <?php echo $_SESSION['usuario'] ?></h2>
 
                     <!-- Nombre de la Capacitacion-->
                     <label class="labelInline" for="nombreCapacitacion">Nombre capacitación</label>
                     <input class="inputInline" id="nombreCapacitacion" type="text" placeholder="Ingresa el nombre de la capacitación" name="nombre_capacitacion" required>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Nombre de la capacitación</span>
+                    </div>
 
                     <!-- Tipo de  Capacitacion, debe ser una lista que se carge con los datos que tiene la base de datos!-->
-                    <label class="labelInline"  for="tipoCapacitacion">Tipo capacitación</label>
+                    <label class="labelInline"  for="tipoCapacitacion">Tipo de capacitación</label>
                     <!-- El valor definido en value será el que se envie cuando el formulario sea enviado! -->
                     <select class="inputInline" name="tipo_capacitacion">
                         <?php
@@ -113,6 +174,9 @@
                           mysqli_close($conn);
                         ?>
                     </select>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Tipo de capacitación (taller, curso, etc.)</span>
+                    </div>
 
                     <!-- Instancia que expide, debe ser una lista que se carge con los datos que tiene la base de datos!-->
                     <label class="labelInline"  for="instancia">Instancia que expide</label>
@@ -133,31 +197,52 @@
                           mysqli_close($conn);
                         ?>
                     </select>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Instancia que expide la constancia</span>
+                    </div>
 
                     <!-- Duracion de la Capacitacion-->
                     <label class="labelInline"  for="duracionCapacitacion">Duración en horas</label>
                     <input class="inputInline" id="duracionCapacitacion" type="number" placeholder="Número de horas que dura la capacitación" name="duracion" required>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Duración total en horas de la capacitación</span>
+                    </div>
 
                     <!-- Fecha Inicio de la Capacitacion-->
-                    <label class="labelInline"  for="fechaInicio">Fecha inicio</label>
+                    <label class="labelInline"  for="fechaInicio">Fecha de inicio</label>
                     <input class="inputInline" id="fechaInicio" type="date" name="fecha_inicio" required>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Fecha en la que inicia la capacitación</span>
+                    </div>
 
                     <!-- Fecha Fin de la Capacitacion-->
-                    <label class="labelInline"  for="fechaFin">Fecha fin</label>
+                    <label class="labelInline"  for="fechaFin">Fecha de terminación</label>
                     <input class="inputInline" id="fechaFin" type="date" name="fecha_fin" required>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Fecha en la que termina la capacitación</span>
+                    </div>
 
                     <!-- Comentarios-->
                     <label class="labelInline"  for="comentarios">Comentarios</label>
                     <textarea class="inputInline" id="comentarios" placeholder="Comentarios" name="comentarios"></textarea>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Particularidades, problemas o comentarios relacionados a esta constancia específicamente</span>
+                    </div>
 
                     <!-- Datos del Cursante -->
                     <!-- Codigo del Cursante -->
                     <label class="labelInline" for="codigoCursante">Código cursante</label>
                     <input class="inputInline" id="codigoCursante" type="text" placeholder="Ingresa el código del cursante" name="codigo" required>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Código que identifica a la persona que cursó la capacitación</span>
+                    </div>
 
                     <!-- Nombre del Cursante -->
                     <label class="labelInline" for="nombreCursante">Nombre cursante</label>
                     <input class="inputInline" id="nombreCursante" type="text" placeholder="Ingresa el nombre del cursante" name="nombre_cursante" required>
+                    <div class="tooltip">?
+                      <span class="tooltiptext">Nombre de la persona que cursó la capacitación</span>
+                    </div>
 
                     <!-- Button Submit para enviar los datos de los formulario -->
                     <button class="botonesFormulario" type="submit">Subir constancia</button>

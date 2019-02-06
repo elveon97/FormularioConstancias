@@ -71,11 +71,14 @@ form{
     margin-top: 25px;
     margin-left: 0px;
     padding: .5em 1.5em;
-    background-color: darkorange;
+    background-color: #007BFF;
     border: none;
     color: black;
     cursor: pointer;
     transition: background-color .4s;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
 }
 
 .botonesFormulario:hover{
