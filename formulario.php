@@ -22,7 +22,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="styles/formulario_styles.css">
         <link rel="stylesheet" href="styles/common_styles.css">
+        <link rel="stylesheet" type="text/css" href="librerias/alertify/css/alertify.css">
+        <link rel="stylesheet" type="text/css" href="librerias/alertify/css/themes/bootstrap.css">
+        <script src="librerias/bootstrap/popper.min.js"></script>
+        <script src="librerias/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="librerias/jquery.min.js"></script>
+        <script src="librerias/alertify/alertify.js"></script>
         <script type="text/javascript">
           function autoCompletado(control, busqueda) {
             var parametros = {
@@ -74,7 +79,7 @@
                 <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
                 <a href="php/CerrarSesion.php">
                   <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
-                  Cerrar Sesión
+                  Cerrar sesión
                 </a>
             </div>
 
@@ -85,11 +90,11 @@
                     <h1>Logueado como: <?php echo $_SESSION['usuario'] ?></h1>
 
                     <!-- Nombre de la Capacitacion-->
-                    <label class="labelInline" for="nombreCapacitacion">Nombre Capacitación</label>
-                    <input class="inputInline" id="nombreCapacitacion" type="text" placeholder="Ingresa el nombre de la capacitacion" name="nombre_capacitacion" required>
+                    <label class="labelInline" for="nombreCapacitacion">Nombre capacitación</label>
+                    <input class="inputInline" id="nombreCapacitacion" type="text" placeholder="Ingresa el nombre de la capacitación" name="nombre_capacitacion" required>
 
                     <!-- Tipo de  Capacitacion, debe ser una lista que se carge con los datos que tiene la base de datos!-->
-                    <label class="labelInline"  for="tipoCapacitacion">Tipo Capacitación</label>
+                    <label class="labelInline"  for="tipoCapacitacion">Tipo capacitación</label>
                     <!-- El valor definido en value será el que se envie cuando el formulario sea enviado! -->
                     <select class="inputInline" name="tipo_capacitacion">
                         <?php
@@ -130,15 +135,15 @@
                     </select>
 
                     <!-- Duracion de la Capacitacion-->
-                    <label class="labelInline"  for="duracionCapacitacion">Duración en Horas</label>
-                    <input class="inputInline" id="duracionCapacitacion" type="number" placeholder="Número de horas que durá la capacitación" name="duracion" required>
+                    <label class="labelInline"  for="duracionCapacitacion">Duración en horas</label>
+                    <input class="inputInline" id="duracionCapacitacion" type="number" placeholder="Número de horas que dura la capacitación" name="duracion" required>
 
                     <!-- Fecha Inicio de la Capacitacion-->
-                    <label class="labelInline"  for="fechaInicio">Fecha Inicio</label>
+                    <label class="labelInline"  for="fechaInicio">Fecha inicio</label>
                     <input class="inputInline" id="fechaInicio" type="date" name="fecha_inicio" required>
 
                     <!-- Fecha Fin de la Capacitacion-->
-                    <label class="labelInline"  for="fechaFin">Fecha Fin</label>
+                    <label class="labelInline"  for="fechaFin">Fecha fin</label>
                     <input class="inputInline" id="fechaFin" type="date" name="fecha_fin" required>
 
                     <!-- Comentarios-->
@@ -147,15 +152,15 @@
 
                     <!-- Datos del Cursante -->
                     <!-- Codigo del Cursante -->
-                    <label class="labelInline" for="codigoCursante">Codigo Cursante</label>
-                    <input class="inputInline" id="codigoCursante" type="text" placeholder="Ingresa el codigo del cursante" name="codigo" required>
+                    <label class="labelInline" for="codigoCursante">Código cursante</label>
+                    <input class="inputInline" id="codigoCursante" type="text" placeholder="Ingresa el código del cursante" name="codigo" required>
 
                     <!-- Nombre del Cursante -->
-                    <label class="labelInline" for="nombreCursante">Nombre Cursante</label>
+                    <label class="labelInline" for="nombreCursante">Nombre cursante</label>
                     <input class="inputInline" id="nombreCursante" type="text" placeholder="Ingresa el nombre del cursante" name="nombre_cursante" required>
 
                     <!-- Button Submit para enviar los datos de los formulario -->
-                    <button class="botonesFormulario" type="submit">Subir Constancia</button>
+                    <button class="botonesFormulario" type="submit">Subir constancia</button>
                 </form>
 
                 <?php
@@ -184,7 +189,7 @@
 
                     $con -> query("SET NAMES utf8");
 
-                    $date = getDate();                    
+                    $date = getDate();
 
                     $con -> query("CALL formulario("
                         . "'" . $codigo . "', "
@@ -200,6 +205,7 @@
                       );
 
                     mysqli_close($con);
+                    echo "<script> alertify.success('Constancia Agregada')</script>";
                   }
 
                   function validate_input($data) {

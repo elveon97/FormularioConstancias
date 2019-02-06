@@ -28,17 +28,17 @@
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestión de Tipo de Eventos
+						Gestión de Tipos de Evento
 					</div>
           <div class="card-body">
 						<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
-							Agregar Nuevo Tipo de Evento <span class="fa fa-plus-circle"></span>
+							Agregar nuevo tipo de evento <span class="fa fa-plus-circle"></span>
 						</span>
 						<hr>
 						<div id="tablaDatatable"></div>
 					</div>
 					<div class="card-footer text-muted">
-						Gestión de Tipo de Evento
+						Gestión de tipo de evento
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Tipo de Evento</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo tipo de evento</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -58,7 +58,7 @@
 				<div class="modal-body">
 					<form id="frmnuevo">
 						<!-- Nombre del Tipo de Evento-->
-						<label for="nombreTipoDeEvento">Nombre Tipo de Evento</label>
+						<label for="nombreTipoDeEvento">Nombre tipo de evento</label>
 						<input id="nombreTipoDeEvento" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Tipo de Evento" name="nombre" required>
 					</form>
 				</div>
@@ -76,7 +76,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar Tipo de Evento</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Editar tipo de evento</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -86,7 +86,7 @@
 						<!-- ID DEL USUARIO, SE MANTENDRA ESCONDIDO, PERO SU VALOR PUEDE SEGUIR SIENDO ACCESADO-->
 						<input type="text" hidden="" id="idtipoevento" name="idtipoevento">
 						<!-- Nombre del Tipo de Evento-->
-						<label>Nombre Tipo de Evento</label>
+						<label>Nombre tipo de evento</label>
 						<input id="nombreEditar" class="form-control input-sm mb-3" type="text" name="nombreEditar" required>
 					</form>
 				</div>
@@ -115,9 +115,9 @@
 					if(r==1){
 						$('#frmnuevo')[0].reset();
 						$('#tablaDatatable').load('php/procesosTipoDeEventos/tabla_tipo_evento.php');
-						alertify.success("Tipo de Evento Agregado");
+						alertify.success("Tipo de evento agregado");
 					}else{
-						alertify.error("Error el Agregar Tipo de Evento");
+						alertify.error("Error el agregar tipo de evento");
 					}
 				}
 			});
@@ -134,9 +134,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosTipoDeEventos/tabla_tipo_evento.php');
-						alertify.success("Tipo de Evento Actualizado");
+						alertify.success("Tipo de evento actualizado");
 					}else{
-						alertify.error("Error al actualizar el Tipo de Evento");
+						alertify.error("Error al actualizar el tipo de evento");
 					}
 				}
 			});
@@ -164,7 +164,7 @@
 	}
 
 		function eliminarDatos(idtipoevento){
-		alertify.confirm('Eliminar Tipo de Evento', '¿Seguro que deseas eliminar el Tipo de Evento?', function(){
+		alertify.confirm('Eliminar tipo de evento', '¿Seguro que desea eliminar el tipo de evento?', function(){
 
 			$.ajax({
 				type:"POST",
@@ -173,9 +173,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosTipoDeEventos/tabla_tipo_evento.php');
-						alertify.success("Tipo de Evento Eliminado");
+						alertify.success("Tipo de evento eliminado");
 					}else{
-						alertify.error("Error al eliminar el Tipo de Evento");
+						alertify.error("Error al eliminar el tipo de evento");
 					}
 				}
 			});

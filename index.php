@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
- 
+
     <head>
         <meta name="author" content="PracticantesServicioSocial">
         <meta charset="utf-8">
@@ -11,10 +11,10 @@
 
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
 
-        <title>Iniciar Sesión</title>
-        
-        
-                 
+        <title>Iniciar sesión</title>
+
+
+
     </head>
 
 
@@ -30,16 +30,16 @@
                 <form id ="loginForm" method="POST" action="">
                     <!-- Usuario -->
                     <label class="labelBlock" for="usuario">Usuario</label>
-                    <input class="inputBlockDesign" id="usuario" type="text" placeholder="Ingresa tu Código de Usuario" name="usser">
+                    <input class="inputBlockDesign" id="usuario" type="text" placeholder="Ingresa tu código de usuario" name="usser">
                     <!-- Contraseña -->
                     <label class="labelBlock" for="contraseña">Contraseña</label>
-                    <input class="inputBlockDesign" id="contraseña" type="password" placeholder="Ingresa tu Contraseña" name="password">
+                    <input class="inputBlockDesign" id="contraseña" type="password" placeholder="Ingresa tu contraseña" name="password">
                     <!-- Submit Button -->
                     <button class ="botonesFormulario" type="submit">Entrar</button>
                 </form>
-                
-                <span id = "msg"> Por favor introduce los datos solicitados </span>
-                
+
+                <span id = "msg"> Por favor introduzca los datos solicitados </span>
+
                 <!--    Este script modifica el texto del span con id = "msg".
                         Por lo tanto debe de ir despues de que el span haya sido declarado y antes de la condición donde será invocado! -->
                 <script type = "text/javascript">
@@ -48,13 +48,13 @@
                         if(opcion == 1){
                             document.getElementById("msg").innerHTML = "La contraseña introducida es incorrecta <br>";
                         }else if(opcion == 2){
-                            document.getElementById("msg").innerHTML = "El usuario introducido no se encontro en la base de datos <br>";
+                            document.getElementById("msg").innerHTML = "El usuario introducido no se encontró en la base de datos <br>";
                         }
                     }
-                    
+
                 </script>
-                
-                
+
+
                 <!-- Codigo php para validar el login al sistema -->
                 <?php
                     //Código para realizar las consultas a la BD
@@ -115,27 +115,26 @@
                         mysqli_free_result($result);
                         mysqli_close($conn);
                     }
-                
+
                     function validate_input($data) {
                         $data = trim($data);
                         $data = stripslashes($data);
                         $data = htmlspecialchars($data);
                         return $data;
                     }
-                
+
                 ?>
-                
+
             </div>
-            
+
         </div>
-        
-          
-        
-        
-        
+
+
+
+
+
     </body>
-    
-   
+
+
 
 </html>
-

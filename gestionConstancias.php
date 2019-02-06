@@ -27,17 +27,17 @@
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestión de Constancias
+						Gestión de constancias
 					</div>
 					<div class="card-body">
             <a href="formulario.php" class="btn btn-primary">
-							Agregar Nueva Constancia <span class="fa fa-plus-circle"></span>
+							Agregar nueva constancia <span class="fa fa-plus-circle"></span>
 						</a>
 						<hr>
 						<div id="tablaDatatable"></div>
 					</div>
 					<div class="card-footer text-muted">
-						Gestión de Constancia
+						Gestión de constancias
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar Constancia</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Editar constancia</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -58,7 +58,7 @@
 					<form id="frmnuevoU">
             <input type="text" hidden="" id="folio" name="folio">
 						<!-- Fecha de emisión -->
-						<label for="fechaEmision">Fecha de Emisión</label>
+						<label for="fechaEmision">Fecha de emisión</label>
 						<input id="fechaEmision" class="form-control input-sm mb-3" type="date" placeholder="Ingresa el nombre del Constancia" name="fechaEmision" required>
             <!-- Comentarios -->
 						<label for="comentarios">Comentarios</label>
@@ -91,9 +91,9 @@
 					if(r==1){
 						$('#frmnuevo')[0].reset();
 						$('#tablaDatatable').load('php/procesosConstancias/tabla_constancias.php');
-						alertify.success("Constancia Agregado");
+						alertify.success("Constancia agregada");
 					}else{
-						alertify.error("Error el Agregar Constancia");
+						alertify.error("Error al agregar constancia");
 					}
 				}
 			});
@@ -110,9 +110,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosConstancias/tabla_constancias.php');
-						alertify.success("Constancia Actualizado");
+						alertify.success("Constancia actualizada");
 					}else{
-						alertify.error("Error al actualizar el Constancia");
+						alertify.error("Error al actualizar la constancia");
 					}
 				}
 			});
@@ -141,7 +141,7 @@
 	}
 
 		function eliminarDatos(folio){
-		alertify.confirm('Eliminar Constancia', '¿Seguro que deseas eliminar la constancia?', function(){
+		alertify.confirm('Eliminar constancia', '¿Seguro que desea eliminar la constancia?', function(){
 
 			$.ajax({
 				type:"POST",
@@ -150,9 +150,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosConstancias/tabla_constancias.php');
-						alertify.success("Constancia Eliminado");
+						alertify.success("Constancia eliminada");
 					}else{
-						alertify.error("Error al eliminar la Constancia");
+						alertify.error("Error al eliminar la constancia");
 					}
 				}
 			});

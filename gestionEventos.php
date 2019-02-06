@@ -27,17 +27,17 @@
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestión de Cursos
+						Gestión de cursos
 					</div>
 					<div class="card-body">
 						<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
-							Agregar Nuevo Curso <span class="fa fa-plus-circle"></span>
+							Agregar nuevo curso <span class="fa fa-plus-circle"></span>
 						</span>
 						<hr>
 						<div id="tablaDatatable"></div>
 					</div>
 					<div class="card-footer text-muted">
-						Gestión de Curso
+						Gestión de curso
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Curso</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo curso</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -60,7 +60,7 @@
 						<label for="nombreCurso">Nombre</label>
 						<input id="nombreCurso" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Curso" name="nombre" required>
 						<!-- Tipo evento-->
-            <label for="tipoEvento">Tipo de Evento</label>
+            <label for="tipoEvento">Tipo de evento</label>
 						<select name="tipoEvento" class="form-control mb-3">
               <?php
                 require_once "php/procesosCursos/conexion.php";
@@ -103,10 +103,10 @@
 						<label for="duracionCurso">Duración</label>
 						<input id="duracionCurso" class="form-control input-sm mb-3" type="number" placeholder="Ingresa la duración del Curso" name="duracion" required>
             <!-- Duración -->
-						<label for="fechaInicialCurso">Fecha Inicial</label>
+						<label for="fechaInicialCurso">Fecha inicial</label>
 						<input id="fechaInicialCurso" class="form-control input-sm mb-3" type="date" name="fechaInicial" required>
             <!-- Duración -->
-						<label for="fechaFinalCurso">Fecha Final</label>
+						<label for="fechaFinalCurso">Fecha final</label>
 						<input id="fechaFinalCurso" class="form-control input-sm mb-3" type="date" name="fechaFinal" required>
 					</form>
 				</div>
@@ -124,7 +124,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar Curso</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Editar curso</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -136,7 +136,7 @@
 						<label for="nombreCurso">Nombre</label>
 						<input id="nombreCursoEditar" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Curso" name="nombreEditar" required>
 						<!-- Tipo evento-->
-            <label for="tipoEventoEditar">Tipo de Evento</label>
+            <label for="tipoEventoEditar">Tipos de evento</label>
 						<select name="tipoEventoEditar" class="form-control mb-3">
               <?php
                 require_once "php/procesosCursos/conexion.php";
@@ -179,10 +179,10 @@
 						<label for="duracionCurso">Duración</label>
 						<input id="duracionCursoEditar" class="form-control input-sm mb-3" type="number" placeholder="Ingresa la duración del Curso" name="duracionEditar" required>
             <!-- Duración -->
-						<label for="fechaInicialCurso">Fecha Inicial</label>
+						<label for="fechaInicialCurso">Fecha inicial</label>
 						<input id="fechaInicialCursoEditar" class="form-control input-sm mb-3" type="date" name="fechaInicialEditar" required>
             <!-- Duración -->
-						<label for="fechaFinalCurso">Fecha Final</label>
+						<label for="fechaFinalCurso">Fecha final</label>
 						<input id="fechaFinalCursoEditar" class="form-control input-sm mb-3" type="date" name="fechaFinalEditar" required>
 					</form>
 				</div>
@@ -211,9 +211,9 @@
 					if(r==1){
 						$('#frmnuevo')[0].reset();
 						$('#tablaDatatable').load('php/procesosCursos/tabla_cursos.php');
-						alertify.success("Curso Agregado");
+						alertify.success("Curso agregado");
 					}else{
-						alertify.error("Error el Agregar Curso");
+						alertify.error("Error el agregar curso");
 					}
 				}
 			});
@@ -230,9 +230,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosCursos/tabla_cursos.php');
-						alertify.success("Curso Actualizado");
+						alertify.success("Curso actualizado");
 					}else{
-						alertify.error("Error al actualizar el Curso");
+						alertify.error("Error al actualizar el curso");
 					}
 				}
 			});
@@ -265,7 +265,7 @@
 	}
 
 		function eliminarDatos(codigo){
-		alertify.confirm('Eliminar Curso', '¿Seguro que deseas eliminar al curso?', function(){
+		alertify.confirm('Eliminar curso', '¿Seguro que desea eliminar el curso?', function(){
 
 			$.ajax({
 				type:"POST",
@@ -274,9 +274,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosCursos/tabla_cursos.php');
-						alertify.success("Curso Eliminado");
+						alertify.success("Curso eliminado");
 					}else{
-						alertify.error("Error al eliminar el Curso");
+						alertify.error("Error al eliminar el curso");
 					}
 				}
 			});

@@ -55,7 +55,7 @@
             <div class="col-sm">
               <div class="card">
                 <div class="card-header w-100 bg-dark text-white">
-                  <h4>Reporte por Fecha</h4>
+                  <h4>Reporte por fecha</h4>
                 </div>
                 <div class="card-body">
                   <div class="card-title">
@@ -63,7 +63,7 @@
                   </div>
                   <span class="btn btn-primary" data-toggle="modal" data-target="#reportefechasmodal">
                     <span class="fa fa-file" style="margin-right: 5px;"></span>
-                    Generar Reporte
+                    Generar reporte
                   </span>
                 </div>
               </div>
@@ -72,7 +72,7 @@
             <div class="col-sm">
               <div class="card">
                 <div class="card-header w-100 bg-dark text-white">
-                  <h4>Reporte por Cursante</h4>
+                  <h4>Reporte por cursante</h4>
                 </div>
                 <div class="card-body">
                   <div class="card-title">
@@ -80,7 +80,7 @@
                   </div>
                   <span class="btn btn-primary" data-toggle="modal" data-target="#reportecursantemodal">
                     <span class="fa fa-file" style="margin-right: 5px;"></span>
-                    Generar Reporte
+                    Generar reporte
                   </span>
                 </div>
               </div>
@@ -97,7 +97,7 @@
                   </div>
                   <span class="btn btn-primary" data-toggle="modal" data-target="#reportecursomodal">
                     <span class="fa fa-file" style="margin-right: 5px;"></span>
-                    Generar Reporte
+                    Generar reporte
                   </span>
                 </div>
               </div>
@@ -110,7 +110,7 @@
         		<div class="modal-dialog" role="document">
         			<div class="modal-content w-100">
         				<div class="modal-header">
-        					<h5 class="modal-title" id="exampleModalLabel">Reporte por Fechas</h5>
+        					<h5 class="modal-title" id="exampleModalLabel">Reporte por fechas</h5>
         					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         						<span aria-hidden="true">&times;</span>
         					</button>
@@ -120,10 +120,10 @@
                             <!-- FORM DEL REPORTE POR FECHAS -->
         					<form id="formReporteFechas" class="w-100">
         						<!-- Fecha Inicial -->
-        						<label for="fechaInicial">Fecha Inicial</label>
+        						<label for="fechaInicial">Fecha inicial</label>
         						<input id="fechaInicial" class="form-control input-sm mb-3" type="date" name="fechaInicial" required>
         						<!-- Fecha Inicial -->
-        						<label for="fechaFinal">Fecha Final</label>
+        						<label for="fechaFinal">Fecha final</label>
         						<input id="fechaFinal" class="form-control input-sm mb-3" type="date" name="fechaFinal" required>
         					</form>
 
@@ -132,7 +132,7 @@
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
                             <!-- Boton para generar el reporte de las fechas -->
-        					<button type="button" id="btnGenerarReporteFechas"  class="btn btn-primary">Generar Reporte</button>
+        					<button type="button" id="btnGenerarReporteFechas"  class="btn btn-primary">Generar reporte</button>
 
         				</div>
         			</div>
@@ -144,7 +144,7 @@
         		<div class="modal-dialog" role="document">
         			<div class="modal-content w-100">
         				<div class="modal-header">
-        					<h5 class="modal-title" id="exampleModalLabel">Reporte por Cursante</h5>
+        					<h5 class="modal-title" id="exampleModalLabel">Reporte por cursante</h5>
         					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         						<span aria-hidden="true">&times;</span>
         					</button>
@@ -158,7 +158,7 @@
         				</div>
         				<div class="modal-footer">
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        					<button type="button" id="btnGenerarFechas" class="btn btn-primary">Generar Reporte</button>
+        					<button type="button" id="btnGenerarFechas" class="btn btn-primary">Generar reporte</button>
         				</div>
         			</div>
         		</div>
@@ -169,7 +169,7 @@
         		<div class="modal-dialog" role="document">
         			<div class="modal-content w-100">
         				<div class="modal-header">
-        					<h5 class="modal-title" id="exampleModalLabel">Reporte por Curso</h5>
+        					<h5 class="modal-title" id="exampleModalLabel">Reporte por curso</h5>
         					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         						<span aria-hidden="true">&times;</span>
         					</button>
@@ -177,7 +177,7 @@
         				<div class="modal-body w-100">
         					<form id="frmnuevo" class="w-100">
         						<!-- Fecha Inicial -->
-        						<label for="nombreCurso">Nombre del Curso</label>
+        						<label for="nombreCurso">Nombre del curso</label>
         						<input id="nombreCurso" class="form-control input-sm mb-3" type="text" name="nombreCurso" required>
         						<!-- Fecha Inicial -->
         					</form>
@@ -186,7 +186,7 @@
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
 
-        					<button type="button" id="btnGenerarFechas"  class="btn btn-primary">Generar Reporte</button>
+        					<button type="button" id="btnGenerarFechas"  class="btn btn-primary">Generar reporte</button>
 
 
         				</div>

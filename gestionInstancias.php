@@ -28,17 +28,17 @@
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestión de Instancias
+						Gestión de instancias
 					</div>
           <div class="card-body">
 						<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
-							Agregar Nuevo Instancia <span class="fa fa-plus-circle"></span>
+							Agregar nueva instancia <span class="fa fa-plus-circle"></span>
 						</span>
 						<hr>
 						<div id="tablaDatatable"></div>
 					</div>
 					<div class="card-footer text-muted">
-						Gestión de Instancia
+						Gestión de instancia
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Agregar Nueva Instancia</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Agregar nueva instancia</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -58,7 +58,7 @@
 				<div class="modal-body">
 					<form id="frmnuevo">
 						<!-- Nombre del Instancia-->
-						<label for="nombreInstancia">Nombre Instancia</label>
+						<label for="nombreInstancia">Nombre instancia</label>
 						<input id="nombreInstancia" class="form-control input-sm mb-3" type="text" placeholder="Ingresa la nombre del Instancia" name="nombre" required>
 					</form>
 				</div>
@@ -76,7 +76,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar Instancia</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Editar instancia</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -86,7 +86,7 @@
 						<!-- ID DEL USUARIO, SE MANTENDRA ESCONDIDO, PERO SU VALOR PUEDE SEGUIR SIENDO ACCESADO-->
 						<input type="text" hidden="" id="idInstanciaEditar" name="idInstanciaEditar">
 						<!-- Nombre del Instancia-->
-						<label>Nombre Instancia</label>
+						<label>Nombre instancia</label>
 						<input id="nombreEditar" class="form-control input-sm mb-3" type="text" name="nombreEditar" required>
 					</form>
 				</div>
@@ -115,9 +115,9 @@
 					if(r==1){
 						$('#frmnuevo')[0].reset();
 						$('#tablaDatatable').load('php/procesosInstancias/tabla_instancias.php');
-						alertify.success("Instancia Agregada");
+						alertify.success("Instancia agregada");
 					}else{
-						alertify.error("Error al Agregar Instancia");
+						alertify.error("Error al agregar instancia");
 					}
 				}
 			});
@@ -134,9 +134,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosInstancias/tabla_instancias.php');
-						alertify.success("Instancia Actualizada");
+						alertify.success("Instancia actualizada");
 					}else{
-						alertify.error("Error al actualizar la Instancia");
+						alertify.error("Error al actualizar la instancia");
 					}
 				}
 			});
@@ -164,7 +164,7 @@
 	}
 
 		function eliminarDatos(idinstancia){
-		alertify.confirm('Eliminar Instancia', '¿Seguro que deseas eliminar la Instancia?', function(){
+		alertify.confirm('Eliminar instancia', '¿Seguro que desea eliminar la instancia?', function(){
 
 			$.ajax({
 				type:"POST",
@@ -173,9 +173,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosInstancias/tabla_instancias.php');
-						alertify.success("Instancia Eliminada");
+						alertify.success("Instancia eliminada");
 					}else{
-						alertify.error("Error al eliminar la Instancia");
+						alertify.error("Error al eliminar la instancia");
 					}
 				}
 			});

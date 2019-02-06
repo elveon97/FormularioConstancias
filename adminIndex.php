@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
 
-        <title>Panel del Administrador</title>
+        <title>Panel del administrador</title>
 
     </head>
 
@@ -43,14 +43,14 @@
               <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
               <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
                 <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
-                Cerrar Sesión
+                Cerrar sesión
               </a>
             </div>
 
             <div class="container">
 
               <div class="row mt-2">
-                <h3>¡Bienvenido <?php echo $_SESSION['usuario'] ?>!</h3>
+                <h3>¡Bienvenido, <?php echo $_SESSION['usuario'] ?>!</h3>
               </div>
 
               <div class="row mt-2">
@@ -147,7 +147,7 @@
                 <div class="col-sm">
                   <div class="card">
                     <div class="card-header w-100 bg-dark text-white">
-                      <h4>Tipo de Eventos</h4>
+                      <h4>Tipos de evento</h4>
                     </div>
                     <div class="card-body">
                       <div class="card-title">

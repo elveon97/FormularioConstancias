@@ -29,17 +29,17 @@
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestión de Usuarios
+						Gestión de usuarios
 					</div>
 					<div class="card-body">
 						<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
-							Agregar Nuevo Usuario <span class="fa fa-plus-circle"></span>
+							Agregar nuevo usuario <span class="fa fa-plus-circle"></span>
 						</span>
 						<hr>
 						<div id="tablaDatatable"></div>
 					</div>
 					<div class="card-footer text-muted">
-						Gestión de Usuario
+						Gestión de usuario
 					</div>
 				</div>
 			</div>
@@ -51,7 +51,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Usuario</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo usuario</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -59,18 +59,18 @@
 				<div class="modal-body">
 					<form id="frmnuevo">
 						<!-- Nombre del Usuario-->
-						<label for="nombreUsuario">Nombre Usuario</label>
+						<label for="nombreUsuario">Nombre usuario</label>
 						<input id="nombreUsuario" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Usuario" name="usuario" required>
 						<!-- Contraseña-->
 						<label for="contrasenaUsuario">Contraseña</label>
 						<input id="contrasenaUsuario" class="form-control input-sm mb-3" type="password" placeholder="Ingresa la contraseña del Usuario" name="password" required>
 						<!-- email del Usuario-->
-						<label for="emailUsuario">Email Usuario</label>
+						<label for="emailUsuario">Email usuario</label>
 						<input id="emailUsuario" class="form-control input-sm mb-3" type="email" placeholder="Ingresa el email del Usuario" name="email" required>
 						<!-- Tipo Usuario-->
-						<label for="tipoUsuario">Tipo Usuario</label>
+						<label for="tipoUsuario">Tipo usuario</label>
 						<select name="tipoUsuario" class="form-control mb-2">
-							<option value="1">Usuario Normal</option>
+							<option value="1">Usuario normal</option>
 							<option value="0">Administrador</option>
 						</select>
 					</form>
@@ -89,7 +89,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Editar usuario</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -99,18 +99,18 @@
 						<!-- ID DEL USUARIO, SE MANTENDRA ESCONDIDO, PERO SU VALOR PUEDE SEGUIR SIENDO ACCESADO-->
 						<input type="text" hidden="" id="idusuario" name="idusuario">
 						<!-- Nombre del Usuario-->
-						<label>Nombre Usuario</label>
+						<label>Nombre usuario</label>
 						<input id="usuarioEditar" class="form-control input-sm mb-3" type="text" name="usuarioEditar" required>
 						<!-- Contraseña-->
 						<label>Contraseña</label>
 						<input id="passwordEditar" class="form-control input-sm mb-3" type="password" name="passwordEditar" required>
 						<!-- email del Usuario-->
-						<label>Email Usuario</label>
+						<label>Email usuario</label>
 						<input id="emailEditar" class="form-control input-sm mb-3" type="email" name="emailEditar" required>
 						<!-- Tipo Usuario-->
-						<label>Tipo Usuario</label>
+						<label>Tipo usuario</label>
 						<select id="tipoUEditar" name="tipoUsuarioEditar" class="form-control mb-2">
-							<option value="1">Usuario Normal</option>
+							<option value="1">Usuario normal</option>
 							<option value="0">Administrador</option>
 						</select>
 					</form>
@@ -140,9 +140,9 @@
 					if(r==1){
 						$('#frmnuevo')[0].reset();
 						$('#tablaDatatable').load('php/procesosUsuarios/tabla_usuarios.php');
-						alertify.success("Usuario Agregado");
+						alertify.success("Usuario agregado");
 					}else{
-						alertify.error("Error el Agregar Usuario");
+						alertify.error("Error al agregar usuario");
 					}
 				}
 			});
@@ -159,9 +159,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosUsuarios/tabla_usuarios.php');
-						alertify.success("Usuario Actualizado");
+						alertify.success("Usuario actualizado");
 					}else{
-						alertify.error("Error al actualizar el Usuario");
+						alertify.error("Error al actualizar el usuario");
 					}
 				}
 			});
@@ -196,7 +196,7 @@
 	}
 
 		function eliminarDatos(idusuario){
-		alertify.confirm('Eliminar Usuario', '¿Seguro que deseas eliminar el usuario?', function(){
+		alertify.confirm('Eliminar usuario', '¿Seguro que desea eliminar el usuario?', function(){
 
 			$.ajax({
 				type:"POST",
@@ -205,9 +205,9 @@
 				success:function(r){
 					if(r==1){
 						$('#tablaDatatable').load('php/procesosUsuarios/tabla_usuarios.php');
-						alertify.success("Usuario Eliminado");
+						alertify.success("Usuario eliminado");
 					}else{
-						alertify.error("Error al eliminar el Usuario");
+						alertify.error("Error al eliminar el usuario");
 					}
 				}
 			});

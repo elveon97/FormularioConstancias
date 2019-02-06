@@ -14,9 +14,6 @@
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,17 +27,17 @@
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
 					<div class="card-header">
-						Gestión de Cursantes
+						Gestión de cursantes
 					</div>
 					<div class="card-body">
 						<span class="btn btn-primary" data-toggle="modal" data-target="#agregarnuevosdatosmodal">
-							Agregar Nuevo Cursante <span class="fa fa-plus-circle"></span>
+							Agregar nuevo cursante <span class="fa fa-plus-circle"></span>
 						</span>
 						<hr>
 						<div id="tablaDatatable"></div>
 					</div>
 					<div class="card-footer text-muted">
-						Gestión de Cursante
+						Gestión de cursantes
 					</div>
 				</div>
 			</div>
@@ -52,7 +49,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Cursante</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Agregar nuevo cursante</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -81,7 +78,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar Cursante</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Editar cursante</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -91,7 +88,7 @@
 						<!-- ID DEL USUARIO, SE MANTENDRA ESCONDIDO, PERO SU VALOR PUEDE SEGUIR SIENDO ACCESADO-->
 						<input type="text" hidden="" id="codigoCursanteEditar" name="codigoCursanteEditar">
 						<!-- Nombre del Cursante-->
-						<label>Nombre Cursante</label>
+						<label>Nombre cursante</label>
 						<input id="nombreEditar" class="form-control input-sm mb-3" type="text" name="nombreEditar" required>
 						<!-- Contraseña-->
 					</form>
