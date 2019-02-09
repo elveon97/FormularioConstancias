@@ -145,6 +145,12 @@
 
             <!-- Contenedor del formulario -->
             <div class="main-container w-100">
+              <!--Enlace para direccionar al buscador de constancias para los usuarios normales -->
+              <a href="" class="btn btn btn-info">
+                <span class="fa fa-search" style="margin-right: 5px; margin-bottom: 2em;"></span>
+                Buscador de Constancias
+              </a>
+
                 <!-- Form que tendra los campos de la constancia -->
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <h2 style="margin-bottom: 1rem;">Logueado como: <?php echo $_SESSION['usuario'] ?></h2>

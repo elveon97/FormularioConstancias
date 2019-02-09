@@ -24,7 +24,6 @@
                 <img src="img/logo.jpg" alt="CUSur">
             </div>
             <div class="colorFondo">
-
                 <!-- form Login -->
                 <form id ="loginForm" method="POST" action="">
                     <!-- Usuario -->
