@@ -28,6 +28,8 @@
         <script src="librerias/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="librerias/jquery.min.js"></script>
         <script src="librerias/alertify/alertify.js"></script>
+        <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
+
 
         <style>
           .tooltip {
@@ -134,15 +136,21 @@
         <div class="m-center">
             <!-- Imagen -->
             <div class="logo-container w-100">
-                <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
-                <a href="php/CerrarSesion.php">
-                  <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
-                  Cerrar sesión
-                </a>
+              <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
+              <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
+                <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
+                Cerrar sesión
+              </a>
             </div>
 
             <!-- Contenedor del formulario -->
             <div class="main-container w-100">
+              <!--Enlace para direccionar al buscador de constancias para los usuarios normales -->
+              <a href="" class="btn btn btn-info">
+                <span class="fa fa-search" style="margin-right: 5px; margin-bottom: 2em;"></span>
+                Buscador de Constancias
+              </a>
+
                 <!-- Form que tendra los campos de la constancia -->
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <h2 style="margin-bottom: 1rem;">Logueado como: <?php echo $_SESSION['usuario'] ?></h2>

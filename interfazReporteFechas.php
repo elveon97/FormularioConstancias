@@ -13,8 +13,9 @@
     }
 
     require_once "php/conexion.php";
-    require_once "reportesPDF/crud_reportes.php";
+    require_once "php/crud_reportes.php";
     $objRepo = new consultasReportes();
+    //Se reciben los parametros por _$GET
     $result = $objRepo -> reporteFechas($_GET['fechaInicial'], $_GET['fechaFinal']);
 ?>
 
@@ -24,9 +25,13 @@
 	<title>Reporte por fechas</title>
   <meta charset="utf-8">
 
+  <!-- Descargar las librerias necesarias para que se realicen los reportes y no se requiera estar conectado a internet! -->
+
+
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
 
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -37,8 +42,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-
-  </script>
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -81,8 +84,12 @@
   <div class="row">
     <img src="img/logo.jpg" alt="CUSur" class="mb-5">
   </div>
-
+  <a href="adminIndex.php" class="btn btn btn-link">
+    <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
+    Volver al Panel del Administrador
+  </a>
   <div class="row">
+
     <div class="col-lg">
       <div class="card">
         <div class="card-header">

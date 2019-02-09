@@ -42,6 +42,10 @@
             <!-- Imagen -->
             <div class="logo-container w-100">
                 <img src="img/logo.jpg" alt="CUSur">
+                <a href="adminIndex.php" class="btn btn btn-link">
+                  <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
+                  Volver al Panel del Administrador
+                </a>
             </div>
           </div>
 
@@ -230,10 +234,12 @@
 
 </html>
 
+<!-- Función JS para enviar los parametros al php que generará el reporte por fechas -> interfazReportesFechas.php -->
 <script type="text/javascript">
     $(document).ready(function(){
 		  $('#btnGenerarReporteFechas').click(function(){
   			datos=$('#formReporteFechas').serialize();
+        //Envio de parametro por _$GET
         location.href="interfazReporteFechas.php?"+datos;
 		  });
 
