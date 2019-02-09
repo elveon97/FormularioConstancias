@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
 
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -83,8 +84,12 @@
   <div class="row">
     <img src="img/logo.jpg" alt="CUSur" class="mb-5">
   </div>
-
+  <a href="adminIndex.php" class="btn btn btn-link">
+    <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
+    Volver al Panel del Administrador
+  </a>
   <div class="row">
+
     <div class="col-lg">
       <div class="card">
         <div class="card-header">

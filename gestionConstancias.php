@@ -23,6 +23,10 @@
 <body>
 	<div class="container pt-1">
 		<img src="img/logo.jpg" alt="CUSur" class="mb-5">
+    <a href="adminIndex.php" class="btn btn btn-link">
+      <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
+      Volver al Panel del Administrador
+    </a>
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card text-left" style="box-shadow: 0px 0px 10px rgba(0,0,0,1);">
