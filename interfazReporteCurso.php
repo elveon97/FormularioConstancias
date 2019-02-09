@@ -13,7 +13,7 @@
     }
 
     require_once "php/conexion.php";
-    require_once "reportesPDF/crud_reportes.php";
+    require_once "php/crud_reportes.php";
     $objRepo = new consultasReportes();
     $result = $objRepo -> reporteCurso($_GET['nombreCurso']);
 ?>
