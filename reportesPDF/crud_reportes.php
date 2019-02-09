@@ -23,7 +23,7 @@
             $obj = new conectar();
             $conexion = $obj -> conexion();
 
-            $sql = "SELECT constancia.folio, evento.nombre, instancia.nombre, cursante.nombre, fecha_inicio, fecha_fin FROM ((((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN instancia ON evento.instancia = instancia.instancia_id) INNER JOIN tipo_evento ON evento.tipo_evento = tipo_evento.tipo_evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) WHERE UPPER(TRIM(evento.nombre)) = UPPER(TRIM('".$nombreCurso."'))";
+            $sql = "SELECT constancia.folio, evento.nombre, instancia.nombre, cursante.nombre, fecha_inicio, fecha_fin FROM ((((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN instancia ON evento.instancia = instancia.instancia_id) INNER JOIN tipo_evento ON evento.tipo_evento = tipo_evento.tipo_evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) WHERE evento_id = $nombreCurso";
 
             return mysqli_query($conexion,$sql);
         }

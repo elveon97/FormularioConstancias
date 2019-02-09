@@ -1,7 +1,7 @@
 
 
 <?php
-
+	// 148.202.119.45
 	class conectar{
 		public function conexion(){
 			$conexion=mysqli_connect('localhost',

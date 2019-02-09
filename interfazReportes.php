@@ -149,15 +149,29 @@
         					</button>
         				</div>
         				<div class="modal-body w-100">
-        					<form id="frmnuevo" class="w-100">
-        						<!-- Fecha Inicial -->
-        						<label for="codigoCursante">Código del cursante</label>
-        						<input id="codigoCursante" class="form-control input-sm mb-3" type="text" name="codigoCursante" required>
+        					<form id="frmCursante" class="w-100">
+        						<label for="codigo">Código del cursante</label>
+        						<select id="codigo" name="codigo">
+                      <?php
+                        require_once "php/conexion.php";
+                        $obj = new conectar();
+                        $conexion = $obj -> conexion();
+
+                        $result = mysqli_query($conexion, "SELECT codigo, nombre FROM cursante");
+
+                        while($row = mysqli_fetch_row($result)) {
+                          echo "<option value='$row[0]'>$row[1] ($row[0])</option> ";
+                        }
+
+                        mysqli_free_result($result);
+                        mysqli_close($conexion);
+                      ?>
+                    </select>
         					</form>
         				</div>
         				<div class="modal-footer">
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        					<button type="button" id="btnGenerarFechas" class="btn btn-primary">Generar reporte</button>
+        					<button type="button" id="btnCursante" class="btn btn-primary">Generar reporte</button>
         				</div>
         			</div>
         		</div>
@@ -174,10 +188,25 @@
         					</button>
         				</div>
         				<div class="modal-body w-100">
-        					<form id="frmnuevo" class="w-100">
+        					<form id="frmCurso" class="w-100">
         						<!-- Fecha Inicial -->
         						<label for="nombreCurso">Nombre del curso</label>
-        						<input id="nombreCurso" class="form-control input-sm mb-3" type="text" name="nombreCurso" required>
+                    <select id="nombreCurso" name="nombreCurso">
+                      <?php
+                        require_once "php/conexion.php";
+                        $obj = new conectar();
+                        $conexion = $obj -> conexion();
+
+                        $result = mysqli_query($conexion, "SELECT evento_id, nombre FROM evento");
+
+                        while($row = mysqli_fetch_row($result)) {
+                          echo "<option value='$row[0]'>$row[1]</option> ";
+                        }
+
+                        mysqli_free_result($result);
+                        mysqli_close($conexion);
+                      ?>
+                    </select>
         						<!-- Fecha Inicial -->
         					</form>
         				</div>
@@ -185,7 +214,7 @@
         					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
 
-        					<button type="button" id="btnGenerarFechas"  class="btn btn-primary">Generar reporte</button>
+        					<button type="button" id="btnCurso"  class="btn btn-primary">Generar reporte</button>
 
 
         				</div>
@@ -206,6 +235,16 @@
 		  $('#btnGenerarReporteFechas').click(function(){
   			datos=$('#formReporteFechas').serialize();
         location.href="interfazReporteFechas.php?"+datos;
+		  });
+
+      $('#btnCursante').click(function(){
+  			datos=$('#frmCursante').serialize();
+        location.href="interfazReporteCursante.php?"+datos;
+		  });
+
+      $('#btnCurso').click(function(){
+  			datos=$('#frmCurso').serialize();
+        location.href="interfazReporteCurso.php?"+datos;
 		  });
     });
 </script>

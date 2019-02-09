@@ -15,13 +15,13 @@
     require_once "php/conexion.php";
     require_once "reportesPDF/crud_reportes.php";
     $objRepo = new consultasReportes();
-    $result = $objRepo -> reporteFechas($_GET['fechaInicial'], $_GET['fechaFinal']);
+    $result = $objRepo -> reporteCurso($_GET['nombreCurso']);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reporte por fechas</title>
+	<title>Reporte por curso</title>
   <meta charset="utf-8">
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -86,7 +86,7 @@
     <div class="col-lg">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Reporte por fechas ( <?php echo $_GET['fechaInicial'] . " / " . $_GET['fechaFinal']; ?>)</h2>
+          <h2 class="card-title">Reporte por curso (<?php echo $_GET['nombreCurso']; ?>)</h2>
           <div class="card-body">
             <table id="tabla" class="display nowrap">
                     <thead>
