@@ -230,10 +230,12 @@
 
 </html>
 
+<!-- Función JS para enviar los parametros al php que generará el reporte por fechas -> interfazReportesFechas.php -->
 <script type="text/javascript">
     $(document).ready(function(){
 		  $('#btnGenerarReporteFechas').click(function(){
   			datos=$('#formReporteFechas').serialize();
+        //Envio de parametro por _$GET
         location.href="interfazReporteFechas.php?"+datos;
 		  });
 
