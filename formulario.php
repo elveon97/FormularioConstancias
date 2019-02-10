@@ -24,12 +24,13 @@
         <link rel="stylesheet" href="styles/common_styles.css">
         <link rel="stylesheet" type="text/css" href="librerias/alertify/css/alertify.css">
         <link rel="stylesheet" type="text/css" href="librerias/alertify/css/themes/bootstrap.css">
+
+
         <script src="librerias/bootstrap/popper.min.js"></script>
         <script src="librerias/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="librerias/jquery.min.js"></script>
         <script src="librerias/alertify/alertify.js"></script>
         <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
-
 
         <style>
           .tooltip {
@@ -129,6 +130,7 @@
             });
           });
         </script>
+
         <title>Sistema de Constancias</title>
     </head>
 
@@ -136,7 +138,7 @@
         <div class="m-center">
             <!-- Imagen -->
             <div class="logo-container w-100">
-              <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
+              <img src="img/logo.jpg" alt="CUSur" style="margin-right: 10rem;">
               <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
                 <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
                 Cerrar sesión
@@ -145,14 +147,18 @@
 
             <!-- Contenedor del formulario -->
             <div class="main-container w-100">
-              <!--Enlace para direccionar al buscador de constancias para los usuarios normales -->
-              <a href="" class="btn btn btn-info">
-                <span class="fa fa-search" style="margin-right: 5px; margin-bottom: 2em;"></span>
-                Buscador de Constancias
+
+              
+              <!-- ACTUALIZAR LAS REFERENCIAS DE SCRIPT Y STYLES PARA QUE SEA POSIBLE ABRIR UN MODAL CUANDO SE CLICKEE EL SPAN DE BUSCAR CONSTANCIAS
+                  MODIFICAR LA ETIQUEA a QUE SE ENCUENTRA A CONTINUACIÓN PARA QUE QUEDE COMO EN interfazReportes.php y se abrá un modal cuando sea clickeada
+              <!--Abrir el modal para que los usuarios puedan consultar los datos de una constancia -> La busqueda se hará por el Folio de Constancia! -->
+              <a href="">
+                <span class="fa fa-file" style="margin-right: 5px;"></span>
+                Buscar Constancias
               </a>
 
                 <!-- Form que tendra los campos de la constancia -->
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                <form style = "margin-top: 10px; " method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <h2 style="margin-bottom: 1rem;">Logueado como: <?php echo $_SESSION['usuario'] ?></h2>
 
                     <!-- Nombre de la Capacitacion-->
