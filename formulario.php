@@ -1,17 +1,13 @@
 <?php
     //Codigo para validar que esta pagina pueda ser visualizada solamente si existe una sesión previamente iniciada!
-
     session_start();
     $varSesion = $_SESSION['usuario'];
-
     //Habilitar la siguiente linea cuando se de por concluido el desarrollo de esta pagina, esto con el fin de que no se muestren errores de php
     //error_reporting(0);
-
     if($varSesion == null || $varSesion = ''){
         echo 'Para acceder a esta sección debes iniciar sesión';
         die();
     }
-
 ?>
 
 
@@ -24,12 +20,13 @@
         <link rel="stylesheet" href="styles/common_styles.css">
         <link rel="stylesheet" type="text/css" href="librerias/alertify/css/alertify.css">
         <link rel="stylesheet" type="text/css" href="librerias/alertify/css/themes/bootstrap.css">
+
+
         <script src="librerias/bootstrap/popper.min.js"></script>
         <script src="librerias/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="librerias/jquery.min.js"></script>
         <script src="librerias/alertify/alertify.js"></script>
         <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
-
 
         <style>
           .tooltip {
@@ -41,11 +38,9 @@
             color: #007BFF;
             font-weight: bold;
           }
-
           .tooltip:hover {
             color: tomato;
           }
-
           /* Tooltip text */
           .tooltip .tooltiptext {
             visibility: hidden;
@@ -56,19 +51,16 @@
             padding: 5px 3px;
             border-radius: 6px;
             font-size: 1rem;
-
             /* Position the tooltip text */
             position: absolute;
             z-index: 1;
             bottom: 130%;
             left: -60%;
             margin-left: -60px;
-
             /* Fade in tooltip */
             opacity: 0;
             transition: opacity 0.3s;
           }
-
           /* Tooltip arrow */
           .tooltip .tooltiptext::after {
             content: "";
@@ -80,7 +72,6 @@
             border-style: solid;
             border-color: #555 transparent transparent transparent;
           }
-
           /* Show the tooltip text when you mouse over the tooltip container */
           .tooltip:hover .tooltiptext {
             visibility: visible;
@@ -94,7 +85,6 @@
               "control" : control,
               "busqueda" : busqueda
             };
-
             $.ajax({
               data: parametros,
               url: "php/autocompletado.php",
@@ -106,7 +96,6 @@
                 if (response == "") return;
                 resultado = response.split(";");
                 console.log(response);
-
                 if (control == 0) { // Autocompletar Evento
                   $('select[name=tipo_capacitacion] option').eq(resultado[1]-1).prop('selected', true);
                   $('select[name=instancia] option').eq(resultado[2]-1).prop('selected', true);
@@ -119,7 +108,6 @@
               }
             });
           }
-
           $(document).ready(function() {
             $("#nombreCapacitacion").on("input",function(e){
               autoCompletado(0, $("#nombreCapacitacion").val());
@@ -129,6 +117,7 @@
             });
           });
         </script>
+
         <title>Sistema de Constancias</title>
     </head>
 
@@ -136,7 +125,7 @@
         <div class="m-center">
             <!-- Imagen -->
             <div class="logo-container w-100">
-              <img src="img/logo.jpg" alt="CUSur" style="margin-right: 25rem;">
+              <img src="img/logo.jpg" alt="CUSur" style="margin-right: 10rem;">
               <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
                 <span class="fa fa-times-circle" style="margin-right: 5px;"></span>
                 Cerrar sesión
@@ -145,14 +134,18 @@
 
             <!-- Contenedor del formulario -->
             <div class="main-container w-100">
-              <!--Enlace para direccionar al buscador de constancias para los usuarios normales -->
-              <a href="" class="btn btn btn-info">
-                <span class="fa fa-search" style="margin-right: 5px; margin-bottom: 2em;"></span>
-                Buscador de Constancias
+
+
+              <!-- ACTUALIZAR LAS REFERENCIAS DE SCRIPT Y STYLES PARA QUE SEA POSIBLE ABRIR UN MODAL CUANDO SE CLICKEE EL SPAN DE BUSCAR CONSTANCIAS
+                  MODIFICAR LA ETIQUEA a QUE SE ENCUENTRA A CONTINUACIÓN PARA QUE QUEDE COMO EN interfazReportes.php y se abrá un modal cuando sea clickeada
+              Abrir el modal para que los usuarios puedan consultar los datos de una constancia -> La busqueda se hará por el Folio de Constancia! -->
+              <a href="">
+                <span class="fa fa-file" style="margin-right: 5px;"></span>
+                Buscar Constancias
               </a>
 
                 <!-- Form que tendra los campos de la constancia -->
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                <form style = "margin-top: 10px; " method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <h2 style="margin-bottom: 1rem;">Logueado como: <?php echo $_SESSION['usuario'] ?></h2>
 
                     <!-- Nombre de la Capacitacion-->
@@ -170,14 +163,11 @@
                         require("php/conexion.php");
                           $obj = new conectar();
                           $conn = $obj -> conexion();
-
                           $result = $conn->query("SELECT * FROM tipo_evento ORDER BY tipo_evento_id ASC");
-
                           while($row=mysqli_fetch_array($result)) {
                             echo '<option value="'.htmlspecialchars($row[0]).
                               '">'.htmlspecialchars($row[1]).'</option>';
                           }
-
                           mysqli_free_result($result);
                           mysqli_close($conn);
                         ?>
@@ -193,14 +183,11 @@
                         <?php
                           $obj = new conectar();
                           $conn = $obj -> conexion();
-
                           $result = $conn->query("SELECT * FROM instancia ORDER BY instancia_id ASC");
-
                           while($row=mysqli_fetch_array($result)) {
                             echo '<option value="'.htmlspecialchars($row[0]).
                               '">'.htmlspecialchars($row[1]).'</option>';
                           }
-
                           mysqli_free_result($result);
                           mysqli_close($conn);
                         ?>
@@ -266,7 +253,6 @@
                   $comentarios = "";
                   $codigo = "";
                   $nombre_cursante = "";
-
                   if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $nombre_capacitacion = validate_input($_POST["nombre_capacitacion"]) ;
                     $tipo_capacitacion = validate_input($_POST["tipo_capacitacion"]) ;
@@ -277,12 +263,9 @@
                     $comentarios = validate_input($_POST["comentarios"]) ;
                     $codigo = validate_input($_POST["codigo"]) ;
                     $nombre_cursante = validate_input($_POST["nombre_cursante"]) ;
-
                     $obj = new conectar();
                     $conn = $obj -> conexion();
-
                     $date = getDate();
-
                     $conn -> query("CALL formulario("
                         . "'" . $codigo . "', "
                         . "'" . $nombre_cursante ."', "
@@ -295,11 +278,9 @@
                         . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
                         . "'" . $comentarios . "', @out)"
                       );
-
                     mysqli_close($conn);
                     echo "<script> alertify.success('Constancia Agregada')</script>";
                   }
-
                   function validate_input($data) {
                     $data = trim($data);
                     $data = stripslashes($data);
