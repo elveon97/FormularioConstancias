@@ -306,20 +306,35 @@
       $obj = new conectar();
       $conn = $obj -> conexion();
       $date = getDate();
-      $conn -> query("CALL formulario("
-          . "'" . $codigo . "', "
-          . "'" . $nombre_cursante ."', "
-          . "'" . $nombre_capacitacion . "', "
-          . $tipo_capacitacion . ", "
-          . $instancia . ", "
-          . $duracion . ", "
-          . "'" . $fecha_inicio . "', "
-          . "'" . $fecha_fin . "', "
-          . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
-          . "'" . $comentarios . "', @out)"
-        );
+
+      $result1 = mysqli_query($conn, "SELECT COUNT(*) FROM ((constancia INNER JOIN cursante ON constancia.cursante = cursante.codigo) INNER JOIN evento ON constancia.evento = evento.evento_id) WHERE UPPER(TRIM(evento.nombre)) = UPPER(TRIM('$nombre_capacitacion')) AND cursante.codigo = '$codigo'");
+      $row1 = mysqli_fetch_array($result1);
+      $fol1 = $row1[0];
+      if ($fol1 >= 1) {
+        echo "<script>alertify.alert('Agregar constancia', 'Ya existe una constancia que registra a este cursante con el mismo evento', function(){ }); </script>";
+      } else {
+        $conn -> query("CALL formulario("
+            . "'" . $codigo . "', "
+            . "'" . $nombre_cursante ."', "
+            . "'" . $nombre_capacitacion . "', "
+            . $tipo_capacitacion . ", "
+            . $instancia . ", "
+            . $duracion . ", "
+            . "'" . $fecha_inicio . "', "
+            . "'" . $fecha_fin . "', "
+            . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
+            . "'" . $comentarios . "', @out)"
+          );
+
+        $result2 = mysqli_query($conn, "SELECT @out");
+        $row = mysqli_fetch_array($result2);
+        $fol = $row[0];
+
+
+        echo "<script> alertify.alert('Agregar constancia', 'Constancia con folio $fol agregada correctamente', function(){ }); </script>";
+      }
+
       mysqli_close($conn);
-      echo "<script> alertify.alert('Agregar constancia', 'Constancia agregada correctamente', function(){ }); </script>";
     }
     function validate_input($data) {
       $data = trim($data);
