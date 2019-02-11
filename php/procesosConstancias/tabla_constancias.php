@@ -1,7 +1,7 @@
 
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 $obj= new conectar();
 $conexion=$obj->conexion();
 
@@ -43,7 +43,7 @@ $result=mysqli_query($conexion,$sql);
 					<td><?php echo $mostrar[1] ?></td>
 					<td><?php echo $mostrar[2] ?></td>
 					<td><?php echo $mostrar[3] ?></td>
-					<td><?php echo $mostrar[4] ?></td>					
+					<td><?php echo $mostrar[4] ?></td>
 					<td style="text-align: center;">
 						<span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-pencil-square-o"></span>
