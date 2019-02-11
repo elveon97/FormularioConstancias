@@ -18,7 +18,10 @@
 <html>
 <head>
 	<title>Gestión de cursos</title>
-	<?php require_once "php/gestionScripts.php";  ?>
+	<?php
+    require_once "php/gestionScripts.php";
+    require_once "php/conexion.php";
+  ?>
 </head>
 <body>
 	<div class="container pt-1">
@@ -67,7 +70,7 @@
             <label for="tipoEvento">Tipo de evento</label>
 						<select name="tipoEvento" class="form-control mb-3">
               <?php
-                require_once "php/procesosCursos/conexion.php";
+
 
                 $obj= new conectar();
           			$conexion=$obj->conexion();
@@ -87,8 +90,6 @@
             <label for="instancia">Instancia</label>
 						<select name="instancia" class="form-control mb-3">
               <?php
-                require_once "php/procesosCursos/conexion.php";
-
                 $obj= new conectar();
           			$conexion=$obj->conexion();
 
@@ -143,8 +144,6 @@
             <label for="tipoEventoEditar">Tipos de evento</label>
 						<select name="tipoEventoEditar" class="form-control mb-3">
               <?php
-                require_once "php/procesosCursos/conexion.php";
-
                 $obj= new conectar();
           			$conexion=$obj->conexion();
 
@@ -163,7 +162,6 @@
             <label for="instancia">Instancia</label>
 						<select name="instanciaEditar" class="form-control mb-3">
               <?php
-                require_once "php/procesosCursos/conexion.php";
 
                 $obj= new conectar();
           			$conexion=$obj->conexion();
