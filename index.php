@@ -28,7 +28,7 @@
                 <form id ="loginForm" method="POST" action="">
                     <!-- Usuario -->
                     <label class="labelBlock" for="usuario">Usuario</label>
-                    <input class="inputBlockDesign" id="usuario" type="text" placeholder="Ingresa tu código de usuario" name="usser">
+                    <input class="inputBlockDesign" id="usuario" type="text" placeholder="Ingresa tu código de usuario" name="usser" style="margin-bottom: 30px;">
                     <!-- Contraseña -->
                     <label class="labelBlock" for="contraseña">Contraseña</label>
                     <input class="inputBlockDesign" id="contraseña" type="password" placeholder="Ingresa tu contraseña" name="password">

@@ -11,14 +11,15 @@
         echo 'Para acceder a esta sección debes iniciar sesión';
         die();
     }
-/*
     require_once "php/conexion.php";
-    require_once "php/crud_reportes.php";
-    $objRepo = new consultasReportes();
-    //Se reciben los parametros por _$GET
-    $result = $objRepo -> reporteFechas($_GET['fechaInicial'], $_GET['fechaFinal']);
-*/
 
+    //Se reciben los parametros por _$GET
+    $folio = $_GET['folio'];
+
+    $obj = new conectar();
+    $conexion = $obj -> conexion();
+
+    $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, fecha_emision, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) WHERE folio = $folio");
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +46,7 @@
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
+
   <script type="text/javascript">
     $(document).ready(function() {
         $('#tabla').DataTable( {
@@ -53,25 +55,27 @@
               "sLengthMenu":     "Mostrar _MENU_ registros",
               "sZeroRecords":    "No se encontraron resultados",
               "sEmptyTable":     "Ningún dato disponible en esta tabla",
-              "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+              "sInfo":           "",
               "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-              "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+              "sInfoFiltered":   "",
               "sInfoPostFix":    "",
               "sSearch":         "Buscar:",
               "sUrl":            "",
               "sInfoThousands":  ",",
               "sLoadingRecords": "Cargando...",
               "oPaginate": {
-                  "sFirst":    "Primero",
-                  "sLast":     "Último",
-                  "sNext":     "Siguiente",
-                  "sPrevious": "Anterior"
+                  "sFirst":    "",
+                  "sLast":     "",
+                  "sNext":     "",
+                  "sPrevious": ""
               },
               "oAria": {
                   "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
                   "sSortDescending": ": Activar para ordenar la columna de manera descendente"
               }
             },
+            "searching": false,
+            "bPaginate": false,
             dom: 'Bfrtip',
             buttons: [
                 'excel', 'pdf'
@@ -88,7 +92,7 @@
   </div>
   <a href="formulario.php" class="btn btn btn-link">
     <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
-    Volver al Formulario
+    Volver al formulario
   </a>
   <div class="row">
 
@@ -105,15 +109,14 @@
                     <thead>
                         <tr>
                             <th>Folio</th>
-                            <th>Nombre Evento</th>
-                            <th>Nombre Cursante</th>
-                            <th>Fecha Emision Constancia</th>
+                            <th>Nombre capacitación</th>
+                            <th>Nombre cursante</th>
+                            <th>Fecha emisión constancia</th>
                             <th>Comentarios</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                    <!--
                     	<?php
                 			while ($mostrar=mysqli_fetch_row($result)) {
                 			?>
@@ -125,19 +128,9 @@
                           <td><?php echo $mostrar[4]; ?></td>
 
                         </tr>
-                    <<?php } ?>
-                  -->
+                    <?php } ?>
 
                     </tbody>
-                    <tfoot>
-                        <tr>
-                          <th>Folio</th>
-                          <th>Nombre Evento</th>
-                          <th>Nombre Cursante</th>
-                          <th>Fecha Emision Constancia</th>
-                          <th>Comentarios</th>
-                        </tr>
-                    </tfoot>
                 </table>
           </div>
         </div>
