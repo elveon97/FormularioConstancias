@@ -128,7 +128,7 @@
                           <td><?php echo $mostrar[4]; ?></td>
                           <td><?php echo $mostrar[5]; ?></td>
                         </tr>
-                    <<?php } ?>
+                    <?php } ?>
                     </tbody>
                     <tfoot>
                         <tr>
