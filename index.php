@@ -67,6 +67,7 @@ if($_POST){
           else{
             $.post("php/getDatosConstancias.php", {"folio":data}, function(data){
               //Cargarle los datos a la tabla!
+              while (data.folio.length < 8) data.folio = "0" + data.folio;
               $("#cuerpoTabla").html("");
               var tr = `<tr>
                           <td>`+data.folio+`</td>

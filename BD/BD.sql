@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `evento` (
 
 --  CREACIÓN TABLA CONSTANCIA
 CREATE TABLE IF NOT EXISTS `constancia` (
-  `folio` int(8) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
+  `folio` int(8) AUTO_INCREMENT PRIMARY KEY,
   `evento` int(8) NOT NULL,
   `cursante` varchar(20) NOT NULL,
   `fecha_emision` date,

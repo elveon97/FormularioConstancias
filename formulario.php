@@ -78,7 +78,7 @@
 
       $('#btnConsultarConstancias').click(function(){
   			datos=$('#formConsultarConstancia').serialize();
-
+        console.log(datos);
   			$.ajax({
   				type:"POST",
   				data:datos,

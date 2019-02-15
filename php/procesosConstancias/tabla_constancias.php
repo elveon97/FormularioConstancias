@@ -39,7 +39,11 @@ $result=mysqli_query($conexion,$sql);
 			while ($mostrar=mysqli_fetch_row($result)) {
 				?>
 				<tr >
-					<td><?php echo $mostrar[0] ?></td>
+					<td>
+					<?php
+						while(strlen($mostrar[0]) < 8) $mostrar[0] = "0" . $mostrar[0];
+						echo $mostrar[0]
+					?></td>
 					<td><?php echo $mostrar[1] ?></td>
 					<td><?php echo $mostrar[2] ?></td>
 					<td><?php echo $mostrar[3] ?></td>
