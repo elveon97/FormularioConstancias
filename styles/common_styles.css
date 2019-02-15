@@ -67,9 +67,9 @@ form{
 }
 
 .botonesFormulario{
-    display: block;
     margin-top: 25px;
     margin-left: 0px;
+    margin-right: 3em;
     padding: .5em 1.5em;
     background-color: #007BFF;
     border: none;
@@ -81,11 +81,11 @@ form{
     font-weight: bold;
 }
 
+
 .botonesFormulario:hover{
     background-color: teal;
     color: white;
 }
-
 
 /*Estilos para los mensajes del logueo*/
 

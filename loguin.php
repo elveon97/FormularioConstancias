@@ -33,9 +33,10 @@
                     <label class="labelBlock" for="contraseña">Contraseña</label>
                     <input class="inputBlockDesign" id="contraseña" type="password" placeholder="Ingresa tu contraseña" name="password">
                     <!-- Submit Button -->
+                    <div style="display:block;"></div>
                     <button class ="botonesFormulario" type="submit">Entrar</button>
+                    <button class="botonesFormulario" onclick="location.href='index.php';" type="button">Volver</button>
                 </form>
-
                 <span id = "msg"> Por favor introduzca los datos solicitados </span>
 
                 <!--    Este script modifica el texto del span con id = "msg".

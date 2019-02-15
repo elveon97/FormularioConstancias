@@ -72,6 +72,7 @@ if($_POST){
                           <td>`+data.folio+`</td>
                           <td>`+data.nombreEvento+`</td>
                           <td>`+data.nombreCursante+`</td>
+                          <td>`+data.nombreInstancia+`</td>
                           <td>`+data.fechaEmision+`</td>
                           <td>`+data.comentarios+`</td>
                         </tr>`;
@@ -183,6 +184,7 @@ if($_POST){
                   <th>Folio</th>
                   <th>Nombre capacitación</th>
                   <th>Nombre cursante</th>
+                  <th>Instancia Emisora</th>
                   <th>Fecha emisión constancia</th>
                   <th>Comentarios</th>
                 </tr>
