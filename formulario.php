@@ -2,13 +2,13 @@
     //Codigo para validar que esta pagina pueda ser visualizada solamente si existe una sesión previamente iniciada!
 
     session_start();
+    error_reporting(0);
     $varSesion = $_SESSION['usuario'];
 
     //Habilitar la siguiente linea cuando se de por concluido el desarrollo de esta pagina, esto con el fin de que no se muestren errores de php
-    //error_reporting(0);
 
     if($varSesion == null || $varSesion = ''){
-        echo 'Para acceder a esta sección debes iniciar sesión';
+        header("Location: errorInicioSesion.php");
         die();
     }
 ?>
@@ -102,7 +102,11 @@
         <div class="col-4">
           <img src="img/logo.jpg" alt="CUSur">
         </div>
-        <div class="col-4">
+        <div class="col-6">
+          <a href="adminIndex.php" class="btn btn-outline-primary">
+            <span class="fa fa-arrow-left mr-1"></span>
+            Panel de administración
+          </a>
           <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#buscadorConstancias"><span class="fa fa-search mr-1"></span>Buscar constancia</button>
           <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
             <span class="fa fa-times-circle mr-1"></span>

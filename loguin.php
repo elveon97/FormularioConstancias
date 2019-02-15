@@ -94,6 +94,7 @@
                             session_start();
                             //Iniciar la variable de sesion con el usuario que se proporciono
                             $_SESSION['usuario'] = $usser;
+                            $_SESSION['tipoUsuario'] = $tipoUsuario;
 
 
                             //Realizar el direccionamiento dependiendo el tipo de usuario

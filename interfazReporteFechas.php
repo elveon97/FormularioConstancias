@@ -1,15 +1,22 @@
 <?php
     //Codigo para validar que esta pagina pueda ser visualizada solamente si existe una sesión previamente iniciada!
 
+    //Codigo para validar que esta pagina pueda ser visualizada solamente si existe una sesión previamente iniciada!
+
     session_start();
+    error_reporting(0);
     $varSesion = $_SESSION['usuario'];
 
     //Habilitar la siguiente linea cuando se de por concluido el desarrollo de esta pagina, esto con el fin de que no se muestren errores de php
-    //error_reporting(0);
 
     if($varSesion == null || $varSesion = ''){
-        echo 'Para acceder a esta sección debes iniciar sesión';
+        header("Location: errorInicioSesion.php");
         die();
+    }
+
+    if ($_SESSION['tipoUsuario'] == '1') {
+      header("Location: errorAcceso.php");
+      die();
     }
 
     require_once "php/conexion.php";
