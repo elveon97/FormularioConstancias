@@ -93,7 +93,7 @@
     <div class="col-lg">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Reporte por fechas ( <?php echo $_GET['fechaInicial'] . " / " . $_GET['fechaFinal']; ?>)</h2>
+          <h2 class="card-title">Reporte por fechas <small>( <?php echo $_GET['fechaInicial'] . " / " . $_GET['fechaFinal']; ?>)</small></h2>
           <div class="card-body">
             <table id="tabla" class="display nowrap">
                     <thead>

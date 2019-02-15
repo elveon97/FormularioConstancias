@@ -250,7 +250,7 @@
 
       $('#btnCurso').click(function(){
   			datos=$('#frmCurso').serialize();
-        location.href="interfazReporteCurso.php?"+datos;
+        location.href="interfazReporteCurso.php?"+datos+"&nombre="+$("#nombreCurso option:selected").text();
 		  });
     });
 </script>

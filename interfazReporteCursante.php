@@ -90,7 +90,7 @@
     <div class="col-lg">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Reporte por cursante (<?php echo $_GET['codigo']; ?>)</h2>
+          <h2 class="card-title">Reporte por cursante <small>(<?php echo $_GET['codigo']; ?>)</small></h2>
           <div class="card-body">
             <table id="tabla" class="display nowrap">
                     <thead>
