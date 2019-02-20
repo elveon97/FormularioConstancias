@@ -185,6 +185,22 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Validación de cursos</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-check-square text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="interfazValidacionCursos.php" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Gestionar
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
