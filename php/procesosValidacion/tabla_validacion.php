@@ -1,4 +1,3 @@
-
 <?php
 
 require_once "../conexion.php";
@@ -46,7 +45,7 @@ $result=mysqli_query($conexion,$sql);
 					</td>
 				</tr>
 				<?php
-			}			
+			}
 			?>
 		</tbody>
 	</table>

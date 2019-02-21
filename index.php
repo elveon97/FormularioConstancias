@@ -66,29 +66,46 @@ if($_POST){
           }
           else{
             $.post("php/getDatosConstancias.php", {"folio":data}, function(data){
+              //Verificar que el curso se encuentre validado!
+              if(data.existeDir == "False"){
+                //Si no se encuentra valiado, mostrarle una alerta al usuario y en el apartado de ver validacion, mostrarle un mensaje:
+                //"Este curso no esta validado!", pero si mostrarle el resto de datos de la constancia!
+                alertify.warning("Este curso no esta validado");
+                //Cargarle los datos a la tabla!
+                while (data.folio.length < 8) data.folio = "0" + data.folio;
+                $("#cuerpoTabla").html("");
+                var tr = `<tr>
+                  <td>`+data.folio+`</td>
+                  <td>`+data.nombreEvento+`</td>
+                  <td>`+data.nombreCursante+`</td>
+                  <td>`+data.nombreInstancia+`</td>
+                  <td>`+data.fechaEmision+`</td>
+                  <td>`+data.comentarios+`</td>
+                  <td> <h5><span class="badge badge-warning">Este curso no esta validado</span></h5> </td>
+                </tr>`;
+                $("#cuerpoTabla").append(tr)
+              }else{
+                //Si el curso si se encuentra validado mostrar el icono de archivo para que pueda consultar la validacion del curso!
+                //Cargarle los datos a la tabla!
+                while (data.folio.length < 8) data.folio = "0" + data.folio;
+                $("#cuerpoTabla").html("");
+                var tr = `<tr>
+                  <td>`+data.folio+`</td>
+                  <td>`+data.nombreEvento+`</td>
+                  <td>`+data.nombreCursante+`</td>
+                  <td>`+data.nombreInstancia+`</td>
+                  <td>`+data.fechaEmision+`</td>
+                  <td>`+data.comentarios+`</td>
+                  <td>
 
-              //Cargarle los datos a la tabla!
-              //En el ultimo <td> es donde debería hacerse la validacion de si el directorio existe! :v
-              
-              while (data.folio.length < 8) data.folio = "0" + data.folio;
-              $("#cuerpoTabla").html("");
-              var tr = `<tr>
-                <td>`+data.folio+`</td>
-                <td>`+data.nombreEvento+`</td>
-                <td>`+data.nombreCursante+`</td>
-                <td>`+data.nombreInstancia+`</td>
-                <td>`+data.fechaEmision+`</td>
-                <td>`+data.comentarios+`</td>
-                <td>
+                      <span class="btn btn-primary btn-sm" onclick="visualizar('`+data.idEvento+`')">
+                          <span class="fa fa-file"></span>
+                      </span>
 
-                    <span class="btn btn-primary btn-sm" onclick="visualizar('`+data.idEvento+`')">
-                        <span class="fa fa-file"></span>
-                    </span>
-
-                </td>
-              </tr>`;
-              $("#cuerpoTabla").append(tr)
-
+                  </td>
+                </tr>`;
+                $("#cuerpoTabla").append(tr)
+              }
             },"json");
             //Mostrar el container de la tabla si el folio ingresado si se encuentra en la base de datos...
             $("#resultadoBusquedaConstancia").css("display", "block");
