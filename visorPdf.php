@@ -12,10 +12,9 @@
 
         <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
 
-        <title>No autorizado</title>
+        <title>Visor validación del curso</title>
 
     </head>
-
 
     <body style="height: 100vh; width: 100vw;">
       <embed src="<?php echo $_GET["nombrePdf"]; ?>" width="100%;" height="100%;"  type="application/pdf">
