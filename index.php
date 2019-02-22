@@ -86,6 +86,7 @@ if($_POST){
                 $("#cuerpoTabla").append(tr)
               }else{
                 //Si el curso si se encuentra validado mostrar el icono de archivo para que pueda consultar la validacion del curso!
+                alertify.success("Curso validado, click en el icono del archivo para ver validación");
                 //Cargarle los datos a la tabla!
                 while (data.folio.length < 8) data.folio = "0" + data.folio;
                 $("#cuerpoTabla").html("");

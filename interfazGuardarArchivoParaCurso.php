@@ -74,7 +74,7 @@ if($_GET){
 
             <div class="form-group form-row">
               <div class="col-7">
-                <?php echo "<input id='idCurso' type='text' class='form-control' name='idCurso' value='$id[0]'>"; ?>
+                <?php echo "<input id='idCurso' style='display:none;' type='text' class='form-control' name='idCurso' value='$id[0]'>"; ?>
               </div>
             </div>
 
