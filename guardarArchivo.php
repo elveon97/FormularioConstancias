@@ -43,9 +43,9 @@ if($varSesion == null || $varSesion = ''){
       <!-- Imagen -->
       <div class="logo-container w-100">
         <img src="img/logo.jpg" alt="CUSur">
-        <a href="formulario.php" class="btn btn btn-link">
+        <a href="adminIndex.php" class="btn btn btn-link">
           <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
-          Volver al Formulario
+          Volver al Panel de Administración
         </a>
       </div>
     </div>
@@ -61,7 +61,7 @@ if($varSesion == null || $varSesion = ''){
       if($_FILES["archivo"]["error"] > 0){  echo "<h5><span class='fa fa-plus-circle text-primary mr-1'></span>Ocurrio un error al cargar el archivo</h5>"; }
       else{
         //echo 'Archivo recibido en php con exito <br>';
-        $permitidos = array("image/png","image/jpg","application/pdf"); //Solamente aceptara jpg, png o pdf
+        $permitidos = array("application/pdf"); //Solamente aceptara pdf
         $limite_kb = 800;
         //Validar el tipo de archivo...
         if(in_array($_FILES["archivo"]["type"] , $permitidos)){
@@ -93,7 +93,7 @@ if($varSesion == null || $varSesion = ''){
 
             //Posibles mensajes de error al recibir el archivo en php
           }else{  echo "<h5><span class='fa fa-times text-warning mr-1'>El archivo es demasiado grande para el sistema, maximo: ' .$limite_kb. 'kb'</span></h5>"; }
-        }else{  echo "<h5><span class='fa fa-times text-warning mr-1'>El tipo de archivo no es valido <br> Solo archivos .png .jpg o .pdf</span></h5>"; }
+        }else{  echo "<h5><span class='fa fa-times text-warning mr-1'>El tipo de archivo no es valido <br> Solo archivos .pdf</span></h5>"; }
       }
       ?>
     </div>

@@ -109,8 +109,6 @@ if($varSesion == null || $varSesion = ''){
           Panel de administración
         </a>
         <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#buscadorConstancias"><span class="fa fa-search mr-1"></span>Buscar constancia</button>
-        <!-- Button para abrir modal y seleccionar el curso a validar -->
-        <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#validarCurso"><span class="fa fa-check-circle mr-1"></span>Validar curso</button>
       </div>
       <a href="php/CerrarSesion.php" class="btn btn-outline-danger">
         <span class="fa fa-times-circle mr-1"></span>
@@ -287,46 +285,6 @@ if($varSesion == null || $varSesion = ''){
     </div>
   </div>
 
-
-  <!-- Modal para validar el curso [Seleccionar el curso a validar] -->
-  <div class="modal fade" id="validarCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content w-100">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Validar Curso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body w-100">
-          <form id="formValidarCurso" class="w-100">
-            <label for="cursoValidar" class="mr-1">Curso a Validar</label>
-
-            <!-- Agregar en un select los cursos que existen y mostrarlos al usuario --->
-            <select name = "curso_A_Validar">
-              <?php
-              $obj = new conectar();
-              $conn = $obj -> conexion();
-              $result = $conn->query("SELECT  nombre FROM evento ORDER BY evento_id ASC");
-              while($row=mysqli_fetch_array($result)) {
-                echo '<option value="'.htmlspecialchars($row[0]).
-                '">'.htmlspecialchars($row[0]).'</option>';
-              }
-              mysqli_free_result($result);
-              mysqli_close($conn);
-              ?>
-            </select>
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" id="btnValidarCurso" class="btn btn-primary">Subir archivo para validar curso</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 
 <?php
@@ -390,15 +348,3 @@ function validate_input($data) {
 }
 ?>
 </html>
-
-
-<!-- Función JS para enviar el id del curso a validar al php que se encargara de pedir y enviar el archivo -> interfazGuardarArchivoParaCurso.php -->
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#btnValidarCurso').click(function(){
-    datos=$('#formValidarCurso').serialize();
-    //Envio de parametro por _$GET
-    location.href="interfazGuardarArchivoParaCurso.php?"+datos;
-  });
-});
-</script>

@@ -4,21 +4,15 @@ https://fontawesome.com/v4.7.0/icons/
 -->
 
 <?php
-$result = "";
+require_once "php/conexion.php";
+$obj = new conectar();
+$conexion = $obj -> conexion();
 
 if($_POST){
-  require_once "php/conexion.php";
-
   //Se reciben los parametros por _$GET
   $folio = $_POST['folio'];
-
-  $obj = new conectar();
-  $conexion = $obj -> conexion();
-
   $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, fecha_emision, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) WHERE folio = $folio");
-
 }
-
 ?>
 <!DOCTYPE html>
 
@@ -44,7 +38,13 @@ if($_POST){
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
+
   <script type="text/javascript">
+  function visualizar(id){
+
+    location.href="visorPdf.php?nombrePdf=archivosValidarCurso/"+id+"/validarCurso"+id+".pdf";
+  }
+
   $(document).ready(function(){
     //Cuando se clicke el boton para buscar la constancia...
     $("#btnBuscarConstancia").click(function(){
@@ -66,24 +66,54 @@ if($_POST){
           }
           else{
             $.post("php/getDatosConstancias.php", {"folio":data}, function(data){
-              //Cargarle los datos a la tabla!
-              while (data.folio.length < 8) data.folio = "0" + data.folio;
-              $("#cuerpoTabla").html("");
-              var tr = `<tr>
-                          <td>`+data.folio+`</td>
-                          <td>`+data.nombreEvento+`</td>
-                          <td>`+data.nombreCursante+`</td>
-                          <td>`+data.nombreInstancia+`</td>
-                          <td>`+data.fechaEmision+`</td>
-                          <td>`+data.comentarios+`</td>
-                        </tr>`;
-              $("#cuerpoTabla").append(tr)
+              //Verificar que el curso se encuentre validado!
+              if(data.existeDir == "False"){
+                //Si no se encuentra valiado, mostrarle una alerta al usuario y en el apartado de ver validacion, mostrarle un mensaje:
+                //"Este curso no esta validado!", pero si mostrarle el resto de datos de la constancia!
+                alertify.warning("Este curso no esta validado");
+                //Cargarle los datos a la tabla!
+                while (data.folio.length < 8) data.folio = "0" + data.folio;
+                $("#cuerpoTabla").html("");
+                var tr = `<tr>
+                  <td>`+data.folio+`</td>
+                  <td>`+data.nombreEvento+`</td>
+                  <td>`+data.nombreCursante+`</td>
+                  <td>`+data.nombreInstancia+`</td>
+                  <td>`+data.fechaEmision+`</td>
+                  <td>`+data.comentarios+`</td>
+                  <td> <h5><span class="badge badge-warning">Este curso no esta validado</span></h5> </td>
+                </tr>`;
+                $("#cuerpoTabla").append(tr)
+              }else{
+                //Si el curso si se encuentra validado mostrar el icono de archivo para que pueda consultar la validacion del curso!
+                alertify.success("Curso validado, click en el icono del archivo para ver validación");
+                //Cargarle los datos a la tabla!
+                while (data.folio.length < 8) data.folio = "0" + data.folio;
+                $("#cuerpoTabla").html("");
+                var tr = `<tr>
+                  <td>`+data.folio+`</td>
+                  <td>`+data.nombreEvento+`</td>
+                  <td>`+data.nombreCursante+`</td>
+                  <td>`+data.nombreInstancia+`</td>
+                  <td>`+data.fechaEmision+`</td>
+                  <td>`+data.comentarios+`</td>
+                  <td>
+
+                      <span class="btn btn-primary btn-sm" onclick="visualizar('`+data.idEvento+`')">
+                          <span class="fa fa-file"></span>
+                      </span>
+
+                  </td>
+                </tr>`;
+                $("#cuerpoTabla").append(tr)
+              }
             },"json");
             //Mostrar el container de la tabla si el folio ingresado si se encuentra en la base de datos...
             $("#resultadoBusquedaConstancia").css("display", "block");
           }
         },"json");
       }//Cierre else
+
     });
 
     $('#tabla').DataTable({
@@ -116,6 +146,9 @@ if($_POST){
     });
 
   });
+
+
+
   </script>
 
   <title>Página de Inicio</title>
@@ -173,11 +206,10 @@ if($_POST){
     </div>
   </div>
 
-  <div class="container" id="resultadoBusquedaConstancia" style="display: none;">
+  <div class="container float-left" id="resultadoBusquedaConstancia" style="display: none;">
     <div class="col-lg">
       <div class="card">
         <div class="card-header">
-
           <div class="card-body">
             <table id="tabla" class="display nowrap">
               <thead>
@@ -188,6 +220,7 @@ if($_POST){
                   <th>Instancia Emisora</th>
                   <th>Fecha emisión constancia</th>
                   <th>Comentarios</th>
+                  <th>Ver validacion</th>
                 </tr>
               </thead>
               <tbody id="cuerpoTabla">
@@ -196,9 +229,9 @@ if($_POST){
             </table>
           </div>
         </div>
-
       </div>
     </div>
+
   </div>
 
 
