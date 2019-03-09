@@ -219,6 +219,16 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
+            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Fecha de emisión de la constancia</label>
+            <div class="col-7">
+              <input type="date" class="form-control" placeholder="Ingrese la fecha de emisión" name="fecha_emision" required>
+            </div>
+            <div class="col-1">
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha de emisión de la constancia">?</span>
+            </div>
+          </div>
+
+          <div class="form-group form-row">
             <label class="col-4 col-form-label">Comentarios referentes a la constancia</label>
             <div class="col-7">
               <textarea name="comentarios" class="form-control" placeholder="Comentarios"></textarea>
@@ -336,6 +346,7 @@ $instancia = "";
 $duracion = "";
 $fecha_inicio = "";
 $fecha_fin = "";
+$fecha_emision = "";
 $comentarios = "";
 $codigo = "";
 $nombre_cursante = "";
@@ -346,6 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $duracion = validate_input($_POST["duracion"]) ;
   $fecha_inicio = validate_input($_POST["fecha_inicio"]) ;
   $fecha_fin = validate_input($_POST["fecha_fin"]) ;
+  $fecha_emision = validate_input($_POST["fecha_emision"]) ;
   $comentarios = validate_input($_POST["comentarios"]) ;
   $codigo = validate_input($_POST["codigo"]) ;
   $nombre_cursante = validate_input($_POST["nombre_cursante"]) ;
@@ -368,7 +380,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     . $duracion . ", "
     . "'" . $fecha_inicio . "', "
     . "'" . $fecha_fin . "', "
-    . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
+    . "'" . $fecha_emision ."', "
     . "'" . $comentarios . "', @out)"
   );
 
@@ -376,8 +388,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $row = mysqli_fetch_array($result2);
   $fol = $row[0];
 
+  if (trim($fol)=="") {
+    echo "<script> alertify.alert('Agregar constancia', 'Hubo un error al agregar la constancia', function(){ }); </script>";
+  } else {
+    echo "<script> alertify.alert('Agregar constancia', 'Constancia con folio $fol agregada correctamente', function(){ }); </script>";
+  }
 
-  echo "<script> alertify.alert('Agregar constancia', 'Constancia con folio $fol agregada correctamente', function(){ }); </script>";
 }
 
 mysqli_close($conn);
