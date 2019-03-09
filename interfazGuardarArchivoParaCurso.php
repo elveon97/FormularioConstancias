@@ -53,9 +53,9 @@ if($_GET){
       <!-- Imagen -->
       <div class="logo-container w-100">
         <img src="img/logo.jpg" alt="CUSur">
-        <a href="formulario.php" class="btn btn btn-link">
+        <a href="adminIndex.php" class="btn btn btn-link">
           <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
-          Volver al Formulario
+          Volver al Panel de Administración
         </a>
       </div>
     </div>
@@ -74,7 +74,7 @@ if($_GET){
 
             <div class="form-group form-row">
               <div class="col-7">
-                <?php echo "<input id='idCurso' type='text' class='form-control' name='idCurso' value='$id[0]'>"; ?>
+                <?php echo "<input id='idCurso' style='display:none;' type='text' class='form-control' name='idCurso' value='$id[0]'>"; ?>
               </div>
             </div>
 
