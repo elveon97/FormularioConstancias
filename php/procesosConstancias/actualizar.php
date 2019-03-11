@@ -5,6 +5,8 @@
 
 	$datos=array(
 		$_POST['folio'],
+		$_POST['capacitacion'],
+		$_POST['cursante'],
 		$_POST['fechaEmision'],
 		$_POST['comentarios']
 				);

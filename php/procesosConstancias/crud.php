@@ -23,8 +23,10 @@
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="UPDATE constancia set fecha_emision='$datos[1]',
-										comentario='$datos[2]'
+			$sql="UPDATE constancia set evento = '$datos[1]',
+								cursante = '$datos[2]',
+			 					fecha_emision='$datos[3]',
+										comentario='$datos[4]'
 						where folio=$datos[0]";
 			return mysqli_query($conexion,$sql);
 		}

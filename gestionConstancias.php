@@ -77,14 +77,14 @@ if ($_SESSION['tipoUsuario'] == '1') {
                 <div id="loadCapacitacionByDefault">
                   <!-- Select que carga las capacitaciones que ya estan en el sistema -->
                   <label for="capacitacion">Nombre de la Capacitación</label>
-                  <select class="form-control input-sm mb-3" name="capacitacion">
+                  <select class="form-control input-sm mb-1" name="capacitacion" id="capacitacion">
                     <?php
                     require("php/conexion.php");
                     $obj = new conectar();
                     $conn = $obj -> conexion();
                     $result = $conn->query("SELECT evento_id,nombre FROM evento ORDER BY nombre ASC");
                     while($row=mysqli_fetch_array($result)) {
-                      echo '<option value="'.htmlspecialchars($row[1]).
+                      echo '<option value="'.htmlspecialchars($row[0]).
                       '">'.htmlspecialchars($row[1]).'</option>';
                     }
                     mysqli_free_result($result);
@@ -101,7 +101,7 @@ if ($_SESSION['tipoUsuario'] == '1') {
               </div>
 
               <!-- Preguntar al usuario si el curso esta en la lista! -->
-              <div class="input-group">
+              <div class="input-group mb-4">
                 <span class="input-group-addon">
                   <input id="radioButtonCapacitacionInList" type="checkbox"checked>
                   <label> ¿La capacitación esta en la lista? </label>
@@ -117,13 +117,13 @@ if ($_SESSION['tipoUsuario'] == '1') {
                 <div id="loadCursanteByDefault">
                   <!-- Select que carga las capacitaciones que ya estan en el sistema -->
                   <label for="cursante">Nombre del Cursante</label>
-                  <select class="form-control input-sm mb-3" name="cursante">
+                  <select class="form-control input-sm mb-1" name="cursante" id="cursante">
                     <?php
                     $obj = new conectar();
                     $conn = $obj -> conexion();
                     $result = $conn->query("SELECT codigo,nombre FROM cursante ORDER BY nombre ASC");
                     while($row=mysqli_fetch_array($result)) {
-                      echo '<option value="'.htmlspecialchars($row[1]).
+                      echo '<option value="'.htmlspecialchars($row[0]).
                       '">'.htmlspecialchars($row[1]).'</option>';
                     }
                     mysqli_free_result($result);
@@ -139,7 +139,7 @@ if ($_SESSION['tipoUsuario'] == '1') {
               </div>
 
               <!-- Preguntar al usuario si el curso esta en la lista! -->
-              <div class="input-group">
+              <div class="input-group mb-4">
                 <span class="input-group-addon">
                   <input id="radioButtonCursanteInList" type="checkbox"checked>
                   <label> ¿El cursante esta en la lista? </label>
@@ -193,6 +193,11 @@ $(document).ready(function(){
   });
 
   $('#btnActualizar').click(function(){
+    if (!$("#radioButtonCapacitacionInList").is(':checked') || !$("#radioButtonCursanteInList").is(':checked')) {
+      alertify.alert("Error", "Seleccione un cursante y curso válidos para poder continuar");
+      return;
+    }
+
     datos=$('#frmnuevoU').serialize();
     console.log(datos);
 
@@ -220,12 +225,22 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 function agregaFrmActualizar(folio){
+  $("#radioButtonCapacitacionInList").prop("checked", true);
+  $("#radioButtonCursanteInList").prop("checked", true);
+  $("#loadCapacitacionByDefault").css("display", "block");
+  $("#loadIfNewCapacitacion").css("display", "none");
+  $("#btnActualizar").prop( "disabled", false );
+  $("#loadCursanteByDefault").css("display", "block");
+  $("#loadIfNewCursante").css("display", "none");
+  $("#btnActualizar").prop( "disabled", false );
   $.ajax({
     type:"POST",
     data:"folio=" + folio,
     url:"php/procesosConstancias/obtenDatos.php",
     success:function(r){
       datos=jQuery.parseJSON(r);
+      $('#capacitacion').val(datos['evento']);
+      $('#cursante').val(datos['cursante']);
       $('#folio').val(datos['folio']);
       $('#fechaEmision').val(datos['fecha_emision']);
       $('#comentarios').val(datos['comentario']);
@@ -235,7 +250,6 @@ function agregaFrmActualizar(folio){
 
 function eliminarDatos(folio){
   alertify.confirm('Eliminar constancia', '¿Seguro que desea eliminar la constancia?', function(){
-
     $.ajax({
       type:"POST",
       data:"folio=" + folio,
@@ -263,7 +277,11 @@ $("#radioButtonCapacitacionInList").click(function() {
     $("#loadIfNewCapacitacion").css("display", "none");
   } else {
     //Si no esta en la lista
-    alert("Crea una nueva capacitaion desde gestionar cursos y vuelve a esta sección para editar la constancia");
+    alertify.confirm('Crear curso',
+      'Crea un nuevo curso desde gestionar cursos y vuelve a esta sección para editar la constancia',
+      function(){ location.href="gestionEventos.php"; },
+      function(){ })
+      .set('labels', {ok:'Ir a gestión de cursos', cancel:'Cancelar'}).set('reverseButtons', true);
     $("#loadCapacitacionByDefault").css("display", "none");
     $("#loadIfNewCapacitacion").css("display", "block");
   }
@@ -276,7 +294,11 @@ $("#radioButtonCursanteInList").click(function() {
     $("#loadIfNewCursante").css("display", "none");
   } else {
     //Si no esta en la lista
-    alert("Crea un nuevo cursante desde gestionar cursantes y vuelve a esta sección para editar la constancia");
+    alertify.confirm('Crear cursante',
+      'Crea un nuevo cursante desde gestionar cursantes y vuelve a esta sección para editar la constancia',
+      function(){ location.href="gestionCursantes.php"; },
+      function(){ })
+      .set('labels', {ok:'Ir a gestión de cursantes', cancel:'Cancelar'}).set('reverseButtons', true);
     $("#loadCursanteByDefault").css("display", "none");
     $("#loadIfNewCursante").css("display", "block");
   }
