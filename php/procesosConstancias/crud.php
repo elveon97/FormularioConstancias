@@ -5,16 +5,18 @@
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="select * from constancia where folio = '$folio'";
+			$sql="select folio, constancia.evento, evento.fecha_inicio, evento.fecha_fin, evento.duracion, cursante, comentario from constancia inner join evento on constancia.evento = evento.evento_id where folio = '$folio'";
 			$result=mysqli_query($conexion,$sql);
 			$ver=mysqli_fetch_row($result);
 
 			$datos=array(
 				'folio' => $ver[0],
 				'evento' => $ver[1],
-				'cursante' => $ver[2],
-				'fecha_emision' => $ver[3],
-				'comentario' => $ver[4]
+				'fecha_inicio' => $ver[2],
+				'fecha_fin' => $ver[3],
+				'duracion' => $ver[4],
+				'cursante' => $ver[5],
+				'comentario' => $ver[6]
 				);
 			return $datos;
 		}
@@ -24,10 +26,14 @@
 			$conexion=$obj->conexion();
 
 			$sql="UPDATE constancia set evento = '$datos[1]',
-								cursante = '$datos[2]',
-			 					fecha_emision='$datos[3]',
-										comentario='$datos[4]'
+								cursante = '$datos[5]',
+										comentario='$datos[6]'
 						where folio=$datos[0]";
+			mysqli_query($conexion,$sql);
+
+			$sql = "UPDATE evento set fecha_inicio = '$datos[2]',
+				fecha_fin = '$datos[3]', duracion = '$datos[4]'
+				where evento_id = '$datos[1]'";
 			return mysqli_query($conexion,$sql);
 		}
 		public function eliminar($folio){

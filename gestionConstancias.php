@@ -66,10 +66,6 @@ if ($_SESSION['tipoUsuario'] == '1') {
           <form id="frmnuevoU">
             <input type="text" hidden="" id="folio" name="folio">
 
-
-<!--Updates!-->
-
-
             <!-- Inicio nombre de la Capacitación -->
               <div id="nombreCapacitacion">
                 <!-- Al cargar el modal para editar, se mostraran los cursos que ya estan almacenados, y si el usuario selecciona que el curso de la constancia no esta en la lista,
@@ -109,6 +105,45 @@ if ($_SESSION['tipoUsuario'] == '1') {
               </div>
             <!-- Cierre nombre de la Capacitación -->
 
+            <!-- Fecha inicio -->
+            <div class="mb-3">
+              <label for="">Fecha inicio</label>
+              <div class="row">
+                <div class="col-10">
+                  <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control input-sm mb-3" required>
+                </div>
+                <div class="col-2">
+                  <span class="btn btn-warning font-weight-bold form-control" data-toggle="tooltip" data-placement="top" title="Modificar este campo cambiará la fecha inicial de todas las constancias asociadas a este curso">!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fecha fin -->
+            <div class="mb-3">
+              <label for="">Fecha final</label>
+              <div class="row">
+                <div class="col-10">
+                  <input type="date" name="fecha_final" id="fecha_final" class="form-control input-sm mb-3" required>
+                </div>
+                <div class="col-2">
+                  <span class="btn btn-warning font-weight-bold form-control" data-toggle="tooltip" data-placement="top" title="Modificar este campo cambiará la fecha final de todas las constancias asociadas a este curso">!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Duración -->
+            <div class="mb-3">
+              <label for="">Horas</label>
+              <div class="row">
+                <div class="col-10">
+                  <input type="number" name="horas" id="horas" class="form-control input-sm mb-3" required>
+                </div>
+                <div class="col-2">
+                  <span class="btn btn-warning font-weight-bold form-control" data-toggle="tooltip" data-placement="top" title="Modificar este campo cambiará la duración de todas las constancias asociadas a este curso">!</span>
+                </div>
+              </div>
+            </div>
+
 
             <!-- Inicio Cursante -->
               <div id="nombreCursante">
@@ -147,12 +182,6 @@ if ($_SESSION['tipoUsuario'] == '1') {
               </div>
             <!-- Cierre Cursante -->
 
-<!--Updates!-->
-
-
-            <!-- Fecha de emisión -->
-            <label for="fechaEmision">Fecha de emisión</label>
-            <input id="fechaEmision" class="form-control input-sm mb-3" type="date" placeholder="Ingresa el nombre del Constancia" name="fechaEmision" required>
             <!-- Comentarios -->
             <label for="comentarios">Comentarios</label>
             <textarea id="comentarios" class="form-control input-sm mb-3" type="date" placeholder="Ingresa el nombre del Constancia" name="comentarios" required></textarea>
@@ -172,6 +201,29 @@ if ($_SESSION['tipoUsuario'] == '1') {
 
 <script type="text/javascript">
 $(document).ready(function(){
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+
+  $("#capacitacion").change(function() {
+    $('#fecha_inicio').val("");
+    $('#fecha_final').val("");
+    $('#horas').val("");
+
+    $.ajax({
+      type:"GET",
+      data: "capacitacion="+$("#capacitacion").val(),
+      url: "php/procesosConstancias/datosEvento.php",
+      success:function(r) {
+        console.log(r);
+        datos=jQuery.parseJSON(r);     
+        $('#fecha_inicio').val(datos['fecha_inicio']);
+        $('#fecha_final').val(datos['fecha_fin']);
+        $('#horas').val(datos['duracion']);
+      }
+    })
+  });
+
   $('#btnAgregarnuevo').click(function(){
     datos=$('#frmnuevo').serialize();
     console.log(datos);
@@ -240,6 +292,9 @@ function agregaFrmActualizar(folio){
     success:function(r){
       datos=jQuery.parseJSON(r);
       $('#capacitacion').val(datos['evento']);
+      $('#fecha_inicio').val(datos['fecha_inicio']);
+      $('#fecha_final').val(datos['fecha_fin']);
+      $('#horas').val(datos['duracion']);
       $('#cursante').val(datos['cursante']);
       $('#folio').val(datos['folio']);
       $('#fechaEmision').val(datos['fecha_emision']);

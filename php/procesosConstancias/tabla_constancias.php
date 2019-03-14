@@ -5,7 +5,7 @@ require_once "../conexion.php";
 $obj= new conectar();
 $conexion=$obj->conexion();
 
-$sql="SELECT folio, evento.nombre, cursante.nombre, fecha_emision, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo)";
+$sql="SELECT folio, evento.nombre, evento.fecha_inicio, evento.fecha_fin, evento.duracion, cursante.nombre, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo)";
 $result=mysqli_query($conexion,$sql);
 ?>
 
@@ -16,8 +16,10 @@ $result=mysqli_query($conexion,$sql);
 			<tr>
 				<td>Folio</td>
 				<td>Curso</td>
+				<td>Fecha inicio</td>
+				<td>Fecha final</td>
+				<td>Horas</td>
 				<td>Cursante</td>
-				<td>Fecha Emisión</td>
 				<td>Comentario</td>
 				<td>Editar</td>
 				<td>Eliminar</td>
@@ -27,8 +29,10 @@ $result=mysqli_query($conexion,$sql);
 			<tr>
 				<td>Folio</td>
 				<td>Curso</td>
+				<td>Fecha inicio</td>
+				<td>Fecha final</td>
+				<td>Horas</td>
 				<td>Cursante</td>
-				<td>Fecha Emisión</td>
 				<td>Comentario</td>
 				<td>Editar</td>
 				<td>Eliminar</td>
@@ -48,6 +52,8 @@ $result=mysqli_query($conexion,$sql);
 					<td><?php echo $mostrar[2] ?></td>
 					<td><?php echo $mostrar[3] ?></td>
 					<td><?php echo $mostrar[4] ?></td>
+					<td><?php echo $mostrar[5] ?></td>
+					<td><?php echo $mostrar[6] ?></td>
 					<td style="text-align: center;">
 						<span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalEditar" onclick="agregaFrmActualizar('<?php echo $mostrar[0] ?>')">
 							<span class="fa fa-pencil-square-o"></span>
