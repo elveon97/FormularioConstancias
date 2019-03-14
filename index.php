@@ -79,7 +79,9 @@ if($_POST){
                   <td>`+data.nombreEvento+`</td>
                   <td>`+data.nombreCursante+`</td>
                   <td>`+data.nombreInstancia+`</td>
-                  <td>`+data.fechaEmision+`</td>
+                  <td>`+data.fechaInicio+`</td>
+                  <td>`+data.fechaFin+`</td>
+                  <td>`+data.duracion+`</td>
                   <td>`+data.comentarios+`</td>
                   <td> <h5><span class="badge badge-warning">Este curso no esta validado</span></h5> </td>
                 </tr>`;
@@ -95,7 +97,9 @@ if($_POST){
                   <td>`+data.nombreEvento+`</td>
                   <td>`+data.nombreCursante+`</td>
                   <td>`+data.nombreInstancia+`</td>
-                  <td>`+data.fechaEmision+`</td>
+                  <td>`+data.fechaInicio+`</td>
+                  <td>`+data.fechaFin+`</td>
+                  <td>`+data.duracion+`</td>
                   <td>`+data.comentarios+`</td>
                   <td>
 
@@ -218,7 +222,9 @@ if($_POST){
                   <th>Nombre capacitación</th>
                   <th>Nombre cursante</th>
                   <th>Instancia Emisora</th>
-                  <th>Fecha emisión constancia</th>
+                  <th>Fecha Inicio Curso</th>
+                  <th>Fecha Fin Curso</th>
+                  <th>Número de Horas</th>
                   <th>Comentarios</th>
                   <th>Ver validacion</th>
                 </tr>
