@@ -105,6 +105,7 @@
                             <th>Folio</th>
                             <th>Capacitación</th>
                             <th>Instancia</th>
+                            <th>Duración (horas)</th>
                             <th>Cursante</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha final</th>
@@ -124,6 +125,7 @@
                           <td><?php echo $mostrar[3]; ?></td>
                           <td><?php echo $mostrar[4]; ?></td>
                           <td><?php echo $mostrar[5]; ?></td>
+                          <td><?php echo $mostrar[6]; ?></td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -132,6 +134,7 @@
                             <th>Folio</th>
                             <th>Capacitación</th>
                             <th>Instancia</th>
+                            <th>Duración (horas)</th>
                             <th>Cursante</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha final</th>

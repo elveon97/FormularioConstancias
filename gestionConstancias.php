@@ -76,7 +76,7 @@ if ($_SESSION['tipoUsuario'] == '1') {
                 se cargara el div donde se encuentra el input, y este div con el select se ocultara! -->
                 <div id="loadCapacitacionByDefault">
                   <!-- Select que carga las capacitaciones que ya estan en el sistema -->
-                  <label for="capacitacion">Nombre del Curso</label>
+                  <label for="capacitacion">Nombre de la Capacitación</label>
                   <select class="form-control input-sm mb-1" name="capacitacion" id="capacitacion">
                     <?php
                     require("php/conexion.php");
@@ -103,8 +103,8 @@ if ($_SESSION['tipoUsuario'] == '1') {
               <!-- Preguntar al usuario si el curso esta en la lista! -->
               <div class="input-group mb-4">
                 <span class="input-group-addon">
-                  <input id="radioButtonCapacitacionInList" name="radioButtonCapacitacionInList" type="checkbox"checked>
-                  <label for="radioButtonCapacitacionInList"> ¿La capacitación esta en la lista? </label>
+                  <input id="radioButtonCapacitacionInList" type="checkbox"checked>
+                  <label> ¿La capacitación esta en la lista? </label>
                 </span>
               </div>
             <!-- Cierre nombre de la Capacitación -->
@@ -141,8 +141,8 @@ if ($_SESSION['tipoUsuario'] == '1') {
               <!-- Preguntar al usuario si el curso esta en la lista! -->
               <div class="input-group mb-4">
                 <span class="input-group-addon">
-                  <input id="radioButtonCursanteInList" name="radioButtonCursanteInList" type="checkbox"checked>
-                  <label for="radioButtonCursanteInList"> ¿El cursante esta en la lista? </label>
+                  <input id="radioButtonCursanteInList" type="checkbox"checked>
+                  <label> ¿El cursante esta en la lista? </label>
                 </span>
               </div>
             <!-- Cierre Cursante -->

@@ -182,7 +182,7 @@ if($_POST){
 
     <div class="row justify-content-center">
       <div class="w-75 col-8">
-        <span class="text-justify">En el presente sistema encontraras registrados el total de reconocimientos,diplomas y Constancias
+        <span class="text-justify">En el presente sistema encontraras registrados el total de reconocimientos, diplomas y Constancias
           emitidos en las diferentes dependencias del Centro Universitario del Sur, con el fin de consulta
           y validación de las mismas.
         </span>
