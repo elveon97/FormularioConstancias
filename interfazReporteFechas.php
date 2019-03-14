@@ -108,7 +108,7 @@
                             <th>Folio</th>
                             <th>Capacitación</th>
                             <th>Instancia</th>
-                            <th>Duración (horas)</th>
+                            <th>Número de horas</th>
                             <th>Cursante</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha final</th>
@@ -137,7 +137,7 @@
                             <th>Folio</th>
                             <th>Capacitación</th>
                             <th>Instancia</th>
-                            <th>Duración (horas)</th>
+                            <th>Número de horas</th>
                             <th>Cursante</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha final</th>
