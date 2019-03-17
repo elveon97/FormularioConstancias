@@ -15,7 +15,7 @@ $result=mysqli_query($conexion,$sql);
 		<thead style="background-color: #4A4A4A;color: white; font-weight: bold;">
 			<tr>
 				<td>Folio</td>
-				<td>Curso</td>
+				<td>Descripción</td>
 				<td>Fecha inicio</td>
 				<td>Fecha final</td>
 				<td>Horas</td>
@@ -28,7 +28,7 @@ $result=mysqli_query($conexion,$sql);
 		<tfoot style="background-color: #ccc;color: white; font-weight: bold;">
 			<tr>
 				<td>Folio</td>
-				<td>Curso</td>
+				<td>Descripción</td>
 				<td>Fecha inicio</td>
 				<td>Fecha final</td>
 				<td>Horas</td>

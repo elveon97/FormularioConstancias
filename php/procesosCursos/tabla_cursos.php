@@ -15,8 +15,8 @@ $result=mysqli_query($conexion,$sql);
 	<table class="table table-hover table-condensed table-bordered" id="iddatatable">
 		<thead style="background-color: #4A4A4A;color: white; font-weight: bold;">
 			<tr>
-				<td>Nombre</td>
-				<td>Tipo de Evento</td>
+				<td>Descripción</td>
+				<td>Tipo de documento</td>
 				<td>Instancia</td>
 				<td>Duración</td>
 				<td>Fecha Inicial</td>
@@ -27,8 +27,8 @@ $result=mysqli_query($conexion,$sql);
 		</thead>
 		<tfoot style="background-color: #ccc;color: white; font-weight: bold;">
 			<tr>
-				<td>Nombre</td>
-				<td>Tipo de Evento</td>
+				<td>Descripción</td>
+				<td>Tipo de documento</td>
 				<td>Instancia</td>
 				<td>Duración</td>
 				<td>Fecha Inicial</td>

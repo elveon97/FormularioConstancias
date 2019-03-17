@@ -68,10 +68,10 @@
 				<div class="modal-body">
 					<form id="frmnuevo">
 						<!-- Nombre del Curso-->
-						<label for="nombreCurso">Nombre</label>
+						<label for="nombreCurso">Descripción</label>
 						<input id="nombreCurso" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Curso" name="nombre" required>
 						<!-- Tipo evento-->
-            <label for="tipoEvento">Tipo de evento</label>
+            <label for="tipoEvento">Tipo de documento</label>
 						<select name="tipoEvento" class="form-control mb-3">
               <?php
 
@@ -142,10 +142,10 @@
 					<form id="frmnuevoU">
             <input type="text" hidden="" id="idEventoEditar" name="idEventoEditar">
 						<!-- Nombre del Curso-->
-						<label for="nombreCurso">Nombre</label>
+						<label for="nombreCurso">Descripción</label>
 						<input id="nombreCursoEditar" class="form-control input-sm mb-3" type="text" placeholder="Ingresa el nombre del Curso" name="nombreEditar" required>
 						<!-- Tipo evento-->
-            <label for="tipoEventoEditar">Tipos de evento</label>
+            <label for="tipoEventoEditar">Tipo de documento</label>
 						<select name="tipoEventoEditar" class="form-control mb-3">
               <?php
                 $obj= new conectar();
@@ -184,10 +184,10 @@
             <!-- Duración -->
 						<label for="duracionCurso">Duración</label>
 						<input id="duracionCursoEditar" class="form-control input-sm mb-3" type="number" placeholder="Ingresa la duración del Curso" name="duracionEditar" required>
-            <!-- Duración -->
+
 						<label for="fechaInicialCurso">Fecha inicial</label>
 						<input id="fechaInicialCursoEditar" class="form-control input-sm mb-3" type="date" name="fechaInicialEditar" required>
-            <!-- Duración -->
+
 						<label for="fechaFinalCurso">Fecha final</label>
 						<input id="fechaFinalCursoEditar" class="form-control input-sm mb-3" type="date" name="fechaFinalEditar" required>
 					</form>
