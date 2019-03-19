@@ -133,7 +133,7 @@ if($varSesion == null || $varSesion = ''){
           <hr>
 
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Nombre de la capacitación</label>
+            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Descripción</label>
             <div class="col-7">
               <input id="nombreCapacitacion" type="text" class="form-control" placeholder="Ingrese el nombre de la capacitación" name="nombre_capacitacion" required>
             </div>
@@ -143,7 +143,7 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Tipo de capacitación</label>
+            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Tipo de documento</label>
             <div class="col-7">
               <select class="form-control" name="tipo_capacitacion">
                 <?php
@@ -187,9 +187,9 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Duración en horas</label>
+            <label class="col-4 col-form-label">Duración en horas</label>
             <div class="col-7">
-              <input type="number" class="form-control" placeholder="Ingrese la duración de la capacitación" name="duracion" required>
+              <input type="number" class="form-control" placeholder="Ingrese la duración de la capacitación" name="duracion">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Duración total en horas de la capacitación">?</span>
@@ -197,9 +197,9 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Fecha de inicio</label>
+            <label class="col-4 col-form-label"></span>Fecha de inicio</label>
             <div class="col-7">
-              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_inicio" required>
+              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_inicio">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que inicia la capacitación">?</span>
@@ -207,14 +207,24 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Fecha de terminación</label>
+            <label class="col-4 col-form-label">Fecha de terminación</label>
             <div class="col-7">
-              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_fin" required>
+              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_fin">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que termina la capacitación">?</span>
             </div>
-          </div>          
+          </div>
+<!-- Fecha de Emisión -->
+          <div class="form-group form-row">
+            <label class="col-4 col-form-label">Fecha de emisión</label>
+            <div class="col-7">
+              <input type="date" class="form-control" placeholder="Ingrese la fecha de emisión de la constancia" name="fecha_emision">
+            </div>
+            <div class="col-1">
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que se emite la constancia">?</span>
+            </div>
+          </div>
 
           <div class="form-group form-row">
             <label class="col-4 col-form-label">Comentarios referentes a la constancia</label>
@@ -227,11 +237,11 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <hr>
-
+<!-- Sección del Cursante -->
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Código del cursante</label>
+            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Código</label>
             <div class="col-7">
-              <input id="codigoCursante" type="text" class="form-control" placeholder="Ingrese el código del cursante" name="codigo" required>
+              <input id="codigoCursante" type="text" class="form-control" placeholder="Ingrese el código del cursante" name="codigo">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Código que identifica a la persona que cursó la capacitación">?</span>
@@ -244,7 +254,7 @@ if($varSesion == null || $varSesion = ''){
               <input type="text" class="form-control" placeholder="Ingrese el nombre del cursante" name="nombre_cursante" required>
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre de la persona que cursó la capacitación">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre">?</span>
             </div>
           </div>
 
