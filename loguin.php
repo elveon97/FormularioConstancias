@@ -101,8 +101,6 @@
         }else{
           echo '<script> mensajesLogueo(2) </script>';
         }
-        mysqli_free_result($result);
-        mysqli_close($conn);
       }
 
       function validate_input($data) {
