@@ -23,13 +23,16 @@ CREATE TABLE `constancia` (
   KEY `cursante` (`cursante`),
   CONSTRAINT `constancia_ibfk_1` FOREIGN KEY (`evento`) REFERENCES `evento` (`evento_id`),
   CONSTRAINT `constancia_ibfk_2` FOREIGN KEY (`cursante`) REFERENCES `cursante` (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 LOCK TABLES `constancia` WRITE;
 /*!40000 ALTER TABLE `constancia` DISABLE KEYS */;
-    
+    INSERT INTO constancia VALUES("1","3","15290904","2019-02-15","update");
+INSERT INTO constancia VALUES("2","1","15290905","2019-02-21","xdxd");
+INSERT INTO constancia VALUES("3","2","15290904","2019-02-21","asdsad");
+
     /*!40000 ALTER TABLE `constancia` ENABLE KEYS */;
     UNLOCK TABLES;
 
@@ -49,7 +52,10 @@ CREATE TABLE `cursante` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 LOCK TABLES `cursante` WRITE;
 /*!40000 ALTER TABLE `cursante` DISABLE KEYS */;
-    
+    INSERT INTO cursante VALUES("12","stii");
+INSERT INTO cursante VALUES("15290904","Carlos Contreras");
+INSERT INTO cursante VALUES("15290905","Stalin Macias");
+
     /*!40000 ALTER TABLE `cursante` ENABLE KEYS */;
     UNLOCK TABLES;
 
@@ -73,13 +79,15 @@ CREATE TABLE `evento` (
   KEY `instancia` (`instancia`),
   CONSTRAINT `evento_ibfk_1` FOREIGN KEY (`tipo_evento`) REFERENCES `tipo_evento` (`tipo_evento_id`),
   CONSTRAINT `evento_ibfk_2` FOREIGN KEY (`instancia`) REFERENCES `instancia` (`instancia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-    INSERT INTO evento VALUES("1","1","1","test","1","2019-03-03","2019-03-17");
+    INSERT INTO evento VALUES("1","1","1","curso sql","20","2019-01-02","2019-01-01");
+INSERT INTO evento VALUES("2","1","1","curso php","40","2019-02-03","2019-02-28");
+INSERT INTO evento VALUES("3","2","13","Taller Superación Personal","5","2019-02-01","2019-02-21");
 
     /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
     UNLOCK TABLES;
@@ -95,7 +103,7 @@ CREATE TABLE `instancia` (
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`instancia_id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -148,7 +156,7 @@ CREATE TABLE `tipo_evento` (
   `nombre` varchar(40) NOT NULL,
   PRIMARY KEY (`tipo_evento_id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -175,15 +183,14 @@ CREATE TABLE `usuario` (
   `email` varchar(254) DEFAULT NULL,
   `tipo_usuario` int(1) NOT NULL,
   PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
     INSERT INTO usuario VALUES("1","admin","123","email@gmail.com","0");
-INSERT INTO usuario VALUES("2","test","xd","","1");
-INSERT INTO usuario VALUES("8","testAfterFump","123","","1");
+INSERT INTO usuario VALUES("2","test","123","","1");
 
     /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
     UNLOCK TABLES;

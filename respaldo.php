@@ -1,6 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="author" content="PracticantesServicioSocial">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
+
+
+  <script src="librerias/jquery.min.js"></script>
+  <script src="librerias/bootstrap/popper.min.js"></script>
+  <script src="librerias/bootstrap/bootstrap.min.js"></script>
+
+  <title>Creación de Respaldos</title>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-4">
+        <img src="img/logo.jpg" alt="CUSur">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <h3><span class="badge">Generar respaldo de la base de datos</span></h3>
+      </div>
+    </div>
+
+    <div class="form-group form-row justify-content-center">
+      <form name="fileNameForm" id="fileNameForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" style="visibility:none;">
+        <div class="col-1">
+          <button type="submit" class="btn btn-primary" id="btnCrearRespaldo">Crear respaldo</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+
 <?php
 
-function makeBackUp(){
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
   require_once "php/conexion.php";
   $obj = new conectar();
@@ -87,59 +140,6 @@ $return .= '
   fwrite($handle,$return);
   fclose($handle);
 
-  echo "alert('Respaldo exitoso');";
+  echo "<script>alert('Respaldo exitoso');</script>";
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta name="author" content="PracticantesServicioSocial">
-  <meta charset="utf-8">
-
-  <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
-
-
-  <script src="librerias/jquery.min.js"></script>
-  <script src="librerias/bootstrap/popper.min.js"></script>
-  <script src="librerias/bootstrap/bootstrap.min.js"></script>
-
-  <title>Creación de Respaldos</title>
-
-</head>
-
-<body>
-
-  <div class="container">
-    <div class="row align-items-center justify-content-between">
-      <div class="col-4">
-        <img src="img/logo.jpg" alt="CUSur">
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <h3><span class="badge">Generar respaldo de la base de datos</span></h3>
-      </div>
-    </div>
-
-    <div class="form-group form-row justify-content-center">
-      <div class="col-1">
-        <button type="submit" class="btn btn-primary" id="btnCrearRespaldo" onclick="crearRespaldo()">Crear respaldo</button>
-      </div>
-    </div>
-  </div>
-
-</body>
-
-<script type="text/javascript">
-  function crearRespaldo(){
-    //Llamar a la función php para generar el respaldo!
-    <?php echo makeBackUp(); ?>;
-  }
-</script>
-</html>
