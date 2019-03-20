@@ -9,7 +9,7 @@ if($_POST){
   $obj = new conectar();
   $conexion = $obj -> conexion();
 
-  $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, instancia.nombre, evento.fecha_inicio, evento.fecha_fin, constancia.fecha_emision, evento.duracion, comentario , evento.evento_id FROM (((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) INNER JOIN instancia ON evento.instancia = instancia.instancia_id) WHERE folio = $folio");
+  $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, instancia.nombre, evento.fecha_inicio, evento.fecha_fin, constancia.fecha_emision, evento.duracion, comentario , evento.evento_id FROM (((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.cursante_id) INNER JOIN instancia ON evento.instancia = instancia.instancia_id) WHERE folio = $folio");
 
   //El resultado de la consulta SQL se convertira a un array llamado $mostrar, en cada posicion del array se encuentra el valor de un campo...
   $auxMostrar=mysqli_fetch_row($result);

@@ -5,21 +5,22 @@
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="call crear_cursante('$datos[0]', '$datos[1]', @out)";
+			$sql="INSERT INTO cursante VALUES(default, '$datos[0]', '$datos[1]')";
 			return mysqli_query($conexion,$sql);
 		}
 
-		public function obtenDatos($codigo){
+		public function obtenDatos($id){
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="select codigo,nombre from cursante where codigo = '$codigo'";
+			$sql="select * from cursante where cursante_id = '$id'";
 			$result=mysqli_query($conexion,$sql);
 			$ver=mysqli_fetch_row($result);
 
 			$datos=array(
-				'codigo' => $ver[0],
-				'nombre' => $ver[1]
+				'id' => $ver[0],
+				'codigo' => $ver[1],
+				'nombre' => $ver[2]
 				);
 			return $datos;
 		}
@@ -28,15 +29,15 @@
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="UPDATE cursante set 	nombre='$datos[1]'
-						where codigo='$datos[0]'";
+			$sql="UPDATE cursante set nombre='$datos[1]'
+						where cursante_id='$datos[0]'";
 			return mysqli_query($conexion,$sql);
 		}
-		public function eliminar($codigo){
+		public function eliminar($id){
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="DELETE from cursante where codigo = '$codigo'";
+			$sql="DELETE from cursante where cursante_id = '$id'";
 			return mysqli_query($conexion,$sql);
 		}
 	}

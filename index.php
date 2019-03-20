@@ -11,7 +11,7 @@ $conexion = $obj -> conexion();
 if($_POST){
   //Se reciben los parametros por _$GET
   $folio = $_POST['folio'];
-  $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, fecha_emision, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) WHERE folio = $folio");
+  $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, fecha_emision, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.cursante_id) WHERE folio = $folio");
 }
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ if($_POST){
             $("#resultadoBusquedaConstancia").css("display", "none");
           }
           else{
-            $.post("php/getDatosConstancias.php", {"folio":data}, function(data){
+            $.post("php/getDatosConstancias.php", {"folio":data}, function(data){              
               //Verificar que el curso se encuentre validado!
               if(data.existeDir == "False"){
                 //Si no se encuentra valiado, mostrarle una alerta al usuario y en el apartado de ver validacion, mostrarle un mensaje:

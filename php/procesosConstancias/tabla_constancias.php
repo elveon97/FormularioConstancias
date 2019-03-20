@@ -5,7 +5,7 @@ require_once "../conexion.php";
 $obj= new conectar();
 $conexion=$obj->conexion();
 
-$sql="SELECT folio, evento.nombre, evento.fecha_inicio, evento.fecha_fin, evento.duracion, cursante.nombre, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo)";
+$sql="SELECT folio, evento.nombre, evento.fecha_inicio, evento.fecha_fin, evento.duracion, cursante.nombre, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.cursante_id)";
 $result=mysqli_query($conexion,$sql);
 ?>
 

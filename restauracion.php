@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $enlace = mysqli_connect("localhost", "root", "");
   $sql = "create database if not exists constancias;";
   $test = mysqli_query( $enlace,$sql) or trigger_error(mysqli_error($enlace));
-  
+
   //Crear la conexion para hacer la restauracion
   require_once "php/conexion.php";
   $obj = new conectar();
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
   $handle = fopen($filename,"r+");
   $contents = fread($handle,filesize($filename));
-  $sql = explode(';',$contents);
+  $sql = explode(':',$contents);
   foreach($sql as $query){
     $result = mysqli_query($connection,$query);
   }

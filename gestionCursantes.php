@@ -161,14 +161,15 @@
 </script>
 
 <script type="text/javascript">
-	function agregaFrmActualizar(codigo){
+	function agregaFrmActualizar(id){
 		$.ajax({
 			type:"POST",
-			data:"codigo=" + codigo,
+			data:"cursante_id=" + id,
 			url:"php/procesosCursantes/obtenDatos.php",
 			success:function(r){
 				datos=jQuery.parseJSON(r);
-				$('#codigoCursanteEditar').val(datos['codigo']);
+        console.log(datos);
+				$('#codigoCursanteEditar').val(datos['id']);
 				$('#nombreEditar').val(datos['nombre']);
 			}
 		});

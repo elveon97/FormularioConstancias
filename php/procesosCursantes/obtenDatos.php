@@ -5,6 +5,6 @@
 
 	$obj= new crud();
 
-	echo json_encode($obj->obtenDatos($_POST['codigo']));
+	echo json_encode($obj->obtenDatos($_POST['cursante_id']));
 
  ?>
