@@ -1,0 +1,8 @@
+Al actualizar el servidor, las siguientes carpetas no deben de ser mezcladas:
+	-archivosValidarCurso
+	-Respaldos
+
+
+Es decir, los archivos que esten dentro de esas carpetas en el proyecto, no deben de ser movidos al servidor, esto para evitar confuciones entre archivos.
+Los archivos que esten dentro de esas carpetas en el servidor ya estan asignados a sus respectivas funciones, 
+si se agregan archivos del proyecto local causara conflictos!

@@ -138,7 +138,7 @@ if($varSesion == null || $varSesion = ''){
               <input id="nombreCapacitacion" type="text" class="form-control" placeholder="Ingrese el nombre de la capacitación" name="nombre_capacitacion" value="<?php echo $_POST["nombre_capacitacion"]; ?>" required>
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre de la capacitación">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre del curso, taller o descripción de la actividad">?</span>
             </div>
           </div>
 
@@ -160,7 +160,7 @@ if($varSesion == null || $varSesion = ''){
               </select>
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Tipo de capacitación (taller, curso, etc.)">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Tipo de documento que se esta expidiendo">?</span>
             </div>
           </div>
 
@@ -182,7 +182,7 @@ if($varSesion == null || $varSesion = ''){
               </select>
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Instancia que expide la constancia">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Área o departamento donde se genero el reconocimiento">?</span>
             </div>
           </div>
 
@@ -192,7 +192,7 @@ if($varSesion == null || $varSesion = ''){
               <input type="number" class="form-control" placeholder="Ingrese la duración de la capacitación" name="duracion" value="<?php echo $_POST["duracion"];?>">
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Duración total en horas de la capacitación">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Duración en horas del curso (En caso de ser necesario)">?</span>
             </div>
           </div>
 
@@ -202,7 +202,7 @@ if($varSesion == null || $varSesion = ''){
               <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_inicio" value="<?php echo $_POST["fecha_inicio"];?>">
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que inicia la capacitación">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha de inicio del curso o taller (En caso de ser necesario)">?</span>
             </div>
           </div>
 
@@ -212,7 +212,7 @@ if($varSesion == null || $varSesion = ''){
               <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_fin" value="<?php echo $_POST["fecha_fin"];?>">
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que termina la capacitación">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha de terminación del curso o taller (En caso de ser necesario)">?</span>
             </div>
           </div>
 
@@ -222,7 +222,7 @@ if($varSesion == null || $varSesion = ''){
               <textarea name="comentarios" class="form-control" placeholder="Comentarios"></textarea>
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Particularidades, problemas o comentarios relacionados a esta constancia específicamente">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Comentarios (Solamente si se requieren)">?</span>
             </div>
           </div>
 
@@ -234,7 +234,7 @@ if($varSesion == null || $varSesion = ''){
               <input id="codigoCursante" type="text" class="form-control" placeholder="Ingrese el código del cursante" name="codigo">
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Código que identifica a la persona que cursó la capacitación">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Código de la persona reconocida en caso de contar con uno. (Si no se cuenta con un código, favor de dejarlo en blanco)">?</span>
             </div>
           </div>
 
@@ -244,7 +244,7 @@ if($varSesion == null || $varSesion = ''){
               <input type="text" class="form-control" placeholder="Ingrese el nombre del cursante" name="nombre_cursante" required>
             </div>
             <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre">?</span>
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre de la persona reconocida">?</span>
             </div>
           </div>
 
