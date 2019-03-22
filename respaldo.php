@@ -117,6 +117,7 @@ LOCK TABLES `'.$table.'` WRITE:
   }
 
 $return .= "
+
 CREATE PROCEDURE crear_usuario(
   IN _username varchar(40),
      _password varchar(40),
@@ -136,8 +137,20 @@ CREATE PROCEDURE crear_cursante(
   OUT _salida varchar(20)
 )
 BEGIN
-  INSERT IGNORE INTO cursante (codigo, nombre) VALUES (_codigo, _nombre);
-  SET _salida = _codigo;
+  DECLARE contador INT DEFAULT 0;
+
+  IF TRIM(_codigo) = '0' THEN
+    INSERT INTO cursante VALUES (default, 'Externo', _nombre);
+    SET _salida = LAST_INSERT_ID();
+  ELSE
+    SELECT COUNT(*) INTO contador FROM cursante WHERE UPPER(codigo) = UPPER(_codigo);
+    IF contador > 0 THEN
+      SELECT cursante_id INTO _salida FROM cursante WHERE UPPER(codigo) = UPPER(_codigo);
+    ELSE
+      INSERT INTO cursante VALUES (default, _codigo, _nombre);
+      SET _salida = LAST_INSERT_ID();
+    END IF;
+  END IF;
 END :
 
 CREATE PROCEDURE crear_tipo_evento(

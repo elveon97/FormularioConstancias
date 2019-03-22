@@ -62,7 +62,7 @@ if($varSesion == null || $varSesion = ''){
           $('input[name=fecha_inicio]').val(resultado[5]);
           $('input[name=fecha_fin]').val(resultado[6]);
         } else { // Autocompletar Cursante
-          $('input[name=nombre_cursante]').val(resultado[1]);
+          $('input[name=nombre_cursante]').val(resultado[2]);
         }
       }
     });
@@ -135,7 +135,7 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Descripción</label>
             <div class="col-7">
-              <input id="nombreCapacitacion" type="text" class="form-control" placeholder="Ingrese el nombre de la capacitación" name="nombre_capacitacion" required>
+              <input id="nombreCapacitacion" type="text" class="form-control" placeholder="Ingrese el nombre de la capacitación" name="nombre_capacitacion" value="<?php echo $_POST["nombre_capacitacion"]; ?>" required>
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Nombre de la capacitación">?</span>
@@ -145,7 +145,7 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Tipo de documento</label>
             <div class="col-7">
-              <select class="form-control" name="tipo_capacitacion">
+              <select class="form-control" name="tipo_capacitacion" value="<?php echo $_POST["tipo_capacitacion"];?>">
                 <?php
                 $obj = new conectar();
                 $conn = $obj -> conexion();
@@ -167,7 +167,7 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Instancia que expide</label>
             <div class="col-7">
-              <select class="form-control" name="instancia">
+              <select class="form-control" name="instancia" value="<?php echo $_POST["instancia"];?>">
                 <?php
                 $obj = new conectar();
                 $conn = $obj -> conexion();
@@ -189,7 +189,7 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label">Duración en horas</label>
             <div class="col-7">
-              <input type="number" class="form-control" placeholder="Ingrese la duración de la capacitación" name="duracion">
+              <input type="number" class="form-control" placeholder="Ingrese la duración de la capacitación" name="duracion" value="<?php echo $_POST["duracion"];?>">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Duración total en horas de la capacitación">?</span>
@@ -199,7 +199,7 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label"></span>Fecha de inicio</label>
             <div class="col-7">
-              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_inicio">
+              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_inicio" value="<?php echo $_POST["fecha_inicio"];?>">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que inicia la capacitación">?</span>
@@ -209,20 +209,10 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label">Fecha de terminación</label>
             <div class="col-7">
-              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_fin">
+              <input type="date" class="form-control" placeholder="Ingrese la duración de la capacitación" name="fecha_fin" value="<?php echo $_POST["fecha_fin"];?>">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que termina la capacitación">?</span>
-            </div>
-          </div>
-<!-- Fecha de Emisión -->
-          <div class="form-group form-row">
-            <label class="col-4 col-form-label">Fecha de emisión</label>
-            <div class="col-7">
-              <input type="date" class="form-control" placeholder="Ingrese la fecha de emisión de la constancia" name="fecha_emision">
-            </div>
-            <div class="col-1">
-              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha en la que se emite la constancia">?</span>
             </div>
           </div>
 
@@ -239,7 +229,7 @@ if($varSesion == null || $varSesion = ''){
           <hr>
 <!-- Sección del Cursante -->
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Código</label>
+            <label class="col-4 col-form-label">Código</label>
             <div class="col-7">
               <input id="codigoCursante" type="text" class="form-control" placeholder="Ingrese el código del cursante" name="codigo">
             </div>
@@ -321,7 +311,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $conn = $obj -> conexion();
   $date = getDate();
 
-  $result1 = mysqli_query($conn, "SELECT COUNT(*) FROM ((constancia INNER JOIN cursante ON constancia.cursante = cursante.codigo) INNER JOIN evento ON constancia.evento = evento.evento_id) WHERE UPPER(TRIM(evento.nombre)) = UPPER(TRIM('$nombre_capacitacion')) AND cursante.codigo = '$codigo'");
+  if (trim($codigo)=="") $codigo="0";
+  $result1 = mysqli_query($conn, "SELECT COUNT(*) FROM ((constancia INNER JOIN cursante ON constancia.cursante = cursante.cursante_id) INNER JOIN evento ON constancia.evento = evento.evento_id) WHERE UPPER(TRIM(evento.nombre)) = UPPER(TRIM('$nombre_capacitacion')) AND cursante.codigo = '$codigo'");
   $row1 = mysqli_fetch_array($result1);
   $fol1 = $row1[0];
   if ($fol1 >= 1) {
@@ -333,9 +324,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     . "'" . $nombre_capacitacion . "', "
     . $tipo_capacitacion . ", "
     . $instancia . ", "
-    . $duracion . ", "
-    . "'" . $fecha_inicio . "', "
-    . "'" . $fecha_fin . "', "
+    . (trim($duracion) == ""? "0, ":($duracion . ", "))
+    . (trim($fecha_inicio) == ""? "NULL, ":("'" . $fecha_inicio . "', "))
+    . (trim($fecha_fin) == ""? "NULL, ":("'" . $fecha_fin . "', "))
     . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
     . "'" . $comentarios . "', @out)"
   );
