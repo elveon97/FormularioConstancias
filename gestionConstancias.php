@@ -131,6 +131,16 @@ if ($_SESSION['tipoUsuario'] == '1') {
               </div>
             </div>
 
+            <!-- Fecha fin -->
+            <div class="mb-3">
+              <label for="">Fecha emisión</label>
+              <div class="row">
+                <div class="col-12">
+                  <input type="date" name="fecha_emision" id="fecha_emision" class="form-control input-sm mb-3" required>
+                </div>
+              </div>
+            </div>
+
             <!-- Duración -->
             <div class="mb-3">
               <label for="">Horas</label>
@@ -156,7 +166,7 @@ if ($_SESSION['tipoUsuario'] == '1') {
                     <?php
                     $obj = new conectar();
                     $conn = $obj -> conexion();
-                    $result = $conn->query("SELECT codigo,nombre FROM cursante ORDER BY nombre ASC");
+                    $result = $conn->query("SELECT cursante_id,nombre FROM cursante ORDER BY nombre ASC");
                     while($row=mysqli_fetch_array($result)) {
                       echo '<option value="'.htmlspecialchars($row[0]).
                       '">'.htmlspecialchars($row[1]).'</option>';
@@ -216,7 +226,7 @@ $(document).ready(function(){
       url: "php/procesosConstancias/datosEvento.php",
       success:function(r) {
         console.log(r);
-        datos=jQuery.parseJSON(r);     
+        datos=jQuery.parseJSON(r);
         $('#fecha_inicio').val(datos['fecha_inicio']);
         $('#fecha_final').val(datos['fecha_fin']);
         $('#horas').val(datos['duracion']);
@@ -291,9 +301,11 @@ function agregaFrmActualizar(folio){
     url:"php/procesosConstancias/obtenDatos.php",
     success:function(r){
       datos=jQuery.parseJSON(r);
+      console.log(datos['cursante']);
       $('#capacitacion').val(datos['evento']);
       $('#fecha_inicio').val(datos['fecha_inicio']);
       $('#fecha_final').val(datos['fecha_fin']);
+      $('#fecha_emision').val(datos['fecha_emision']);
       $('#horas').val(datos['duracion']);
       $('#cursante').val(datos['cursante']);
       $('#folio').val(datos['folio']);

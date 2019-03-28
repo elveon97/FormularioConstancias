@@ -19,8 +19,10 @@
   $row = mysqli_fetch_array($response);
   $salida = "";
 
-  for ($i = 0; $i<count($row)/2; $i++) {
-    $salida = $salida . $row[$i] . ";";
+  if ($row) {
+    for ($i = 0; $i<count($row)/2; $i++) {
+      $salida = $salida . $row[$i] . ";";
+    }
   }
 
   echo $salida;

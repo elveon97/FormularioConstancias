@@ -8,6 +8,7 @@
 		$_POST['capacitacion'],
 		$_POST['fecha_inicio'],
 		$_POST['fecha_final'],
+		$_POST['fecha_emision'],
 		$_POST['horas'],
 		$_POST['cursante'],
 		$_POST['comentarios']

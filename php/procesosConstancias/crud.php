@@ -5,7 +5,7 @@
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="select folio, constancia.evento, evento.fecha_inicio, evento.fecha_fin, evento.duracion, cursante, comentario from constancia inner join evento on constancia.evento = evento.evento_id where folio = '$folio'";
+			$sql="select folio, constancia.evento, evento.fecha_inicio, evento.fecha_fin, constancia.fecha_emision, evento.duracion, cursante, comentario from constancia inner join evento on constancia.evento = evento.evento_id where folio = '$folio'";
 			$result=mysqli_query($conexion,$sql);
 			$ver=mysqli_fetch_row($result);
 
@@ -14,9 +14,10 @@
 				'evento' => $ver[1],
 				'fecha_inicio' => $ver[2],
 				'fecha_fin' => $ver[3],
-				'duracion' => $ver[4],
-				'cursante' => $ver[5],
-				'comentario' => $ver[6]
+				'fecha_emision' => $ver[4],
+				'duracion' => $ver[5],
+				'cursante' => $ver[6],
+				'comentario' => $ver[7]
 				);
 			return $datos;
 		}
@@ -26,13 +27,14 @@
 			$conexion=$obj->conexion();
 
 			$sql="UPDATE constancia set evento = '$datos[1]',
-								cursante = '$datos[5]',
-										comentario='$datos[6]'
+								cursante = '$datos[6]',
+										comentario='$datos[7]',
+										fecha_emision='$datos[4]'
 						where folio=$datos[0]";
 			mysqli_query($conexion,$sql);
 
 			$sql = "UPDATE evento set fecha_inicio = '$datos[2]',
-				fecha_fin = '$datos[3]', duracion = '$datos[4]'
+				fecha_fin = '$datos[3]', duracion = '$datos[5]'
 				where evento_id = '$datos[1]'";
 			return mysqli_query($conexion,$sql);
 		}

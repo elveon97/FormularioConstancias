@@ -217,6 +217,16 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
+            <label class="col-4 col-form-label">Fecha de emisión</label>
+            <div class="col-7">
+              <input type="date" class="form-control" placeholder="Ingrese la fecha de emisión" name="fecha_emision" required>
+            </div>
+            <div class="col-1">
+              <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha de emisión de la constancia">?</span>
+            </div>
+          </div>
+
+          <div class="form-group form-row">
             <label class="col-4 col-form-label">Comentarios referentes a la constancia</label>
             <div class="col-7">
               <textarea name="comentarios" class="form-control" placeholder="Comentarios"></textarea>
@@ -239,7 +249,7 @@ if($varSesion == null || $varSesion = ''){
           </div>
 
           <div class="form-group form-row">
-            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Nombre del cursante</label>
+            <label class="col-4 col-form-label"><span class="fa fa-asterisk text-success mr-1" style="font-size:0.7rem;"></span>Nombre</label>
             <div class="col-7">
               <input type="text" class="form-control" placeholder="Ingrese el nombre del cursante" name="nombre_cursante" required>
             </div>
@@ -304,12 +314,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $duracion = validate_input($_POST["duracion"]) ;
   $fecha_inicio = validate_input($_POST["fecha_inicio"]) ;
   $fecha_fin = validate_input($_POST["fecha_fin"]) ;
+  $fecha_emision = validate_input($_POST["fecha_emision"]) ;
   $comentarios = validate_input($_POST["comentarios"]) ;
   $codigo = validate_input($_POST["codigo"]) ;
   $nombre_cursante = validate_input($_POST["nombre_cursante"]) ;
   $obj = new conectar();
   $conn = $obj -> conexion();
-  $date = getDate();
 
   if (trim($codigo)=="") $codigo="0";
   $result1 = mysqli_query($conn, "SELECT COUNT(*) FROM ((constancia INNER JOIN cursante ON constancia.cursante = cursante.cursante_id) INNER JOIN evento ON constancia.evento = evento.evento_id) WHERE UPPER(TRIM(evento.nombre)) = UPPER(TRIM('$nombre_capacitacion')) AND cursante.codigo = '$codigo'");
@@ -327,7 +337,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     . (trim($duracion) == ""? "0, ":($duracion . ", "))
     . (trim($fecha_inicio) == ""? "NULL, ":("'" . $fecha_inicio . "', "))
     . (trim($fecha_fin) == ""? "NULL, ":("'" . $fecha_fin . "', "))
-    . "'" . $date['year'] . "-" . $date['mon'] . "-" . $date['mday'] ."', "
+    . (trim($fecha_emision) == ""? "NULL, ":("'" . $fecha_emision . "', "))
     . "'" . $comentarios . "', @out)"
   );
 
