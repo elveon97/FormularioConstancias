@@ -1,5 +1,5 @@
 # Ignorar la carpeta archivosValidarCurso
-archivosValidarCurso/
+**/archivosValidarCurso/
 
 # Ignorar la carpeta respaldos
-Respaldos/
+**/Respaldos/
