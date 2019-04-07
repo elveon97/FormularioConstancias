@@ -41,20 +41,14 @@
           <button type="submit" class="btn btn-primary" id="btnCrearRespaldo">Crear respaldo</button>
         </div>
       </form>
-
-
     </div>
+
   </div>
-
 </body>
-
 </html>
 
-
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
   require_once "php/conexion.php";
   $obj = new conectar();
   $connection = $obj -> conexion();
@@ -66,6 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   }
 
   //En la variable $return se guardarán las sentencias a ejecutar para realizar el respaldo
+  //Se incluyen los procedimientos!
+  //Después de la línea donde se crea el usuario admin, esas líneas de código actualizan la estructura de la base de datos de acuerdo a una solicitud por los usuarios
+  //si no quedase muy claro el código, se puede comprender mejor en el archivo Instrucciones.sql que se encuentra en la carpeta BD
   $return = '';
 
   $return .=
@@ -372,7 +369,49 @@ BEGIN
 END :
 
 CALL crear_usuario('admin', '123', 'email@gmail.com', 0, @out):
+
+DROP PROCEDURE crear_cursante:
+
+CREATE PROCEDURE crear_cursante(
+  IN _codigo varchar(20),
+     _nombre varchar(60),
+  OUT _salida varchar(20)
+)
+BEGIN
+  DECLARE contador INT DEFAULT 0;
+
+  IF TRIM(_codigo) = '0' THEN
+    INSERT INTO cursante(codigo, nombre) VALUES ('Externo', _nombre);
+    SET _salida = LAST_INSERT_ID();
+  ELSE
+    SELECT COUNT(*) INTO contador FROM cursante WHERE UPPER(codigo) = UPPER(_codigo);
+    IF contador > 0 THEN
+      SELECT cursante_id INTO _salida FROM cursante WHERE UPPER(codigo) = UPPER(_codigo);
+    ELSE
+      INSERT INTO cursante(codigo, nombre) VALUES (_codigo, _nombre);
+      SET _salida = LAST_INSERT_ID();
+    END IF;
+  END IF;
+END :
+
+
+ALTER TABLE constancia DROP FOREIGN KEY constancia_ibfk_2;
+
+ALTER TABLE cursante DROP PRIMARY KEY;
+
+ALTER TABLE cursante ADD cursante_id int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+
+ALTER TABLE constancia ADD COLUMN cursante_id int(8) NOT NULL AFTER evento;
+
+ALTER TABLE constancia DROP COLUMN cursante;
+
+ALTER TABLE constancia CHANGE `cursante_id` `cursante` int(8);
+
+ALTER TABLE constancia ADD FOREIGN KEY (cursante) REFERENCES cursante(cursante_id);
+
+DROP PROCEDURE IF EXISTS ROWPERROW;
 ";
+
 
 $return .= '
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -398,6 +437,13 @@ $return .= '
   fwrite($handle,$return);
   fclose($handle);
 
-  echo "<script>alert('Respaldo exitoso');</script>";
+  //Crear un "formulario" para insertar un input la ruta y poder enviarla por post al archivo downloadBackUp.php para que se pueda descargar el archivo en la maquina donde se esta generando dicho respaldo!
+  echo("<div class='form-group form-row justify-content-center'>
+          <form method='post' action='downloadBackUp.php'>
+          <input type='hidden' id='hidden' name='pathBackUp' value='$auxNameBackUp'>
+          <button type='submit' class='btn btn-primary'>Descargar Respaldo</button>
+          </form>
+        </div>
+        ");
 }
 ?>

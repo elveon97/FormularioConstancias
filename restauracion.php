@@ -34,21 +34,23 @@
         <h3><span class="badge">Restaurar la base de datos</span></h3>
       </div>
     </div>
-
+<!--
     <div class="row justify-content-center">
+
       <div class="w-75 col-6">
         <span class="text-justify"> <h5>Recuerde que debe de existir la base de datos con el mismo nombre que tenía cuando fue creada.</h5>
                                     Seleccione el archivo del respaldo para restaurar la base de datos
                                     y después seleccione el boton "Restaurar base de datos"</span>
       </div>
-    </div>
 
-    <div class="form-group form-row justify-content-center">
+    </div>-->
+
+    <div class="fo9rm-group form-row justify-content-center">
       <div class="col-4" style = "margin-top:1em";>
         <input type="file" class="btn btn-primary" id="fileRestaurarBase" onchange="obtenerRutaArchivoRestauracion();">
 
         <form name="fileNameForm" id="fileNameForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-          <input type="text" name="filename" id="filename" style="display:none;">
+          <input type="text" name="filename" id="filename" >
           <button type="submit" class="btn btn-info" style = "margin-top:1em"; id="btnCrearRespaldo">Restaurar base de datos</button>
         </form>
 
@@ -63,7 +65,7 @@
 <script type="text/javascript">
   function obtenerRutaArchivoRestauracion(){
     const input = document.getElementById('fileRestaurarBase');
-    if(input.files && input.files[0]) document.fileNameForm.filename.value = "Respaldos/"+input.files[0].name;
+    if(input.files && input.files[0]) document.fileNameForm.filename.value = "Respaldos/"+input.files[0].name;  //Aquí es donde se asigna la ruta donde esta el archivo!
   }
 </script>
 </html>
