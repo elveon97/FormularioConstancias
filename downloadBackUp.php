@@ -8,6 +8,8 @@ header("Content-disposition: attachment; filename=\"".$auxNameBackUp."\"");
 
 //Ruta del respaldo que se va a descargar
 readfile($auxNameBackUp);
+//Mensaje de respaldo exitoso
+echo "<script>alert('Respaldo exitoso');</script>";
 
 exit;
 

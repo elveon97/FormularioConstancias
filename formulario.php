@@ -219,7 +219,7 @@ if($varSesion == null || $varSesion = ''){
           <div class="form-group form-row">
             <label class="col-4 col-form-label">Fecha de emisión</label>
             <div class="col-7">
-              <input type="date" class="form-control" placeholder="Ingrese la fecha de emisión" name="fecha_emision" required>
+              <input type="date" class="form-control" placeholder="Ingrese la fecha de emisión" name="fecha_emision">
             </div>
             <div class="col-1">
               <span class="btn btn-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="Fecha de emisión de la constancia">?</span>
