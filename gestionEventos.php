@@ -110,13 +110,13 @@
 						</select>
             <!-- Duración -->
 						<label for="duracionCurso">Duración</label>
-						<input id="duracionCurso" class="form-control input-sm mb-3" type="number" placeholder="Ingresa la duración del Curso" name="duracion" required>
+						<input id="duracionCurso" class="form-control input-sm mb-3" type="number" placeholder="Ingresa la duración del Curso" name="duracion">
             <!-- Duración -->
 						<label for="fechaInicialCurso">Fecha inicial</label>
-						<input id="fechaInicialCurso" class="form-control input-sm mb-3" type="date" name="fechaInicial" required>
+						<input id="fechaInicialCurso" class="form-control input-sm mb-3" type="date" name="fechaInicial">
             <!-- Duración -->
 						<label for="fechaFinalCurso">Fecha final</label>
-						<input id="fechaFinalCurso" class="form-control input-sm mb-3" type="date" name="fechaFinal" required>
+						<input id="fechaFinalCurso" class="form-control input-sm mb-3" type="date" name="fechaFinal">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -207,7 +207,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#btnAgregarnuevo').click(function(){
+      if ($('#duracionCurso').val() == '') {
+        $('#duracionCurso').val(0);
+      }
 			datos=$('#frmnuevo').serialize();
+      console.log(datos);
 
 			$.ajax({
 				type:"POST",
@@ -226,6 +230,10 @@
 		});
 
 		$('#btnActualizar').click(function(){
+      if ($('#duracionCursoEditar').val() == '') {
+        $('#duracionCursoEditar').val(0);
+      }
+
 			datos=$('#frmnuevoU').serialize();
       console.log(datos);
 
