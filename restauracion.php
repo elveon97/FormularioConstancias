@@ -106,6 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
   $handle = fopen($filename,"r+");
   $contents = fread($handle,filesize($filename));
+  echo $contents;
   $sql = explode(':',$contents);
   foreach($sql as $query){
     $result = mysqli_query($connection,$query);
