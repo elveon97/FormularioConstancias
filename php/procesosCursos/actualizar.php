@@ -9,8 +9,8 @@
 		$_POST['tipoEventoEditar'],
 		$_POST['instanciaEditar'],
 		$_POST['duracionEditar'],
-		$_POST['fechaInicialEditar'],
-		$_POST['fechaFinalEditar']
+		($_POST['fechaInicialEditar'] == ''? 'NULL': $_POST['fechaInicialEditar']),
+		($_POST['fechaFinalEditar'] == ''? 'NULL': $_POST['fechaFinalEditar'])
 				);
 
 	echo $obj->actualizar($datos);

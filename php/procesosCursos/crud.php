@@ -5,7 +5,10 @@
 			$obj= new conectar();
 			$conexion=$obj->conexion();
 
-			$sql="call crear_evento($datos[1], $datos[2], '$datos[0]', $datos[3], '$datos[4]', '$datos[5]', @out)";
+			$sql="call crear_evento($datos[1], $datos[2], '$datos[0]', $datos[3], ". ($datos[4] == 'NULL'? 'NULL': ("'".$datos[4]."'")) .", ". ($datos[5] == 'NULL'? 'NULL': ("'".$datos[5]."'")) .", @out)";
+
+			error_log($sql);
+
 			return mysqli_query($conexion,$sql);
 		}
 
@@ -37,8 +40,8 @@
 										tipo_evento=$datos[2],
 										instancia=$datos[3],
 										duracion=$datos[4],
-										fecha_inicio ='$datos[5]',
-										fecha_fin ='$datos[6]'
+										fecha_inicio =". ($datos[5] == 'NULL'? 'NULL': ("'".$datos[5]."'")) .",
+										fecha_fin =". ($datos[6] == 'NULL'? 'NULL': ("'".$datos[6]."'")) ."
 						where evento_id=$datos[0]";
 			return mysqli_query($conexion,$sql);
 		}
