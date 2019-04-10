@@ -140,14 +140,14 @@ BEGIN
   DECLARE contador INT DEFAULT 0;
 
   IF TRIM(_codigo) = "0" THEN
-    INSERT INTO cursante VALUES (default, "Externo", _nombre);
+    INSERT INTO cursante(codigo, nombre) VALUES ("Externo", _nombre);
     SET _salida = LAST_INSERT_ID();
   ELSE
     SELECT COUNT(*) INTO contador FROM cursante WHERE UPPER(codigo) = UPPER(_codigo);
     IF contador > 0 THEN
       SELECT cursante_id INTO _salida FROM cursante WHERE UPPER(codigo) = UPPER(_codigo);
     ELSE
-      INSERT INTO cursante VALUES (default, _codigo, _nombre);
+      INSERT INTO cursante(codigo, nombre) VALUES (_codigo, _nombre);
       SET _salida = LAST_INSERT_ID();
     END IF;
   END IF;

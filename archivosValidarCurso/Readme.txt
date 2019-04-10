@@ -1,0 +1,1 @@
+En esta carpeta se encuentran los archivos de los cursos con lo que fueron validados, el manejo de estos ficheros se realiza desde el sistema web!

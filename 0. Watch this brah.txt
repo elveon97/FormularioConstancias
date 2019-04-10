@@ -1,0 +1,2 @@
+- En gestionar cursos:
+	Al crear y editar, si no se pone un valor en las horas, fecha inicial y fecha final, marca error!
