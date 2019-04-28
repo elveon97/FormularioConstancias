@@ -11,11 +11,6 @@
         header("Location: errorInicioSesion.php");
         die();
     }
-
-    if ($_SESSION['tipoUsuario'] == '1') {
-      header("Location: errorAcceso.php");
-      die();
-    }
 ?>
 
 
@@ -59,8 +54,8 @@
               </div>
 
               <div class="row mt-2">
-
-                <div class="col-sm">
+                <!-- La seccion para gestionar los usuarios estara oculta para los usuarios normales -->
+                <div class="col-sm" id="gestion-usuarios" style="display:none">
                   <div class="card">
                     <div class="card-header w-100 bg-dark text-white">
                       <h4>Usuarios</h4>
@@ -76,6 +71,14 @@
                     </div>
                   </div>
                 </div>
+
+                <?php
+                  //Si el tipo de sesion no es un usuario normal, mostrarle la seccion para gestionar los usuarios
+                  if($_SESSION['tipoUsuario'] != '1'){
+                    echo (" <script> document.getElementById('gestion-usuarios').style.display = 'block';
+                            </script>");
+                  }
+                ?>
 
                 <div class="col-sm">
                   <div class="card">
@@ -169,7 +172,8 @@
               </div>
 
               <div class="row mt-4">
-                <div class="col-sm">
+                <!-- La seccion para los reportes estara oculta para los usuarios normales -->
+                <div class="col-sm" id="seccion-reportes" style="display:none">
                   <div class="card">
                     <div class="card-header w-100 bg-dark text-white">
                       <h4>Reportes</h4>
@@ -185,7 +189,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm">
+                <!-- La seccion para validar los cursos estara oculta para los usuarios normales -->
+                <div class="col-sm" id="validar-cursos" style="display:none">
                   <div class="card">
                     <div class="card-header w-100 bg-dark text-white">
                       <h4>Validación de cursos</h4>
@@ -201,8 +206,63 @@
                     </div>
                   </div>
                 </div>
+
+                <?php
+                  //Si el tipo de sesion no es un usuario normal, mostrarle la seccion de los reportes
+                  if($_SESSION['tipoUsuario'] != '1'){
+                    echo (" <script>
+                              document.getElementById('seccion-reportes').style.display = 'block';
+                              document.getElementById('validar-cursos').style.display = 'block';
+                            </script>");
+                  }
+                ?>
+                
               </div>
 
+              <!-- Seccion de respaldo y restauracion -->
+              <div class="row mt-4" id="container_Respaldo_Restauracion" style="display:none">
+                <!-- Respaldo -->
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Respaldar la base de datos</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-hdd-o text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="respaldo.php" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Respaldar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Restauración -->
+                <div class="col-sm">
+                  <div class="card">
+                    <div class="card-header w-100 bg-dark text-white">
+                      <h4>Restaurar la base de datos</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                          <span class="fa fa-refresh text-secondary w-100 mb-2" style="color: #0069D9; font-size: 6em; text-align: center;"></span>
+                      </div>
+                      <a href="restauracion.php" class="btn btn-primary">
+                        <span class="fa fa-cogs" style="margin-right: 5px;"></span>
+                        Restaurar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- script de php que checa si la sesión fue iniciada por un superAdmin, mostrarle las opciones de respaldar y restaurar! -->
+              <?php
+                if($_SESSION['tipoUsuario'] == '2'){
+                  echo (" <script> document.getElementById('container_Respaldo_Restauracion').style.display = 'block';
+                          </script>");
+                }
+              ?>
             </div>
 
         </div>

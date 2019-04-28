@@ -1,3 +1,22 @@
+<?php
+    //Codigo para validar que esta pagina pueda ser visualizada solamente si existe una sesión previamente iniciada!
+
+    session_start();
+    error_reporting(0);
+    $varSesion = $_SESSION['usuario'];
+
+    //Habilitar la siguiente linea cuando se de por concluido el desarrollo de esta pagina, esto con el fin de que no se muestren errores de php
+
+    if($varSesion == null || $varSesion = ''){
+        header("Location: errorInicioSesion.php");
+        die();
+    }
+
+    if ($_SESSION['tipoUsuario'] != '2') {
+      header("Location: errorAcceso.php");
+      die();
+    }
+?>
 
 <!DOCTYPE html>
 <html>
@@ -7,7 +26,7 @@
   <meta charset="utf-8">
 
   <link rel="stylesheet" href="librerias/bootstrap/bootstrap.min.css">
-
+  <link rel="stylesheet" type="text/css" href="librerias/fontawesome/css/font-awesome.css">
 
   <script src="librerias/jquery.min.js"></script>
   <script src="librerias/bootstrap/popper.min.js"></script>
@@ -20,9 +39,14 @@
 <body>
 
   <div class="container">
-    <div class="row align-items-center justify-content-between">
-      <div class="col-4">
-        <img src="img/logo.jpg" alt="CUSur">
+    <div class="row">
+      <!-- Imagen -->
+      <div class="logo-container w-100">
+          <img src="img/logo.jpg" alt="CUSur">
+          <a href="adminIndex.php" class="btn btn btn-link">
+            <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
+            Volver al Panel del Administrador
+          </a>
       </div>
     </div>
   </div>
@@ -100,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   //De esta manera se deja preparada la ruta para que el metodo fopen() pueda hacer el respaldo con el archivo original que se encuentra en el servidor!
   $filename = "Respaldos/";
   $auxFileName = $_FILES['filename']['name'];
-  $auxFileName = substr($auxFileName, 10);    // Eliminar de la cadena Respaldos_
+  $auxFileName = substr($auxFileName, 10);    // Eliminar de la cadena "Respaldos_"
 
   $filename .= $auxFileName;
 

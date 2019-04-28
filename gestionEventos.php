@@ -12,10 +12,12 @@
         die();
     }
 
+/* Al comentar este script, se da acceso a cualquier usuario del sistema a esta seccion
     if ($_SESSION['tipoUsuario'] == '1') {
       header("Location: errorAcceso.php");
       die();
     }
+*/
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +34,7 @@
 		<img src="img/logo.jpg" alt="CUSur" class="mb-5">
     <a href="adminIndex.php" class="btn btn btn-link">
       <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
-      Volver al Panel del Administrador
+      Volver al Panel
     </a>
 		<div class="row">
 			<div class="col-sm-12">

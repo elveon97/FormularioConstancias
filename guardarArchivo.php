@@ -45,7 +45,7 @@ if($varSesion == null || $varSesion = ''){
         <img src="img/logo.jpg" alt="CUSur">
         <a href="adminIndex.php" class="btn btn btn-link">
           <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
-          Volver al Panel de Administración
+          Volver al Panel
         </a>
       </div>
     </div>
