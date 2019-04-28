@@ -31,7 +31,7 @@
 		<img src="img/logo.jpg" alt="CUSur" class="mb-5">
     <a href="adminIndex.php" class="btn btn btn-link">
       <span class="fa fa-arrow-circle-left" style="margin-right: 5px;"></span>
-      Volver al Panel del Administrador
+      Volver al Panel
     </a>
 		<div class="row">
 			<div class="col-sm-12">

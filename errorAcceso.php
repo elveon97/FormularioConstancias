@@ -32,7 +32,7 @@
           <h5>No estás autorizado a acceder a esta sección.</h5>
         </div>
         <div class="row">
-          <a href="formulario.php" class="btn btn-primary btn-lg">Volver</a>
+          <a href="adminIndex.php" class="btn btn-primary btn-lg">Volver</a>
         </div>
       </div>
     </body>

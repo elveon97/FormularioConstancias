@@ -88,14 +88,18 @@
           $_SESSION['usuario'] = $usser;
           $_SESSION['tipoUsuario'] = $tipoUsuario;
 
-          //Realizar el direccionamiento dependiendo el tipo de usuario
-          if($tipoUsuario == 0){
-            //Redireccionar al Panel del Administrador
-            header("Location: adminIndex.php");
-          }else if($tipoUsuario == 1){
-            //Redireccionar al formulario
-            header("Location: formulario.php");
-          }
+          /*
+              *** Tipos de usuario ***
+              0 -> Admin
+              1 -> Usuario Normal
+              2 -> Super Admin ---> Será el que tenga acceso a la sección de respaldo y restauración
+          */
+
+
+          //Realizar el direccionamiento al panel del admin [Dependiendo el tipo de usuario serán las secciones que se le mostraran]
+
+          header("Location: adminIndex.php");
+
         }else if($resultadoConsultaUsuario == $usser && $resultadoConsultaPassword != $password){
           echo '<script> mensajesLogueo(1) </script>';
         }else{

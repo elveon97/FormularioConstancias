@@ -106,7 +106,7 @@ if($varSesion == null || $varSesion = ''){
       <div class="col-6">
         <a href="adminIndex.php" class="btn btn-outline-primary">
           <span class="fa fa-arrow-left mr-1"></span>
-          Panel de administración
+          Volver al Panel
         </a>
         <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#buscadorConstancias"><span class="fa fa-search mr-1"></span>Buscar constancia</button>
       </div>

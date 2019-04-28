@@ -46,7 +46,6 @@
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
-  </script>
 
   <script type="text/javascript">
     $(document).ready(function() {
