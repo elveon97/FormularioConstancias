@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 --  CREACIÓN TABLA CURSANTE
 CREATE TABLE IF NOT EXISTS `cursante` (
-  `codigo` varchar(20) PRIMARY KEY,
+  `cursante_id` int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `codigo` varchar(20) NOT NULL,
   `nombre` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -101,13 +102,13 @@ CREATE TABLE IF NOT EXISTS `evento` (
 CREATE TABLE IF NOT EXISTS `constancia` (
   `folio` int(8) AUTO_INCREMENT PRIMARY KEY,
   `evento` int(8) NOT NULL,
-  `cursante` varchar(20) NOT NULL,
+  `cursante` int(8) NOT NULL,
   `fecha_emision` date,
   `comentario` varchar(255),
   FOREIGN KEY (evento)
     REFERENCES evento(evento_id),
   FOREIGN KEY (cursante)
-    REFERENCES cursante(codigo)
+    REFERENCES cursante(cursante_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  PROCEDIMIENTO CREAR USUARIO
