@@ -21,7 +21,7 @@
     $obj = new conectar();
     $conexion = $obj -> conexion();
 
-    $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, cursante.nombre, fecha_emision, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.codigo) WHERE folio = $folio");
+    $result = mysqli_query($conexion, "SELECT constancia.folio, evento.nombre, evento.fecha_inicio, evento.fecha_fin, fecha_emision, evento.duracion, cursante.nombre, comentario FROM ((constancia INNER JOIN evento ON constancia.evento = evento.evento_id) INNER JOIN cursante ON constancia.cursante = cursante.cursante_id) WHERE folio = $folio");
 ?>
 
 <!DOCTYPE html>
@@ -106,11 +106,14 @@
             <table id="tabla" class="display nowrap">
                     <thead>
                         <tr>
-                            <th>Folio</th>
-                            <th>Nombre capacitación</th>
-                            <th>Nombre cursante</th>
-                            <th>Fecha emisión constancia</th>
-                            <th>Comentarios</th>
+                          <th>Folio</th>
+                          <th>Descripción</th>
+                          <th>Fecha inicio</th>
+                          <th>Fecha final</th>
+                          <th>Fecha emisión</th>
+                          <th>Horas</th>
+                          <th>Cursante</th>
+                          <th>Comentario</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,7 +130,9 @@
                           <td><?php echo $mostrar[2]; ?></td>
                           <td><?php echo $mostrar[3]; ?></td>
                           <td><?php echo $mostrar[4]; ?></td>
-
+                          <td><?php echo $mostrar[5]; ?></td>
+                          <td><?php echo $mostrar[6]; ?></td>
+                          <td><?php echo $mostrar[7]; ?></td>
                         </tr>
                     <?php } ?>
 
