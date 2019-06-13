@@ -5,8 +5,8 @@
     error_reporting(0);
     $varSesion = $_SESSION['usuario'];
 
+/*  
     //Habilitar la siguiente linea cuando se de por concluido el desarrollo de esta pagina, esto con el fin de que no se muestren errores de php
-
     if($varSesion == null || $varSesion = ''){
         header("Location: errorInicioSesion.php");
         die();
@@ -16,6 +16,7 @@
       header("Location: errorAcceso.php");
       die();
     }
+*/
 ?>
 
 <!DOCTYPE html>
